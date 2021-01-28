@@ -33,7 +33,7 @@
       </h1>
       <br>
       <br>
-        Deine NutzerID ist: <?php echo $_SESSION['uid'];?>
+        Deine ChatID ist: <?php echo $_SESSION['uid'];?>
       <br>
     </body>
 </html>
