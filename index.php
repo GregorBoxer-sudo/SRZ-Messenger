@@ -12,6 +12,7 @@
     <button onclick="window.location.href = 'dashboard.php'">trotzdem probieren!</button>
     <br>
     <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger">schau doch bei GitHub vorbei!</a>
+    <br>
     <a href="https://docs.google.com/document/d/1AW7I1kLx_LlGN_nbQE43joOdSn5mnM2fA2ZUST9VvsM/edit?usp=sharing">schau doch bei Google-Docs vorbei!</a>
 </body>
 
