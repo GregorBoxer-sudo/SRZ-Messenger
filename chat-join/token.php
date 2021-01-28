@@ -1,13 +1,13 @@
 <?php
     require('../PHP/session.php');
-    $token = randomNumber(4);
+    $token = createToken(4);
     $_SESSION['token'] = $token;
     if (isset($_POST['chatID'])) {
         $_SESSION['chatID'] = $_POST['chatID'];
     } else {
         echo "<script>window.location.href = 'link-join.php';</script>";
     }
-    function randomNumber($length) {
+    function createToken($length) {
         $min = str_repeat(0, $length-1) . 1;
         $max = str_repeat(9, $length);
         return mt_rand($min, $max);
