@@ -6,11 +6,11 @@
 </head>
 <body>
     <img src="https://img-comment-fun.9cache.com/media/a5Zm5my/aL9K67qR_700w_0.jpg">
-    <h1>Deae Customer, this service is currently work in progress and therefore not ready to use yet. <br> Stay excited!</h1>
-    <button onclick="window.location.href = 'choose.php'">trotzdem probieren!</button>
+    <h1>Dear Customer, this service is currently work in progress and therefore not ready to use yet. <br> Stay excited!</h1>
+    <button onclick="window.location.href = 'choose.php'">try it</button>
     <br>
-    <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger">schau doch bei GitHub vorbei!</a>
+    <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger">look up for our GitHub</a>
     <br>
-    <a href="https://docs.google.com/document/d/1AW7I1kLx_LlGN_nbQE43joOdSn5mnM2fA2ZUST9VvsM/edit?usp=sharing">schau doch bei Google-Docs vorbei!</a>
+    <a href="https://docs.google.com/document/d/1AW7I1kLx_LlGN_nbQE43joOdSn5mnM2fA2ZUST9VvsM/edit?usp=sharing">Look up for our Google Docs</a>
 </body>
 </html>

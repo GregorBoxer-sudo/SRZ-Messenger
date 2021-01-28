@@ -8,7 +8,7 @@
     </head>
     <body>
       <h1>
-        Willkommen beim private Messenger
+        Welcome at Pim
       </h1>
       <br>
         <form action="token.php" method="POST">

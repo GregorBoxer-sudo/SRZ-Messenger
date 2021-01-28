@@ -28,14 +28,14 @@
     </head>
     <body>
       <h1>
-        Willkommen beim private Messenger
+        Welcome at Pim
       </h1>
       <br>
       <br>
-        Deine ChatID ist: <?php echo $_SESSION['chatID'];?>
+        Your ChatID is: <?php echo $_SESSION['chatID'];?>
       <br>
         <form>
-            <label>Hier den Token vom gegenüber eingeben:</label>
+            <label>Please add token from partner:</label>
             <input type="text">
             <input type="submit">
         </form>
