@@ -4,7 +4,7 @@
     $uid = create_guid();
     $uidHash = sha1($uid);
     $_SESSION['uid'] = $uid;
-    
+
     function create_guid() { // Create GUID (Globally Unique Identifier)
       $guid = '';
       $namespace = rand(11111, 99999);
@@ -28,12 +28,12 @@
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
     </head>
     <body>
-      <h1> 
+      <h1>
         Willkommen beim private Messenger
       </h1>
       <br>
       <br>
-        Deine NutzerID ist: <?php echo $_SESSION['uid'];?> 
+        Deine NutzerID ist: <?php echo $_SESSION['uid'];?>
       <br>
     </body>
 </html>
