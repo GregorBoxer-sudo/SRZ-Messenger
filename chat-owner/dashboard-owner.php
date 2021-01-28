@@ -1,10 +1,9 @@
 <?php
-    session_abort();
-    session_start();
+    require('../PHP/session_kill.php');
+    require('../PHP/session.php');
     $uid = create_guid();
     $uidHash = sha1($uid);
-    $_SESSION['uid'] = $uid;
-
+    $_SESSION['chatID'] = $uid;
     function create_guid() { // Create GUID (Globally Unique Identifier)
       $guid = '';
       $namespace = rand(11111, 99999);
@@ -33,7 +32,12 @@
       </h1>
       <br>
       <br>
-        Deine ChatID ist: <?php echo $_SESSION['uid'];?>
+        Deine ChatID ist: <?php echo $_SESSION['chatID'];?>
       <br>
+        <form>
+            <label>Hier den Token vom gegenüber eingeben:</label>
+            <input type="text">
+            <input type="submit">
+        </form>
     </body>
 </html>

@@ -7,7 +7,7 @@
 <body>
     <img src="https://img-comment-fun.9cache.com/media/a5Zm5my/aL9K67qR_700w_0.jpg">
     <h1>Deae Customer, this service is currently work in progress and therefore not ready to use yet. <br> Stay excited!</h1>
-    <button onclick="window.location.href = 'dashboard.php'">trotzdem probieren!</button>
+    <button onclick="window.location.href = 'choose.php'">trotzdem probieren!</button>
     <br>
     <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger">schau doch bei GitHub vorbei!</a>
     <br>
