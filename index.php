@@ -11,6 +11,6 @@
     <br>
     <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger">look up for our GitHub</a>
     <br>
-    <a href="https://docs.google.com/document/d/1AW7I1kLx_LlGN_nbQE43joOdSn5mnM2fA2ZUST9VvsM/edit?usp=sharing">Look up for our Google Docs</a>
+    <a href="https://docs.google.com/document/d/1AW7I1kLx_LlGN_nbQE43joOdSn5mnM2fA2ZUST9VvsM/edit?usp=sharing">look up for our Google Docs</a>
 </body>
 </html>

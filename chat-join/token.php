@@ -19,7 +19,7 @@
     </head>
     <body>
       <h1>
-        Willkommen beim private Messenger
+        Welcome at Pim
       </h1>
       <br>
         ChatID: <?php echo $_SESSION['chatID'];?>
