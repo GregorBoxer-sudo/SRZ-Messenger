@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    font-family: 'Quicksand', serif;
+}
+
+h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+/* index */
+
+.titleIndex{
+    padding-top: 1.5%;
+    margin-bottom: 0;
+    font-size: 10em;
+    text-align: center;
+}
+.lead{
+    margin-top: 0;
+    text-align: center;
+}
+.notFinishedYetText{
+    text-align: center;
+}
+
+.progressbarContainer{
+    width: 80%;
+    height: 3%;
+
+    background: #e3e3e3;
+
+    border-radius: 0.75em;
+    border: 0.05em solid #AAA;
+
+    margin: 4% auto;
+}
+.progressbarContainer:hover{
+    animation-name: progressHover;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.progressbar{
+    width: 20%;
+    height: 100%;
+
+    border-radius: 0.75em;
+
+    background-color: #69cf81;
+
+    animation: progress;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.tryIt{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    display: block;
+    border: 0.01em #AAA solid;
+    border-radius: 0.5em;
+    color: #000;
+    background-color: #e3e3e3;
+    font-size: 2em;
+
+    height: 5%;
+    width: 20%;
+
+    margin: auto;
+}
+.tryIt:hover{
+    animation-name: tryItHover;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.linkContainer{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 5%;
+}
+#github{
+    margin-right: 2em;
+}
+#googleDocs{
+    margin-left: 2em;
+}
+
+@keyframes progress {
+    0%{
+        width: 0%;
+    }
+    2%{
+        width: 1%;
+    }
+    5%{
+        width: 10%;
+    }
+    15%{
+        width: 15%;
+    }
+    25%{
+        width: 17%;
+    }
+    50%{
+        width: 40%;
+    }
+    60%{
+        width: 70%;
+    }
+    70%{
+        width: 72%;
+    }
+    85%{
+        width: 90%;
+    }
+    100%{
+        width: 98%;
+    }
+}
+
+@keyframes progressHover {
+    0%{
+
+    }100%{
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+         transform: scale(1.005);
+     }
+}
+
+
+@keyframes tryItHover {
+    0%{
+
+    }100%{
+         background-color: #69cf81;
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+         transform: scale(1.01);
+    }
+}
+
+/* choose */
+
+.bodyChoose{
+    background-color: #333;
+    /*todo error FF5454*/
+}
+
+.navigationBar{
+    height: 3em;
+}
+.navItem{
+    font-size: 2.5em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #989898;
+    text-decoration: none;
+
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+}
+
+#home{
+    float: left;
+}
+#privacy{
+    float: right;
+}
+#donate{
+    float: right;
+}
+#aboutUs{
+    float: right;
+}
+
+.ChatTitle{
+    font-size: 4em;
+    color: #FFF;
+
+    margin-top: 2em;
+    margin-bottom: 0.3em;
+}
+
+.contentContainer{
+    display: flex;
+}
+
+.logo{
+    width: 50%;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.pim{
+    font-size: 15em;
+
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.pimPrivacyText{
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    color: #CCC;
+    line-height: 1.7em;
+
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.privacyButton{
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #CCC;
+
+    position: absolute;
+    top: 69%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chatInteraction{
+    width: 50%;
+}
+
+.textChatParagraph{
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    color: #CCC;
+    line-height: 1.7em;;
+}
+
+.chatButton{
+    margin-top: 1.5em;
+
+    font-size: 1.5em;
+    width: 10em;
+    height: 2em;
+
+    color: #000;
+
+    border-radius: 0.5em;
+    border: none;
+}
+.chatButton:hover{
+    animation: hoverButton;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hoverButton {
+    0%{
+    }
+    100%{
+        color: #FFF;
+        background-color: #000;
+        transform: scale(1.05);
+    }
+}

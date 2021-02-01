@@ -4,11 +4,12 @@
 ?>
 <html>
     <head>
+        <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
     </head>
     <body>
       <h1>
-        Welcome at Pim
+          Welcome at Pim
       </h1>
       <br>
         <form action="token.php" method="POST">
