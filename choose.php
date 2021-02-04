@@ -6,11 +6,11 @@
 <head>
     <meta charset="utf-8">
     <title>Choose</title>
-    <link rel="icon" href="https://lh3.googleusercontent.com/proxy/LLwGSJOeIeB9Xy10EjCXU5hhO4kjSL17llih51Mr1ydWaVFanvBBf5Ny_6jj9R0093i61P7OGuhsM6Ag9mWiyvPn9GqBaoIUAQRGDQkV18G5zb5y1OUuJ8VzjNl3VboWHJgBceKOQ1GqwGM5rJR42rLT8UKtu57A6M2V9g-aDQ">
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
 </head>
-<body class="bodyChoose">
+<body class="bodyChoose preload" onload="removePreload()">
 
+<!--navigation bar-->
 <div class="navigationBar">
     <a class="navItem" id="home" href="choose.php">Home</a>
     <a class="navItem" id="aboutUs" href="https://en.wikipedia.org/wiki/Glaucus_atlanticus">About Us</a>
@@ -20,26 +20,30 @@
 
 <div class="contentContainer">
     <div class="logo">
-        <img src="images/Pim%20background.png" width="1000" height="1000">
         <h1 class="pim">Pim</h1>
-        <p class="pimPrivacyText">Pim is a private Single-Use Messenger,<br> which stores no Data and no Messages. <br> We use no Cookies or Trackers.</p>
-        <a class="privacyButton"><u>learn more ></u></a>
+        <p class="pimPrivacyText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no cookies or trackers.</p>
+        <a class="privacyButton" href="https://de.wikipedia.org/wiki/Wei%C3%9Fbauchschuppentier"><u>learn more ></u></a>
     </div>
 
-
     <div class="chatInteraction"><!--todo rename all things-->
-        <div class="containerChat">
-            <h1 class="ChatTitle">Open new chat</h1>
+        <div class="containerChat" id="openChatContainer" >
+            <h1 class="ChatTitle">create chat</h1>
             <p class="textChatParagraph">Said soft foot football relay gas prices. <br> Integer developers. Tomorrow protein. <br> If not always live element.</p>
-            <button class="chatButton" onclick="window.location.href = 'chat-owner/dashboard-owner.php'">Open new Chat</button>
+            <button class="chatButton" onclick="window.location.href = 'chat-owner/dashboard-owner.php'">create chat</button>
         </div>
-        <div class="containerChat">
-            <h1 class="ChatTitle">Join chat</h1>
+        <div class="containerChat" id="joinChatContainer">
+            <h1 class="ChatTitle">join chat</h1>
             <p class="textChatParagraph">Said soft foot football relay gas prices. <br> Integer developers. Tomorrow protein. <br> If not always live element.</p>
-            <button class="chatButton" onclick="window.location.href = 'chat-join/link-join.php'">Join Chat</button>
+            <button class="chatButton" onclick="window.location.href = 'chat-join/link-join.php'">join chat</button>
         </div>
     </div>
 </div>
 
 </body>
+<script>
+    //fixing the bug in google chrome, where it plays at the beginning
+    function removePreload(){
+        document.getElementsByClassName("preload")[0].classList.remove("preload");
+    }
+</script>
 </html>

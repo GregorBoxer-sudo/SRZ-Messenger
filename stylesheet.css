@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family: 'Quicksand', serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
 
 h1{
@@ -9,7 +10,6 @@ h1{
 }
 
 /* index */
-
 .titleIndex{
     padding-top: 1.5%;
     margin-bottom: 0;
@@ -54,8 +54,6 @@ h1{
 }
 
 .tryIt{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
     display: block;
     border: 0.01em #AAA solid;
     border-radius: 0.5em;
@@ -89,7 +87,7 @@ h1{
 
 @keyframes progress {
     0%{
-        width: 0%;
+        width: 0;
     }
     2%{
         width: 1%;
@@ -146,19 +144,23 @@ h1{
     background-color: #333;
     /*todo error FF5454*/
 }
+.preload * {
+    transition: none !important;
+}
 
 .navigationBar{
     height: 3em;
 }
 .navItem{
     font-size: 2.5em;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
     color: #989898;
     text-decoration: none;
 
     margin-right: 0.2em;
     margin-left: 0.2em;
+}
+.navItem:hover{
+    color: #DDD;
 }
 
 #home{
@@ -187,41 +189,39 @@ h1{
 }
 
 .logo{
-    width: 50%;
+    width: 60vw;
+    height: 90vh;
+
+    background-image: url('images/Pim background.png');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+
     position: relative;
     text-align: center;
     color: white;
 }
 .pim{
     font-size: 15em;
+    line-height: 0.8em;
 
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 30%;
+    margin-bottom: 0;
+
 }
 .pimPrivacyText{
     font-size: 1.2em;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 200;
     color: #CCC;
     line-height: 1.7em;
 
-    position: absolute;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 .privacyButton{
     font-size: 1.5em;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
     color: #CCC;
-
-    position: absolute;
-    top: 69%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+}
+.privacyButton:hover{
+    color: #FFF;
 }
 
 .chatInteraction{
@@ -230,7 +230,6 @@ h1{
 
 .textChatParagraph{
     font-size: 1.2em;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 200;
     color: #CCC;
     line-height: 1.7em;;
@@ -244,22 +243,99 @@ h1{
     height: 2em;
 
     color: #000;
+    background: #FFF;
 
     border-radius: 0.5em;
     border: none;
+
+    background: linear-gradient(to left, #FFF 50%, #000 50%) right;
+    background-size: 200%;
+    transition: 0.3s ease-out, color 0.3s;
 }
 .chatButton:hover{
-    animation: hoverButton;
-    animation-duration: 0.4s;
-    animation-fill-mode: forwards;
+    background-position: left;
+    color: #FFF;
 }
 
-@keyframes hoverButton {
-    0%{
+@media screen
+and (max-device-width: 1000px)
+and (min-device-width: 600px) {
+    .contentContainer{
+        display: block;
     }
-    100%{
-        color: #FFF;
-        background-color: #000;
-        transform: scale(1.05);
+    .logo{
+        width: 100%;
+        height: 50vh;
+    }
+    .chatInteraction{
+        display: flex;
+        width: 100%;
+    }
+    .pim, .chatTitle{
+        margin-top:10%;
+    }
+    .containerChat{
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        width: 50%;
+    }
+    #joinChatContainer{
+        float: right;
+    }
+    #openChatContainer{
+        float: left;
+        text-align: right;
+    }
+
+}
+@media screen
+and (max-device-width: 600px)
+and (orientation: portrait){
+
+    .contentContainer{
+        display: block;
+    }
+    .logo{
+        width: 100%;
+        height: 35vh;
+    }
+    .chatInteraction{
+        display: block;
+        width: 100%;
+    }
+    .pim {
+        margin-top: 10%;
+    }
+    .pimPrivacyText{
+        font-size: 2em;
+    }
+    .privacyButton{
+        font-size: 2em;
+    }
+    .chatTitle{
+        font-size: 5em;
+        margin-top: 0;
+    }
+    .textChatParagraph{
+        font-size: 1.5em;
+    }
+    .containerChat{
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+
+        margin-top: 0;
+        padding-bottom: 2%;
+    }
+    #joinChatContainer{
+        text-align: right;
+    }
+    #openChatContainer{
+        text-align: left;
+    }
+    .chatButton{
+        font-size: 2.25em;
+        width: 10em;
+        height: 2em;
+        margin-top: 0.5em;
     }
 }
