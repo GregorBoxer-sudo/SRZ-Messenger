@@ -67,7 +67,5 @@
             document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
         }
     }
-
-    //todo maybe add a session storage habe gerade keine Lust mehr dazu es ist 4 uhr
 </script>
 </html>
