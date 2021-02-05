@@ -1,26 +1,10 @@
+<<<<<<< Updated upstream
 <?php
     require('../PHP/session_kill.php');
     require('../PHP/session.php');
-    $uid = create_guid();
-    $uidHash = sha1($uid);
-    $_SESSION['chatID'] = $uid;
-    function create_guid() { // Create GUID (Globally Unique Identifier)
-      $guid = '';
-      $namespace = rand(11111, 99999);
-      $uid = uniqid('', true);
-      $data = $namespace;
-      $data .= $_SERVER['REQUEST_TIME'];
-      $data .= $_SERVER['HTTP_USER_AGENT'];
-      $data .= $_SERVER['REMOTE_ADDR'];
-      $data .= $_SERVER['REMOTE_PORT'];
-      $hash = strtoupper(hash('ripemd128', $uid . $guid . md5($data)));
-      $guid = substr($hash,  0,  4) . '-' .
-              substr($hash,  8,  2) .
-              substr($hash, 12,  2) . '-' .
-              substr($hash, 16,  4) . '-' .
-              substr($hash, 20, 4);
-      return $guid;
-  }
+    require('../PHP/dbh.php');
+    require('../PHP/idGen.php');
+    create_guid();
 ?>
 <html>
     <head>
@@ -40,4 +24,41 @@
             <input type="submit">
         </form>
     </body>
+=======
+<?php
+    require('../PHP/session_kill.php');
+    require('../PHP/session.php');
+    require('../PHP/dbh.php');
+    require('../PHP/idGen.php');
+    create_guid();
+?>
+<html>
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+      <h1>
+        Welcome at Pim
+      </h1>
+      <br>
+      <br>
+        Your ChatID is: <?php echo $_SESSION['chatID'];?>
+      <br>
+        <form action="chat.php" method="$_POST">
+            <label>Please add token from partner:</label>
+            <input type="text" name="pwd">
+            <input type="submit">
+        </form>
+        <p>
+        <?php
+          if (isset($_GET['error'])) {
+            if ($_GET['error']=="NoConn") {
+              echo 'false Password';
+            }
+          }
+        ?>
+      </p>
+      <button onclick="window.location.href = '../PHP/deleteRow.php'">Delete Chat</button>
+    </body>
+>>>>>>> Stashed changes
 </html>
