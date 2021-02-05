@@ -15,7 +15,7 @@
     <a class="navItem" id="home" href="choose.php">Home</a>
     <a class="navItem" id="aboutUs" href="https://en.wikipedia.org/wiki/Glaucus_atlanticus">About Us</a>
     <a class="navItem" id="donate" href="https://en.wikipedia.org/wiki/Mutillidae">Donate</a>
-    <a class="navItem" id="privacy" href="https://en.wikipedia.org/wiki/Pasteur%27s_day_gecko#Distribution">Privacy</a>
+    <a class="navItem" id="privacy" href="Security.html">Privacy</a>
 </div>
 
 <div class="contentContainer">
