@@ -22,6 +22,9 @@
       <br>
         Chat eröffnet!
       <br></p>
-      <button onclick="window.location.href = '../PHP/deleteRow.php'">Delete Chat</button>
+      <form action="../PHP/deleteRow.php" method="post">
+        <input type="submit" name="someAction" value="Delete Chat"/>
+        <input type="hidden" name="chatID" value="<?php echo $_SESSION['chatID'];?>"/>
+      </form>
     </body>
 </html>

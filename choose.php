@@ -1,7 +1,3 @@
-<?php
- require('PHP/session_kill.php');
- require('PHP/session.php');
-?>
 <html>
 <head>
     <meta charset="utf-8">

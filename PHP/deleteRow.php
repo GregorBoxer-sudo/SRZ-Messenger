@@ -1,8 +1,9 @@
 <?php
     require('session.php');
-    if (isset($_GET['chatID'])) {
+    if (isset($_POST['chatID'])) {
         require('../PHP/idGen.php');
-        $guid = $_GET['chatID'];
+        $guid = $_POST['chatID'];
+        echo $guid;
         require('dbh.php');
         $guid = sha1($guid);
         $stmt = $conn->prepare("DELETE FROM chats WHERE ChatID = ?");

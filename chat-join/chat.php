@@ -2,7 +2,7 @@
     require('../PHP/session.php');
     require('../PHP/idGen.php');
     $guid = $_SESSION['chatID'];
-    if (checkConnStat($guid)!==1) {
+    if (checkConnStat($guid)!=1) {
       echo "<script>window.location.href = 'dashboard.php?error=NoConn';</script>";
     }
 ?>
@@ -19,6 +19,9 @@
       <br>
         Chat eröffnet!
       <br></p>
-      <button onclick="window.location.href = '../PHP/deleteRow.php'">Delete Chat</button>
+      <form action="../PHP/deleteRow.php" method="post">
+        <input type="submit" name="someAction" value="Delete Chat"/>
+        <input type="hidden" name="chatID" value="<?php echo $_SESSION['chatID'];?>"/>
+      </form>
     </body>
 </html>
