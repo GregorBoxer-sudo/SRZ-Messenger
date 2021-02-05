@@ -1,0 +1,341 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+/* index */
+.titleIndex{
+    padding-top: 1.5%;
+    margin-bottom: 0;
+    font-size: 10em;
+    text-align: center;
+}
+.lead{
+    margin-top: 0;
+    text-align: center;
+}
+.notFinishedYetText{
+    text-align: center;
+}
+
+.progressbarContainer{
+    width: 80%;
+    height: 3%;
+
+    background: #e3e3e3;
+
+    border-radius: 0.75em;
+    border: 0.05em solid #AAA;
+
+    margin: 4% auto;
+}
+.progressbarContainer:hover{
+    animation-name: progressHover;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.progressbar{
+    width: 20%;
+    height: 100%;
+
+    border-radius: 0.75em;
+
+    background-color: #69cf81;
+
+    animation: progress;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.tryIt{
+    display: block;
+    border: 0.01em #AAA solid;
+    border-radius: 0.5em;
+    color: #000;
+    background-color: #e3e3e3;
+    font-size: 2em;
+
+    height: 5%;
+    width: 20%;
+
+    margin: auto;
+}
+.tryIt:hover{
+    animation-name: tryItHover;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.linkContainer{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 5%;
+}
+#github{
+    margin-right: 2em;
+}
+#googleDocs{
+    margin-left: 2em;
+}
+
+@keyframes progress {
+    0%{
+        width: 0;
+    }
+    2%{
+        width: 1%;
+    }
+    5%{
+        width: 10%;
+    }
+    15%{
+        width: 15%;
+    }
+    25%{
+        width: 17%;
+    }
+    50%{
+        width: 40%;
+    }
+    60%{
+        width: 70%;
+    }
+    70%{
+        width: 72%;
+    }
+    85%{
+        width: 90%;
+    }
+    100%{
+        width: 98%;
+    }
+}
+
+@keyframes progressHover {
+    0%{
+
+    }100%{
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+         transform: scale(1.005);
+     }
+}
+
+
+@keyframes tryItHover {
+    0%{
+
+    }100%{
+         background-color: #69cf81;
+         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+         transform: scale(1.01);
+    }
+}
+
+/* choose */
+
+.bodyChoose{
+    background-color: #333;
+    /*todo error FF5454*/
+}
+.preload * {
+    transition: none !important;
+}
+
+.navigationBar{
+    height: 3em;
+}
+.navItem{
+    font-size: 2.5em;
+    color: #989898;
+    text-decoration: none;
+
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+}
+.navItem:hover{
+    color: #DDD;
+}
+
+#home{
+    float: left;
+}
+#privacy{
+    float: right;
+}
+#donate{
+    float: right;
+}
+#aboutUs{
+    float: right;
+}
+
+.ChatTitle{
+    font-size: 4em;
+    color: #FFF;
+
+    margin-top: 2em;
+    margin-bottom: 0.3em;
+}
+
+.contentContainer{
+    display: flex;
+}
+
+.logo{
+    width: 60vw;
+    height: 90vh;
+
+    background-image: url('images/Pim background.png');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.pim{
+    font-size: 15em;
+    line-height: 0.8em;
+
+    margin-top: 30%;
+    margin-bottom: 0;
+
+}
+.pimPrivacyText{
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #CCC;
+    line-height: 1.7em;
+
+}
+.privacyButton{
+    font-size: 1.5em;
+    color: #CCC;
+}
+.privacyButton:hover{
+    color: #FFF;
+}
+
+.chatInteraction{
+    width: 50%;
+}
+
+.textChatParagraph{
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #CCC;
+    line-height: 1.7em;;
+}
+
+.chatButton{
+    margin-top: 1.5em;
+
+    font-size: 1.5em;
+    width: 10em;
+    height: 2em;
+
+    color: #000;
+    background: #FFF;
+
+    border-radius: 0.5em;
+    border: none;
+
+    background: linear-gradient(to left, #FFF 50%, #000 50%) right;
+    background-size: 200%;
+    transition: 0.3s ease-out, color 0.3s;
+}
+.chatButton:hover{
+    background-position: left;
+    color: #FFF;
+}
+
+@media screen
+and (max-device-width: 1000px)
+and (min-device-width: 600px) {
+    .contentContainer{
+        display: block;
+    }
+    .logo{
+        width: 100%;
+        height: 50vh;
+    }
+    .chatInteraction{
+        display: flex;
+        width: 100%;
+    }
+    .pim, .chatTitle{
+        margin-top:10%;
+    }
+    .containerChat{
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        width: 50%;
+    }
+    #joinChatContainer{
+        float: right;
+    }
+    #openChatContainer{
+        float: left;
+        text-align: right;
+    }
+
+}
+@media screen
+and (max-device-width: 600px)
+and (orientation: portrait){
+
+    .contentContainer{
+        display: block;
+    }
+    .logo{
+        width: 100%;
+        height: 35vh;
+    }
+    .chatInteraction{
+        display: block;
+        width: 100%;
+    }
+    .pim {
+        margin-top: 10%;
+    }
+    .pimPrivacyText{
+        font-size: 2em;
+    }
+    .privacyButton{
+        font-size: 2em;
+    }
+    .chatTitle{
+        font-size: 5em;
+        margin-top: 0;
+    }
+    .textChatParagraph{
+        font-size: 1.5em;
+    }
+    .containerChat{
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+
+        margin-top: 0;
+        padding-bottom: 2%;
+    }
+    #joinChatContainer{
+        text-align: right;
+    }
+    #openChatContainer{
+        text-align: left;
+    }
+    .chatButton{
+        font-size: 2.25em;
+        width: 10em;
+        height: 2em;
+        margin-top: 0.5em;
+    }
+}
