@@ -27,6 +27,7 @@
         }
         $stmt->close();
         $conn->close();
+        return $guid;
     }
     function rn() {
         $rn = createRn(4);

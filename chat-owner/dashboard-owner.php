@@ -3,7 +3,7 @@
     require('../PHP/session.php');
     require('../PHP/dbh.php');
     require('../PHP/idGen.php');
-    create_guid();
+    $_SESSION['chatID'] = create_guid();
 ?>
 <html>
     <head>
