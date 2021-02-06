@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 06, 2021 at 01:44 AM
--- Server version: 10.3.27-MariaDB-0+deb10u1
--- PHP Version: 7.3.19-1~deb10u1
+-- Host: localhost
+-- Generation Time: Feb 06, 2021 at 01:53 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -42,6 +43,7 @@ CREATE TABLE `chats` (
 --
 ALTER TABLE `chats`
   ADD PRIMARY KEY (`ChatID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
