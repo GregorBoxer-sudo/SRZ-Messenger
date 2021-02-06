@@ -20,7 +20,7 @@
         <div class="leftContentContainer">
             <h1 class="leftTitle">Pim</h1>
             <p class="leftText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no cookies or trackers.</p>
-            <a class="leftLink" href="https://de.wikipedia.org/wiki/Wei%C3%9Fbauchschuppentier"><u>learn more ></u></a>
+            <a class="leftLink" href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki"><u>learn more ></u></a>
         </div>
 
         <div class="rightContentContainer">
