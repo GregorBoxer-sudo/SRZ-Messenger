@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 06, 2021 at 12:36 AM
+-- Generation Time: Feb 06, 2021 at 01:44 AM
 -- Server version: 10.3.27-MariaDB-0+deb10u1
 -- PHP Version: 7.3.19-1~deb10u1
 
@@ -27,9 +27,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chats` (
-  `ChatID` varchar(65) NOT NULL,
-  `messege` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
-) ;
+  `ChatID` varchar(80) NOT NULL,
+  `message` blob DEFAULT NULL,
+  `randNum` tinyint(4) DEFAULT NULL,
+  `Stat` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `chats`
+--
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`ChatID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
