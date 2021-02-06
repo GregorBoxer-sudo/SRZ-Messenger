@@ -8,6 +8,8 @@
     --nav: #989898;
     --navHover: #DDDDDD;
 
+    --progressBar: #444444;
+
     --title: #FFFFFF;
     --text: #CCCCCC;
     --textHover: #FFFFFF;
@@ -23,6 +25,8 @@
 
     --nav: #989898;
     --navHover: #000000;
+
+    --progressBar: #e3e3e3;
 
     --title: #000000;
     --text: #333333;
@@ -58,32 +62,31 @@ a{
 .titleIndex{
     padding-top: 1.5%;
     margin-bottom: 0;
+    margin-top: 0;
     font-size: 10em;
+    color: var(--title);
     text-align: center;
 }
 .lead{
     margin-top: 0;
+    color: var(--title);
     text-align: center;
 }
 .notFinishedYetText{
     text-align: center;
+    color: var(--text);
 }
 
 .progressbarContainer{
     width: 80%;
     height: 3%;
 
-    background: #e3e3e3;
+    background: var(--progressBar);
 
     border-radius: 0.75em;
     border: 0.05em solid #AAA;
 
     margin: 4% auto;
-}
-.progressbarContainer:hover{
-    animation-name: progressHover;
-    animation-duration: 0.2s;
-    animation-fill-mode: forwards;
 }
 .progressbar{
     width: 20%;
@@ -100,9 +103,7 @@ a{
 
 .tryIt{
     display: block;
-    border: 0.01em #AAA solid;
     border-radius: 0.5em;
-    color: #000;
     background-color: #e3e3e3;
     font-size: 2em;
 
@@ -110,11 +111,19 @@ a{
     width: 20%;
 
     margin: auto;
+
+    color: var(--buttonActive);
+    background: var(--buttonInactive);
+
+    border: none;
+
+    background: linear-gradient(to left, var(--buttonInactive) 50%, var(--buttonActive) 50%) right;
+    background-size: 200%;
+    transition: 0.3s ease-out, color 0.3s;
 }
 .tryIt:hover{
-    animation-name: tryItHover;
-    animation-duration: 0.2s;
-    animation-fill-mode: forwards;
+    background-position: left;
+    color: var(--buttonInactive);
 }
 
 .linkContainer{
@@ -160,21 +169,6 @@ a{
     }
     100%{
         width: 98%;
-    }
-}
-
-@keyframes progressHover {
-    to{
-         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-         transform: scale(1.005);
-     }
-}
-
-@keyframes tryItHover {
-    to{
-         background-color: #69cf81;
-         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-         transform: scale(1.01);
     }
 }
 
