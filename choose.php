@@ -79,11 +79,11 @@
             document.body.className = "dark";
             document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
         } else {
+            // light mode
             document.body.className = "light";
             document.getElementById("switch").innerHTML = "&#x1F311;";
         }
     }
     window.onload(isDarkMode());
 </script>
-
 </html>
