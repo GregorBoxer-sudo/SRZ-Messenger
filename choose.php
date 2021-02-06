@@ -25,9 +25,10 @@
         </div>
 
         <div class="chatInteraction">
-            <!--todo rename all things-->
+            <!--todo rename all things
+            todo vllt mal hier anders lösen-->
             <div class="containerChat" id="openChatContainer">
-                <h1 class="ChatTitle">create chat</h1>
+                <h1 class="chatTitle">create chat</h1>
                 <p class="textChatParagraph">
                     Click on the button down below, to create a new chat.
                     If you click the button, you get a Chat-ID.
@@ -35,8 +36,9 @@
                     To verify your partner, you must enter his token.</p>
                 <button class="chatButton" onclick="window.location.href = 'chat-owner/dashboard-owner.php'">create chat</button>
             </div>
+
             <div class="containerChat" id="joinChatContainer">
-                <h1 class="ChatTitle">join chat</h1>
+                <h1 class="chatTitle">join chat</h1>
                 <p class="textChatParagraph">
                     Click on the button down below, to join a new chat.
                     If you click the button, you must enter the Chat-ID, from your partner.

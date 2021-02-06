@@ -198,24 +198,18 @@ a{
 #home{
     float: left;
 }
-#privacy{
-    float: right;
-}
-#donate{
-    float: right;
-}
-#aboutUs{
+#FAQ{
     float: right;
 }
 #switch{
-    float: right;
+     float: right;
 }
 
-.ChatTitle{
+.chatTitle{
     font-size: 4em;
     color: var(--title);
 
-    margin-top: 2em;
+    margin-top: 20%;
     margin-bottom: 0.3em;
 }
 
