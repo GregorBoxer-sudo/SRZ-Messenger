@@ -17,33 +17,33 @@
     </div>
 
     <div class="contentContainer">
-        <div class="logo">
-            <h1 class="pim">Pim</h1>
-            <p class="pimPrivacyText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no cookies or trackers.</p>
-            <a class="privacyButton" href="https://de.wikipedia.org/wiki/Wei%C3%9Fbauchschuppentier"><u>learn more ></u></a>
+        <div class="leftContentContainer">
+            <h1 class="leftTitle">Pim</h1>
+            <p class="leftText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no cookies or trackers.</p>
+            <a class="leftLink" href="https://de.wikipedia.org/wiki/Wei%C3%9Fbauchschuppentier"><u>learn more ></u></a>
         </div>
 
-        <div class="chatInteraction">
+        <div class="rightContentContainer">
             <!--todo rename all things
             todo vllt mal hier anders lösen-->
-            <div class="containerChat" id="openChatContainer">
-                <h1 class="chatTitle">create chat</h1>
-                <p class="textChatParagraph">
+            <div class="rightSubContentContainer" id="openChatContainer">
+                <h1 class="rightSubTitle">create chat</h1>
+                <p class="rightSubText">
                     Click on the button down below, to create a new chat.
                     If you click the button, you get a Chat-ID.
                     You have to give this ID to your partner.
                     To verify your partner, you must enter his token.</p>
-                <button class="chatButton" onclick="window.location.href = 'chat-owner/dashboard-owner.php'">create chat</button>
+                <button class="slideButton" onclick="window.location.href = 'chat-owner/dashboard-owner.php'">create chat</button>
             </div>
 
-            <div class="containerChat" id="joinChatContainer">
-                <h1 class="chatTitle">join chat</h1>
-                <p class="textChatParagraph">
+            <div class="rightSubContentContainer" id="joinChatContainer">
+                <h1 class="rightSubTitle">join chat</h1>
+                <p class="rightSubText">
                     Click on the button down below, to join a new chat.
                     If you click the button, you must enter the Chat-ID, from your partner.
                     We will generate you a token, to ensure that the right person enters the chat.
                 </p>
-                <button class="chatButton" onclick="window.location.href = 'chat-join/link-join.php'">join chat</button>
+                <button class="slideButton" onclick="window.location.href = 'chat-join/link-join.php'">join chat</button>
             </div>
         </div>
     </div>

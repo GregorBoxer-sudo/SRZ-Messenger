@@ -25,7 +25,7 @@
         If your still want to test it, then click "TRY IT" </p>
     <div class = progressbarContainer><div class = progressbar></div></div>
 
-    <button onclick="window.location.href = 'choose.php'" class = tryIt>TRY IT</button>
+    <button onclick="window.location.href = 'choose.php'" class="slideButton" id="tryIt">TRY IT</button>
 
     <div class = linkContainer>
         <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger" class = linkImages id = github><img src="images/githubBlack.png" width = "166" height = "166" id="githubImage"></a>

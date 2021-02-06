@@ -2,6 +2,7 @@
     transition: none !important;
 }
 
+/*colors in the different themes*/
 :root {
     --bg: #333;
 
@@ -17,6 +18,7 @@
     --buttonInactive: #FFFFFF;
     --buttonActive: #000000;
 
+    --inputBackground: #444444;
 
     --error: #FF5454;
 }
@@ -35,11 +37,9 @@
     --buttonInactive: #000000;
     --buttonActive: #FFFFFF;
 
+    --inputBackground: #e3e3e3;
 
     --error: #FF5454;
-}
-.dark{
-
 }
 
 body {
@@ -50,13 +50,129 @@ body {
     background: var(--bg);
     transition: background 500ms ease-in-out;
 }
-
 h1{
     font-weight: 300;
 }
 a{
     color: currentColor;
 }
+
+
+
+/*standard*/
+.navigationBar{
+    height: 3em;
+}
+.navItem{
+    font-size: 2.5em;
+    color: var(--nav);
+    text-decoration: none;
+
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+}
+.navItem:hover{
+    color: var(--navHover);
+}
+#home{
+    padding-top: 0.05em;
+    float: left;
+}
+#FAQ{
+    padding-top: 0.05em;
+    float: right;
+}
+#switch{
+    float: right;
+}
+
+.contentContainer{
+     display: flex;
+ }
+
+.leftContentContainer{
+    width: 60vw;
+    height: 90vh;
+
+    background-image: url('images/Pim background.png');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+
+    position: relative;
+    text-align: center;
+    color: var(--title);
+}
+.leftTitle{
+    font-size: 15em;
+    line-height: 0.8em;
+    text-align: center;
+
+    margin-top: 30%;
+    margin-bottom: 0;
+}
+.leftText{
+    font-size: 1.2em;
+    font-weight: 200;
+    color: var(--text);
+    line-height: 1.7em;
+
+}
+.leftLink{
+    font-size: 1.5em;
+    color: var(--text);
+}
+.leftLink:hover{
+    color: var(--textHover);
+}
+
+.rightContentContainer{
+    width: 50%;
+}
+.rightSubContentContainer{
+     width: 30em;
+     margin: 2em;
+ }
+.rightSubTitle{
+    font-size: 4em;
+    color: var(--title);
+
+    margin-top: 20%;
+    margin-bottom: 0.3em;
+}
+.rightSubText{
+    font-size: 1.2em;
+    font-weight: 200;
+    color: var(--text);
+    line-height: 1.7em;;
+}
+
+.slideButton{
+    margin-top: 1.5em;
+
+    font-size: 1.5em;
+    width: 10em;
+    height: 2em;
+
+    color: var(--buttonActive);
+    background: var(--buttonInactive);
+
+    border-radius: 0.5em;
+    border: none;
+
+    background: linear-gradient(to left, var(--buttonInactive) 50%, var(--buttonActive) 50%) right;
+    background-size: 200%;
+    transition: 0.3s ease-out, color 0.3s;
+}
+.slideButton:hover{
+    background-position: left;
+    color: var(--buttonInactive);
+}
+.slideButton:focus{
+    outline: none;
+}
+
+
 
 /* index */
 .titleIndex{
@@ -72,7 +188,7 @@ a{
     color: var(--title);
     text-align: center;
 }
-.notFinishedYetText{
+.notFinishedYetText {
     text-align: center;
     color: var(--text);
 }
@@ -101,29 +217,10 @@ a{
     animation-iteration-count: infinite;
 }
 
-.tryIt{
+#tryIt{
     display: block;
-    border-radius: 0.5em;
-    background-color: #e3e3e3;
-    font-size: 2em;
-
-    height: 5%;
-    width: 20%;
-
     margin: auto;
-
-    color: var(--buttonActive);
-    background: var(--buttonInactive);
-
-    border: none;
-
-    background: linear-gradient(to left, var(--buttonInactive) 50%, var(--buttonActive) 50%) right;
-    background-size: 200%;
-    transition: 0.3s ease-out, color 0.3s;
-}
-.tryIt:hover{
-    background-position: left;
-    color: var(--buttonInactive);
+    font-size: 2em;
 }
 
 .linkContainer{
@@ -172,116 +269,57 @@ a{
     }
 }
 
+
+
 /* choose */
 
-.navigationBar{
-    height: 3em;
+
+
+/*dashboard*/
+#copyToClipboard{
+    width: 2em;
+    transition: 0.1s ease-out, color 0.3s;
 }
-.navItem{
-    font-size: 2.5em;
-    color: var(--nav);
-    text-decoration: none;
+
+.input{
+    height: 2em;
+    width: 12em;
 
     margin-right: 0.2em;
-    margin-left: 0.2em;
-}
-.navItem:hover{
-    color: var(--navHover);
-}
 
-#home{
-    float: left;
-}
-#FAQ{
-    float: right;
-}
-#switch{
-     float: right;
-}
-
-.chatTitle{
-    font-size: 4em;
-    color: var(--title);
-
-    margin-top: 20%;
-    margin-bottom: 0.3em;
-}
-
-.contentContainer{
-    display: flex;
-}
-
-.logo{
-    width: 60vw;
-    height: 90vh;
-
-    background-image: url('images/Pim background.png');
-    background-repeat:no-repeat;
-    background-size:contain;
-    background-position: center;
-
-    position: relative;
+    font-size: 1.5em;
     text-align: center;
-    color: var(--title);
-}
-.pim{
-    font-size: 15em;
-    line-height: 0.8em;
-
-    margin-top: 30%;
-    margin-bottom: 0;
-
-}
-.pimPrivacyText{
-    font-size: 1.2em;
-    font-weight: 200;
     color: var(--text);
-    line-height: 1.7em;
 
-}
-.privacyButton{
-    font-size: 1.5em;
-    color: var(--text);
-}
-.privacyButton:hover{
-    color: var(--textHover);
-}
-
-.chatInteraction{
-    width: 50%;
-}
-.containerChat{
-    width: 30em;
-    margin: 2em;
-}
-.textChatParagraph{
-    font-size: 1.2em;
-    font-weight: 200;
-    color: var(--text);
-    line-height: 1.7em;;
-}
-
-.chatButton{
-    margin-top: 1.5em;
-
-    font-size: 1.5em;
-    width: 10em;
-    height: 2em;
-
-    color: var(--buttonActive);
-    background: var(--buttonInactive);
+    background: var(--inputBackground);
 
     border-radius: 0.5em;
-    border: none;
+    border: 0.1em solid #AAA;
+}
+.input:focus{
+    outline: none;
+}
 
-    background: linear-gradient(to left, var(--buttonInactive) 50%, var(--buttonActive) 50%) right;
-    background-size: 200%;
-    transition: 0.3s ease-out, color 0.3s;
+.errorMessagePassword{
+    color: var(--error);
+    font-size: 1.5em;
 }
-.chatButton:hover{
-    background-position: left;
-    color: var(--buttonInactive);
+
+.smallButtons{
+    margin-top: 1.5em;
+    margin-right: 0.75em;
+
+    color: var(--text);
+    background-color: var(--bg);
+    font-size: 1.5em;
+    border: none;
+    transition: background 500ms ease-in-out;;
 }
+#deleteChatButton{
+    color: var(--error);
+}
+
+
 
 @media screen
 and (max-device-width: 1000px)
@@ -289,18 +327,18 @@ and (min-device-width: 600px) {
     .contentContainer{
         display: block;
     }
-    .logo{
+    .leftContentContainer{
         width: 100%;
         height: 50vh;
     }
-    .chatInteraction{
+    .rightContentContainer{
         display: flex;
         width: 100%;
     }
-    .pim, .chatTitle{
+    .leftTitle, .rightSubTitle{
         margin-top:10%;
     }
-    .containerChat{
+    .rightSubContentContainer{
         padding-left: 2.5%;
         padding-right: 2.5%;
         width: 50%;
@@ -321,31 +359,31 @@ and (orientation: portrait){
     .contentContainer{
         display: block;
     }
-    .logo{
+    .leftContentContainer{
         width: 100%;
         height: 35vh;
     }
-    .chatInteraction{
+    .rightContentContainer{
         display: block;
         width: 100%;
     }
-    .pim {
+    .leftTitle {
         margin-top: 10%;
     }
-    .pimPrivacyText{
+    .leftText{
         font-size: 2em;
     }
-    .privacyButton{
+    .leftLink{
         font-size: 2em;
     }
-    .chatTitle{
+    .rightSubTitle{
         font-size: 5em;
         margin-top: 0;
     }
-    .textChatParagraph{
+    .rightSubText{
         font-size: 1.5em;
     }
-    .containerChat{
+    .rightSubContentContainer{
 
         padding-left: 2.5%;
         padding-right: 2.5%;
@@ -360,10 +398,13 @@ and (orientation: portrait){
     #openChatContainer{
         text-align: left;
     }
-    .chatButton{
+    .slideButton{
         font-size: 2.25em;
         width: 10em;
         height: 2em;
         margin-top: 0.5em;
+    }
+    .input{
+        font-size: 2.25em;
     }
 }
