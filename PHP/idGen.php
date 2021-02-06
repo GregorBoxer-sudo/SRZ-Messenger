@@ -14,7 +14,7 @@
         $hash = sha1($guid);
         require("dbh.php");
         if (!($stmt = $conn->prepare("INSERT INTO chats (ChatID, Stat) VALUES (?, ?);"))) {
-            echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+            echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
         }
         $int = 0;
         if (!$stmt->bind_param("si", $hash, $int)) {
