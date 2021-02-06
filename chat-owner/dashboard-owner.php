@@ -21,7 +21,9 @@
       </h1>
       <br>
       <br>
-        Your ChatID is: <?php echo $_SESSION['chatID'];?>
+        Your ChatID is:
+        <input value="<?php echo $_SESSION['chatID'];?>" type="text" id="inputID">
+        <button onclick="copyToClipboard()">copy to &#x1f4cb;</button>
       <br>
         <form action="chat.php" method="POST">
             <label>Please add token from partner:</label>
@@ -44,4 +46,13 @@
         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
       </form>
     </body>
+<script>
+    function copyToClipboard() {
+        let copyText = document.getElementById("inputID");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Copied the ID: " + copyText.value);
+    }
+</script>
 </html>

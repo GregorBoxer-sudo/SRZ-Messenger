@@ -15,7 +15,9 @@
       <p><br>
         ChatID: <?php echo $_SESSION['chatID'];?>
       <br>
-        PW: <?php echo $_SESSION['rn'];?>
+        PW:
+        <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword">
+        <button onclick="copyToClipboard()">copy to &#x1f4cb;</button>
       <br></p>
       <button onclick="window.location.href = 'chat.php'">Check and Join</button>
       <p>
@@ -28,4 +30,13 @@
         ?>
       </p>
     </body>
+    <script>
+        function copyToClipboard() {
+            let copyText = document.getElementById("inputPassword");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Copied the password: " + copyText.value);
+        }
+    </script>
 </html>
