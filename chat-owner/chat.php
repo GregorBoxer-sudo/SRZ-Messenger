@@ -4,7 +4,7 @@
     $guid = $_POST['chatID'];
     $pwd = $_POST['pwd'];
     if (checkForPassword($pwd, $guid)!=1) {
-      echo "<script>window.location.href = 'dashboard-owner.php?error=NoConn';</script>";
+      echo "<script>window.location.href = 'dashboard-owner.php?error=NoConn&chatID=".$guid."';</script>";
     } else {
       setConnStatTrue($guid);
     }
@@ -24,7 +24,7 @@
       <br></p>
       <form action="../PHP/deleteRow.php" method="post">
         <input type="submit" name="someAction" value="Delete Chat"/>
-        <input type="hidden" name="chatID" value="<?php echo $_SESSION['chatID'];?>"/>
+        <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
       </form>
     </body>
 </html>

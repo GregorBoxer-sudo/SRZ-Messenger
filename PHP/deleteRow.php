@@ -12,5 +12,9 @@
         $stmt->close();
     }
     session_destroy();
-    echo "<script>window.location.href = '../choose.php';</script>";
+    if (isset($_POST['reload'])) {
+        echo "<script>window.location.href = '../chat-owner/dashboard-owner.php';</script>";
+    } else {
+        echo "<script>window.location.href = '../choose.php';</script>";
+    }
 ?>

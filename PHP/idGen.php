@@ -76,7 +76,8 @@
         require('dbh.php');
         $hash = sha1($pwd);
         $guid = sha1($guid);
-        $stmt = $conn->prepare("SELECT * FROM chats where ChatID = ?");
+        echo "hash: $hash <br>guid: $guid <br>";
+        $stmt = $conn->prepare("SELECT randNum FROM chats where ChatID = ?");
         $stmt->bind_param("s", $guid);
         $stmt->execute();
         $result = $stmt->get_result();

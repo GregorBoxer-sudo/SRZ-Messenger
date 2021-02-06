@@ -3,8 +3,13 @@
     require('../PHP/session.php');
     require('../PHP/dbh.php');
     require('../PHP/idGen.php');
-    $guid = create_guid();
-    $guid = $_SESSION['chatID'];
+    if (isset($_GET['chatID'])) {
+        $guid = $_GET['chatID'];
+        $_SESSION['chatID'] = $guid;
+    } else {
+        $guid = create_guid();
+        $guid = $_SESSION['chatID'];
+    }
 ?>
 <html>
     <head>
@@ -34,6 +39,7 @@
         ?>
       </p>
       <form action="../PHP/deleteRow.php" method="POST">
+      <input type="submit" name="reload" value="New ChatID"/>
         <input type="submit" name="someAction" value="Delete Chat"/>
         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
       </form>
