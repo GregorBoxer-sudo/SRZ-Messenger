@@ -7,4 +7,8 @@ PHP/dbh.php
 .idea/SRZ-Messenger.iml
 .idea/vcs.xml
 .idea/.gitignore
+<<<<<<< Updated upstream
 .idea/workspace.xml
+=======
+PHP/dbh.php
+>>>>>>> Stashed changes
