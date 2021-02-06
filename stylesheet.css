@@ -111,12 +111,17 @@ a{
     margin-top: 30%;
     margin-bottom: 0;
 }
+.leftMenu{
+    font-size: 3em;
+    font-weight: 200;
+    color: var(--text);
+    margin-top: 0.5em;
+}
 .leftText{
     font-size: 1.2em;
     font-weight: 200;
     color: var(--text);
     line-height: 1.7em;
-
 }
 .leftLink{
     font-size: 1.5em;
@@ -279,6 +284,8 @@ a{
 #copyToClipboard{
     width: 2em;
     transition: 0.1s ease-out, color 0.3s;
+    text-align: center;
+    padding: 0;
 }
 
 .input{
@@ -313,7 +320,9 @@ a{
     background-color: var(--bg);
     font-size: 1.5em;
     border: none;
-    transition: background 500ms ease-in-out;;
+    transition: background 500ms ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
 }
 #deleteChatButton{
     color: var(--error);

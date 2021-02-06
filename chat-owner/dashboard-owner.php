@@ -29,7 +29,8 @@
 
     <div class="contentContainer">
         <div class="leftContentContainer">
-            <h1 class="leftTitle">Chat-ID</h1>
+            <h1 class="leftTitle">Pim</h1>
+            <p class="leftMenu">Chat-ID</p>
         </div>
 
         <div class="rightContentContainer">
