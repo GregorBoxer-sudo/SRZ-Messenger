@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 06. Feb 2021 um 13:12
--- Server-Version: 10.4.17-MariaDB
--- PHP-Version: 8.0.1
+-- Host: localhost:3306
+-- Erstellungszeit: 06. Feb 2021 um 13:52
+-- Server-Version: 10.3.27-MariaDB-0+deb10u1
+-- PHP-Version: 7.3.19-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -30,16 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `chats` (
   `ChatID` varchar(80) NOT NULL,
   `message` blob DEFAULT NULL,
-  `randNum` tinytext DEFAULT NULL,
+  `randNum` text DEFAULT NULL,
   `Stat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Daten für Tabelle `chats`
---
-
-INSERT INTO `chats` (`ChatID`, `message`, `randNum`, `Stat`) VALUES
-('5ed31b985b6d1d524fccdeb4ec7b86675e5d56f4', NULL, '6128cbf7181a97c407dd920d57b64a2e59904ca9', '1');
 
 --
 -- Indizes der exportierten Tabellen
@@ -50,7 +42,6 @@ INSERT INTO `chats` (`ChatID`, `message`, `randNum`, `Stat`) VALUES
 --
 ALTER TABLE `chats`
   ADD PRIMARY KEY (`ChatID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

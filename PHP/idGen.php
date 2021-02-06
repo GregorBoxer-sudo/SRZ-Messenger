@@ -68,7 +68,7 @@
         $stmt->bind_param("ss", $randNum, $chatID);
         if ($stmt->execute() === TRUE) {
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $stmt . "<br>" . $conn->error;
         }
         $stmt->close();
     }
