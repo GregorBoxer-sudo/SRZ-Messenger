@@ -1,8 +1,8 @@
 <?php
     require('../PHP/session.php');
     require('../PHP/idGen.php');
-    $guid = $_SESSION['chatID'];
-    $pwd = $_GET['pwd'];
+    $guid = $_POST['chatID'];
+    $pwd = $_POST['pwd'];
     if (checkForPassword($pwd, $guid)!=1) {
       echo "<script>window.location.href = 'dashboard-owner.php?error=NoConn';</script>";
     } else {
@@ -18,7 +18,7 @@
         Welcome at Pim
       </h1>
       <p><br>
-        ChatID: <?php echo $_SESSION['chatID'];?>
+        ChatID: <?php echo $_POST['chatID'];?>
       <br>
         Chat eröffnet!
       <br></p>

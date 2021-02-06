@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 05, 2021 at 06:17 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Host: localhost:3306
+-- Generation Time: Feb 06, 2021 at 12:36 AM
+-- Server version: 10.3.27-MariaDB-0+deb10u1
+-- PHP Version: 7.3.19-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,22 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chats` (
-  `ChatID` text NOT NULL,
-  `messege` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`messege`)),
-  `randNum` text DEFAULT NULL,
-  `Stat` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `chats`
---
-ALTER TABLE `chats`
-  ADD UNIQUE KEY `ChatID` (`ChatID`) USING HASH;
-COMMIT;
+  `ChatID` varchar(65) NOT NULL,
+  `messege` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+) ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

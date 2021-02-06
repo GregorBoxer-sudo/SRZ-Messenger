@@ -1,8 +1,8 @@
 <?php
 require 'session.php';
 $servername = "localhost";
-$dBUsername = "User";
-$dBPassword = "Password";
+$dBUsername = "webUser";
+$dBPassword = "webUser";
 $dBName = "messenger";
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 if (!$conn) {
