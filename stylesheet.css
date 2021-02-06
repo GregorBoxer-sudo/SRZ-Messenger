@@ -258,6 +258,7 @@ a{
 }
 .containerChat{
     width: 30em;
+    margin: 2em;
 }
 .textChatParagraph{
     font-size: 1.2em;
