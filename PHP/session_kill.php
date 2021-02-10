@@ -1,6 +1,6 @@
 <?php
- require('session.php');
- session_destroy();
+    require('session.php');
+    session_destroy();
 ?>
 <script>
     sessionStorage.clear();
