@@ -7,8 +7,10 @@ if (isset($_POST['TextField'])&&isset($_POST['chatID'])) {
 
     if ($zip->open($create, ZipArchive::CREATE)){
         $zip->setPassword($_POST['chatID']); // UUID
+        //when text
         $zip->addFromString("msg.txt", $msg, ZipArchive::FL_ENC_UTF_8); //only php 7 +
         $zip->setEncryptionName("msg.txt", ZipArchive::EM_AES_256); //only php 7.2 +
+        //TODO pics, files...
 
         print("msg.txt hinzugefügt ".PHP_EOL);
         $zip -> close();
