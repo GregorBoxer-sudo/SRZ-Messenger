@@ -20,5 +20,10 @@
             <input type="submit" name="someAction" value="Delete Chat"/>
             <input type="hidden" name="chatID" value="<?php echo $_SESSION['chatID'];?>"/>
         </form>
+        <form action="../Conversation/send_Message.php" method="post">
+            <input type="text" name="TextField" placeholder="Deine Nachricht ...">
+            <input type="submit" name="SendMsg">
+            <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
+        </form>
     </body>
 </html>
