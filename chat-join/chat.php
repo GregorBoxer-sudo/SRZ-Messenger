@@ -19,12 +19,14 @@
         <form action="../PHP/deleteRow.php" method="post">
             <input type="submit" name="someAction" value="Delete Chat"/>
             <input type="hidden" name="chatID" value="<?php echo $_SESSION['chatID'];?>"/>
+            <input type="hidden" name="user" value="1" />
         </form>
         <form action="../Conversation/send_Message.php" method="post">
 <!--            TODO input file/pic ...-->
             <input type="text" name="TextField" placeholder="Deine Nachricht ...">
             <input type="submit" name="SendMsg">
             <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
+            <input type="hidden" name="user" value="1" />
         </form>
     </body>
 </html>

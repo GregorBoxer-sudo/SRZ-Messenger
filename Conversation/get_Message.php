@@ -1,8 +1,9 @@
 <?php
-if (isset($_POST['chatID'])) {
+if (isset($_POST['chatID'])&&isset($_POST['user'])) {
     $path = "../FILESYSTEM-Messages/".sha1($_POST['chatID'])."/";
     $files = scandir($path, SCANDIR_SORT_DESCENDING); // neustes file zuerst? TODO check nach mehr?
     $zip = new ZipArchive();
+    $userID = $_POST['user'];
 
     $ZIP_ERROR = [
         ZipArchive::ER_EXISTS => 'File already exists.',
@@ -18,21 +19,27 @@ if (isset($_POST['chatID'])) {
 
     foreach($files as $file) {
         if ($file != '.' && $file != '..') {
-//                echo $path . $file;
-//                echo '<br>';
-                $result = $zip->open($path . $file);
-                if ($result !== true) {
-                    $ans = $ZIP_ERROR[$result] ?? 'Unknown error.';
-                    echo $path . $file.'<br>';
-                    die ($ans);
-                }
-                $zip->setPassword($_POST['chatID']);
-                $msg = $zip->getFromName("msg.txt");
-                echo $msg.'<br>';
-                // TODO wenn abgerufen, check nutzer -> lesebestätigung!, löschen wenn anderer Nutzer
+//                echo $path . $file . '<br>';
+            $result = $zip->open($path . $file);
+            if ($result !== true) {
+                $ans = $ZIP_ERROR[$result] ?? 'Unknown error.';
+                echo $path . $file . '<br>';
+                die ($ans);
             }
+            $zip->setPassword($_POST['chatID']);
+            $msg = $zip->getFromName("msg.txt");
+            if (isset($file[10]) && ($file[10] == "1" || $file[10] == "0")) {
+                if ($userID == "1" || $userID == "0") {
+                    if ($file[10] != $userID) {
+                        // TODO löschen
+                        echo 'User: ' . $file[10];
+                    }
+                } else echo 'UserID aus Eingabe nicht identifiezierbar!'.PHP_EOL;
+            } else echo 'UserID aus Nachricht nicht identifizierbar!'.PHP_EOL;
+            echo $msg . '<br>';
         }
+    }
     $zip->close();
 }else{
-    echo 'KEINE CHAT-ID gefunden';
+    echo 'KEINE CHAT-ID/UserID gefunden';
 }
