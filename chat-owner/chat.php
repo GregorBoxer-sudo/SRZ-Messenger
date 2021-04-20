@@ -29,5 +29,9 @@
             <input type="submit" name="SendMsg">
             <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
         </form>
+        <form action="../Conversation/get_Message.php" method="post">
+            <!--            TODO input file/pic ...-->
+            <input type="submit" name="Nach Nachrichten Suchen">
+            <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
     </body>
 </html>

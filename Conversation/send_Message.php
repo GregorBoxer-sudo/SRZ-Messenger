@@ -4,7 +4,7 @@ if (isset($_POST['TextField'])&&isset($_POST['chatID'])) {
     $msg = $_POST['TextField'];
     $zip = new ZipArchive();
     $path = "../FILESYSTEM-Messages/".sha1($_POST['chatID'])."/";
-    $filename = Strval(time()) . '.pim';
+    $filename = Strval(time()) . '.pim'; // TODO -0 oder -1 je nach Sender
 echo $path;
 echo $filename;
     if (! is_dir($path)){
@@ -27,9 +27,3 @@ echo $filename;
 }else{
     print("übergebene parameter sind ungültig".PHP_EOL);
 }
-//session_destroy();
-//if (isset($_POST['reload'])) {
-//    echo "<script>window.location.href = '../chat-owner/dashboard-owner.php';</script>";
-//} else {
-//    echo "<script>window.location.href = '../choose.php';</script>";
-//}

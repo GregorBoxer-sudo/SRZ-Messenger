@@ -49,13 +49,13 @@
         $stmt->execute();
         $stmt->store_result();
         if ($stmt) {
-        if ($stmt->num_rows > 0) {
-            echo 'found!';
-            return false;
-        } else {
-            echo 'not found';
-            return true;
-        }
+            if ($stmt->num_rows > 0) {
+                echo 'found!';
+                return false;
+            } else {
+                echo 'not found';
+                return true;
+            }
         } else {
             echo 'Error: '.mysqli_error($conn);
         }
@@ -66,8 +66,7 @@
         $randNum = sha1($randNum);
         $stmt = $conn->prepare("UPDATE chats SET randNum = ? WHERE chatID = ?");
         $stmt->bind_param("ss", $randNum, $chatID);
-        if ($stmt->execute() === TRUE) {
-        } else {
+        if ($stmt->execute() !== TRUE) {
             echo "Error: " . $stmt . "<br>" . $conn->error;
         }
         $stmt->close();
@@ -86,12 +85,13 @@
         while($row = $result->fetch_assoc()) {
             $rightPWD = $row['randNum'];
         }
+        $stmt->close();
         if ($hash === $rightPWD) {
             return true;
         } else {
             return false;
         }
-        $stmt->close();
+
       }
       function setConnStatTrue($chatID) {
         require('dbh.php');
@@ -99,8 +99,7 @@
         $stmt = $conn->prepare("UPDATE `chats` SET `Stat` = ? WHERE `chats`.`ChatID` = ?");
         $int = "1";
         $stmt->bind_param("ss", $int, $chatID);
-        if ($stmt->execute() === TRUE) {
-        } else {
+        if ($stmt->execute() !== TRUE) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
         $stmt->close();
@@ -113,9 +112,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
         if($result->num_rows === 0) exit('No rows');
-        while($row = $result->fetch_assoc()) {
-            return $row['Stat'];
-        }
+        while($row = $result->fetch_assoc()) return $row['Stat'];
         $stmt->close();
     }
 ?>
