@@ -328,7 +328,13 @@ a{
     color: var(--error);
 }
 
-
+/* chat */
+.chatWindow{
+    width: 50%;
+    height: 50%;
+    color: white;
+    background: green;
+}
 
 @media screen
 and (max-device-width: 1050px)

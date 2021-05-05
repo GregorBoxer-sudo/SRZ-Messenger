@@ -1,10 +1,24 @@
 <?php
-if (isset($_POST['chatID']) && isset($_POST['user'])) {
+
+$in = file_get_contents('php://input');
+$decoded = json_decode($in, true);
+$data = new stdClass();
+$data->msg = 'PHP is working';
+$data->user = $decoded['user'];
+$data->chatID = $decoded['chatID'];
+$stringForEcho = json_encode($data);
+
+$chatID = $decoded['chatID'];
+$user = $decoded['user'];
+
+$response = new stdClass();//todo vllt mal eleganter lösen
+$json = "";
+if (isset($chatID) && isset($user)) {
     $dir = dirname(dirname(__FILE__));
-    $path = $dir . "/FILESYSTEM-Messages/" . sha1($_POST['chatID']) . "/";
-    $files = scandir($path, SCANDIR_SORT_DESCENDING); // neustes file zuerst? TODO check nach mehr?
+    $path = $dir . "/FILESYSTEM-Messages/" . sha1($chatID) . "/";
+
+    $files = scandir($path, SCANDIR_SORT_ASCENDING); // neustes file zuerst? TODO check nach mehr?
     $zip = new ZipArchive();
-    $userID = $_POST['user'];
 
     $ZIP_ERROR = [
         ZipArchive::ER_EXISTS => 'File already exists.',
@@ -18,28 +32,39 @@ if (isset($_POST['chatID']) && isset($_POST['user'])) {
         ZipArchive::ER_SEEK => 'Seek error.',
     ];
 
+
     foreach ($files as $file) {
+
         if ($file != '.' && $file != '..') {
             //                echo $path . $file . '<br>';
+
             $result = $zip->open($path . $file);
+
             if ($result !== true) {
                 $ans = $ZIP_ERROR[$result] ?? 'Unknown error.';
                 echo $path . $file . '<br>';
                 die($ans);
             }
-            $zip->setPassword($_POST['chatID']);
+
+            $zip->setPassword($chatID);
             $msg = $zip->getFromName("msg.txt");
             if (isset($file[10]) && ($file[10] == "1" || $file[10] == "0")) {
-                if ($userID == "1" || $userID == "0") {
-                    if ($file[10] != $userID) {
-                        // TODO löschen
-                    }
-                    echo 'User: ' . $file[10] . " send: " . $msg . "<br>";
-                } else echo 'UserID aus Eingabe nicht identifiezierbar!' . PHP_EOL;
-            } else echo "User: ? send: " . $msg . "<br>";
+                if ($user == "1" || $user == "0") {
+                    $time = substr($file, 0, 10);
+
+                    $json .= "{\"user\": $file[10], \"time\": \" $time\", \"message\": \"$msg\"}, ";
+                } else $response->error = 'UserID aus Eingabe nicht identifiezierbar!' . PHP_EOL;
+            } else $response->error = 'User: ? send: " . $msg . "';//todo mal schauen wie man das hier macht, da dort nicht bekannt ist welcher user
         }
     }
     $zip->close();
-} else {
-    echo 'KEINE CHAT-ID/UserID gefunden';
-}
+} else $response->error = "KEINE CHAT-ID/UserID gefunden";
+
+#$response->messages = "[".$json."]";
+
+
+
+if (isset($response->error))
+    echo json_encode($response);
+else
+    echo json_encode("[".substr($json, 0, -2)."]");//subtracts the last ,
