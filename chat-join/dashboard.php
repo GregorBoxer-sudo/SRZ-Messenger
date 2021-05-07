@@ -56,7 +56,11 @@
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
-            alert("Copied the ID: " + copyText.value);
+            //todo when finished
+            document.getElementById("copyToClipboard").style.borderColor = "#6bcf6d";
+            document.getElementById("copyToClipboard").style.borderWidth = "3px";
+            document.getElementById("copyToClipboard").style.borderStyle = "solid";
+
         }
 
         //fixing the bug in google chrome, where it plays at the beginning(button and theme transitions)

@@ -42,7 +42,7 @@ if (isset($chatID) && isset($user)) {
 
             if ($result !== true) {
                 $ans = $ZIP_ERROR[$result] ?? 'Unknown error.';
-                echo $path . $file . '<br>';
+                #echo $path . $file . '<br>';
                 die($ans);
             }
 
