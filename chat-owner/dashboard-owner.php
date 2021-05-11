@@ -14,7 +14,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <link href="../stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM-Create</title>
     </head>
     <body class="preload dark" onload="removePreload()">

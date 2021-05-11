@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>PIM-Choose</title>
-        <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->

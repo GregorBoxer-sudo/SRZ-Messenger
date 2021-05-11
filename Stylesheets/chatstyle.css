@@ -1,0 +1,111 @@
+@import url("stylesheet.css");
+
+#bodyChat{
+    background-image: url('../images/krita bubble pim.png');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+}
+.yourMessage{
+    margin: 0.2em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: right;
+}
+.opponentMessage{
+    margin: 0.2em;/*todo je nach dem wir lange die nachricht her ist die margin setzen*/
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+.time{
+    font-size: 0.75em;
+    color: var(--inconspicuous);
+}
+
+.chatIDP{
+    color: var(--inconspicuous);
+    text-align: center;
+}
+.seeMessages{
+    margin: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0.5em;
+    font-family: Roboto;
+    font-size: 15px;
+
+    height: 95%;
+    color: var(--message);
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.seeMessages::-webkit-scrollbar {
+    display: none;
+}
+
+.writingContainer{
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+}
+
+.textsusField{
+    height: 5%;
+    width: 95%;
+
+    font-family: Arial;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: left;
+    padding-left: 0.25em;
+    color: var(--text);
+
+    background: var(--writelineBGColor);
+    border-style: none;
+    border-radius: 0.5em;
+
+}
+.textsusField:focus{
+    outline: none;
+}
+
+#sendingButton{
+    width: 5%;
+    border-radius: 0.75em;
+    border-style: none;
+    font-size: 1em;
+}
+#sendingButton:hover{
+    background: black;
+    color: white;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-left: 1em;
+}
+.interactionContainer{
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2em;
+
+    border-width: 1px;
+    border-color: var(--boderColorMessageBackground);
+    border-style: solid;
+
+    height: 80%;
+
+    background-color: var(--backgroundMessages);
+    backdrop-filter: blur(50px);
+
+    border-radius: 1em;
+}

@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>Chat</title>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
     <style>
         /* chat */
         .chatWindow{

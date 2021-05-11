@@ -14,115 +14,10 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <title>PIM-Chat</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <link href="../stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
         <style>
-            body{
-                background-image: url('../images/krita bubble pim.png');
-                background-repeat:no-repeat;
-                background-size:contain;
-                background-position: center;
-            }
-            .yourMessage{
-                margin: 0.2em;
-                margin-left: 0;
-                margin-right: 0;
-                text-align: right;
-            }
-            .opponentMessage{
-                margin: 0.2em;/*todo je nach dem wir lange die nachricht her ist die margin setzen*/
-                text-align: left;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .time{
-                font-size: 0.75em;
-                color: #AAAAAA;
-            }
 
-            .chatIDP{
-                color: #AAAAAA;
-                text-align: center;
-            }
-            .seeMessages{
-                margin: 1em;
-                margin-bottom: 0;
-                margin-top: 0;
-                padding-bottom: 0.5em;
-                font-family: Roboto;
-                font-size: 15px;
-
-                height: 95%;
-                color: #EEEEEE;
-                overflow: scroll;
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
-            }
-            .seeMessages::-webkit-scrollbar {
-                display: none;
-            }
-
-            .writingContainer{
-                margin-left: 1em;
-                margin-right: 1em;
-                display: flex;
-            }
-
-            .textsusField{
-                height: 5%;
-                width: 95%;
-
-                font-family: Roboto;
-                font-size: 1.5em;
-                font-weight: 300;
-                text-align: left;
-                padding-left: 0.25em;
-                color: var(--text);
-
-                background: var(--inputBackground);
-                border-style: none;
-                border-radius: 0.5em;
-
-            }
-            .textsusField:focus{
-                outline: none;
-            }
-
-            #sendingButton{
-                width: 5%;
-                border-radius: 0.75em;
-                border-style: none;
-                font-size: 1em;
-            }
-            #sendingButton:hover{
-                background: black;
-                color: white;
-            }
-
-
-
-            .footer {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                padding-left: 1em;
-            }
-            .interactionContainer{
-                padding-top: 1em;
-                padding-bottom: 0.5em;
-                width: 50%;
-                margin-left: 25%;
-                margin-right: 25%;
-                margin-top: 2em;
-
-
-                height: 80%;
-
-                background-color: rgba(0, 0, 0, .1);
-                backdrop-filter: blur(50px);
-
-                border-radius: 1em;
-            }
 
         </style>
         <script>
@@ -273,7 +168,7 @@
 
         </script>
     </head>
-    <body class="preload dark"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
+    <body class="preload dark" id="bodyChat"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../choose.php">Pim</a>
             <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
@@ -303,4 +198,38 @@
         </form>
     </footer>
     </body>
+    <script>
+        //fixing the bug in google chrome, where it plays at the beginning(button and theme transitions)
+        //is still there, when you are in the developer mode idk why
+        function removePreload() {
+            document.getElementsByClassName("preload")[0].classList.remove("preload");
+            console.log("now")
+        }
+
+        //this function is for the different themes
+        function newTheme() {
+            console.log(document.body.className)
+            if (document.body.className === "dark") {
+                document.body.className = "light";
+                document.getElementById("switch").innerHTML = "&#x1F311;";
+            } else {
+                document.body.className = "dark";
+                document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
+            }
+        }
+
+        //select system theme: light/dark
+        function isDarkMode() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // dark mode
+                document.body.className = "dark";
+                document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
+            } else {
+                // light mode
+                document.body.className = "light";
+                document.getElementById("switch").innerHTML = "&#x1F311;";
+            }
+        }
+        window.onload(isDarkMode());
+    </script>
 </html>

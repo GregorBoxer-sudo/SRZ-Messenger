@@ -18,6 +18,12 @@
     --buttonInactive: #FFFFFF;
     --buttonActive: #000000;
 
+    --inconspicuous: #AAAAAA;
+    --message: #EEEEEE;
+    --backgroundMessages: rgba(0, 0, 0, .1);
+    --boderColorMessageBackground: #444444;
+    --writelineBGColor: #444444;
+
     --inputBackground: #444444;
 
     --error: #FF5454;
@@ -36,6 +42,12 @@
 
     --buttonInactive: #000000;
     --buttonActive: #FFFFFF;
+
+    --inconspicuous: #666666;
+    --message: #111111;
+    --backgroundMessages: rgba(255, 255, 255, .1);
+    --boderColorMessageBackground: #BBBBBB;
+    --writelineBGColor: #BBBBBB;
 
     --inputBackground: #e3e3e3;
 
@@ -94,7 +106,7 @@ a{
     width: 60vw;
     height: 90vh;
 
-    background-image: url('images/Pim background.png');
+    background-image: url('../images/Pim background.png');
     background-repeat:no-repeat;
     background-size:contain;
     background-position: center;
@@ -276,10 +288,6 @@ a{
 
 
 
-/* choose */
-
-
-
 /*dashboard*/
 #copyToClipboard{
     width: 2em;
@@ -327,17 +335,6 @@ a{
 #deleteChatButton{
     color: var(--error);
 }
-
-/* chat */
-.chatWindow{
-    width: 50%;
-    height: 50%;
-    color: white;
-    background: green;
-}
-
-
-
 
 @media screen
 and (max-device-width: 1050px)
