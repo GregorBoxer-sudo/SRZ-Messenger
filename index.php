@@ -6,6 +6,7 @@
         <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css"/>
         <!-- Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Quicksand:300,500" rel="stylesheet">
+        <script src="JS/darmode.js"></script>
         <!--Montserrat:300-->
     </head>
     <body>
@@ -32,42 +33,4 @@
             <a href="https://docs.google.com/document/d/1AW7I1kLx_LlGN_nbQE43joOdSn5mnM2fA2ZUST9VvsM/edit?usp=sharing" class=linkImages id = googleDocs><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Google_Docs_logo.svg/1200px-Google_Docs_logo.svg.png" width="120" height="166" id="googleDocsImage" alt="GitHub"></a>
         </div>
     </body>
-    <script>
-        //fixing the bug in google chrome, where it plays at the beginning(button and theme transitions)
-        //is still there, when you are in the developer mode idk why
-        function removePreload() {
-            document.getElementsByClassName("preload")[0].classList.remove("preload");
-            console.log("now")
-        }
-
-        //this function is for the different themes
-        function newTheme() {
-            console.log(document.body.className)
-            if (document.body.className === "dark") {
-                document.body.className = "light";
-                document.getElementById("switch").innerHTML = "&#x1F311;";
-                document.getElementById("githubImage").src = "images/githubBlack.png";
-            } else {
-                document.body.className = "dark";
-                document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
-                document.getElementById("githubImage").src = "images/githubWhite.png";
-            }
-        }
-
-        //select system theme: light/dark
-        function isDarkMode() {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // dark mode
-                document.body.className = "dark";
-                document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
-                document.getElementById("githubImage").src = "images/githubWhite.png";
-            } else {
-                // light mode
-                document.body.className = "light";
-                document.getElementById("switch").innerHTML = "&#x1F311;";
-                document.getElementById("githubImage").src = "images/githubBlack.png";
-            }
-        }
-        window.onload(isDarkMode());
-    </script>
 </html>

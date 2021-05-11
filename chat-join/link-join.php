@@ -11,6 +11,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM-Join</title>
+        <script src="../JS/darmode.js"></script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
@@ -47,42 +48,4 @@
             </div>
         </div>
     </body>
-    <script>
-        //fixing the bug in google chrome, where it plays at the beginning(button and theme transitions)
-        //is still there, when you are in the developer mode idk why
-        function removePreload() {
-            document.getElementsByClassName("preload")[0].classList.remove("preload");
-            console.log("now")
-        }
-
-        //this function is for the different themes
-        function newTheme() {
-            console.log(document.body.className)
-            if (document.body.className === "dark") {
-                document.body.className = "light";
-                document.getElementById("switch").innerHTML = "&#x1F311;";
-                document.getElementById("githubImage").src = "images/githubBlack.png";
-            } else {
-                document.body.className = "dark";
-                document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
-                document.getElementById("githubImage").src = "images/githubWhite.png";
-            }
-        }
-
-        //select system theme: light/dark
-        function isDarkMode() {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // dark mode
-                document.body.className = "dark";
-                document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
-                document.getElementById("githubImage").src = "images/githubWhite.png";
-            } else {
-                // light mode
-                document.body.className = "light";
-                document.getElementById("switch").innerHTML = "&#x1F311;";
-                document.getElementById("githubImage").src = "images/githubBlack.png";
-            }
-        }
-        window.onload(isDarkMode());
-    </script>
 </html>
