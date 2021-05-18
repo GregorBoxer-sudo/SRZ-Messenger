@@ -17,6 +17,7 @@
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM-Create</title>
         <script src="../JS/darmode.js"></script>
+        <script src="../JS/copyToClipboard.js"></script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
@@ -41,7 +42,7 @@
                         Your chat-ID is:
                     </p>
                     <input value="<?php echo $_SESSION['chatID'];?>" type="text" class="input" id="inputID">
-                    <button onclick="copyToClipboard()" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
+                    <button onclick="copyToClipboard(this, document.getElementById('inputID'))" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                 </div>
 
                 <div class="rightSubContentContainer">
@@ -72,15 +73,5 @@
             </div>
         </div>
     </body>
-    <script>
-        function copyToClipboard() {
-            let copyText = document.getElementById("inputID");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            document.getElementById("copyToClipboard").style.borderColor = "#6bcf6d";
-            document.getElementById("copyToClipboard").style.borderWidth = "3px";
-            document.getElementById("copyToClipboard").style.borderStyle = "solid";
-        }
-    </script>
+
 </html>

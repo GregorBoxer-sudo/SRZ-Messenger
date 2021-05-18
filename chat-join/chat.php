@@ -21,7 +21,6 @@
         }
     </style>
     <script>
-        console.log("hi")
         $(document).ready(function(){
             let interval = setInterval(function(){
                 let data = { "user": 1, "chatID": '<?php echo $guid?>' };
