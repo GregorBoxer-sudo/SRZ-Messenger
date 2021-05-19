@@ -5,7 +5,7 @@
     $guid = $_POST['chatID'];
     $pwd = $_POST['pwd'];
     if (checkForPassword($pwd, $guid)!=1) {
-        echo "<script>window.location.href = 'dashboard-owner.php?error=NoConn&chatID=".$guid."';</script>";
+        echo "<script>window.location.href = '../chat-owner/dashboard-owner.php?error=NoConn&chatID=".$guid."';</script>";
     } else {
         setConnStatTrue($guid);
     }
@@ -28,14 +28,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
-        <style>
-
-
-        </style>
         <script src="../JS/darmode.js"></script>
         <script>
             //todo bug fixen, dass wenn man noch nichts schreibt kein fehler bekommt
             let messages = {};
+            user = 0
 
             let lastTime = 0
             function decrypt(message, key) {
@@ -45,7 +42,7 @@
             }
 
             function getMessages(){
-                let data = { "user": 0, "chatID": '<?php echo $guid?>' };
+                let data = { "user": user, "chatID": '<?php echo $guid?>' };
 
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', '../Conversation/get_Message.php', true);
@@ -72,7 +69,7 @@
 
                                 if (res[i]["user"] !== lastUser){
                                     if (i !== 0 && i !== res.length){
-                                        if (res[i]["user"] === 0)
+                                        if (res[i]["user"] === user)
                                             htmlMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
                                         else
                                             htmlMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
@@ -96,12 +93,12 @@
                                 console.log(fancyCount2(res[i]["message"]))
                                 console.log(res[i]["message"])
                                 if (regex.test(res[i]["message"]) && fancyCount2(res[i]["message"]) === 1){
-                                    if (res[i]["user"] === 0)
+                                    if (res[i]["user"] === user)
                                         message = "<div class='yourMessage' style='font-size: 3em'>" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>";
                                     else
                                         message = "<div class='opponentMessage' style='font-size: 3em>'" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>"
                                 }else{//normal text
-                                    if (res[i]["user"] === 0)
+                                    if (res[i]["user"] === user)
                                         message = "<div class='yourMessage'>" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>";
                                     else
                                         message = "<div class='opponentMessage'>" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>"
@@ -110,7 +107,7 @@
 
 
                                 if (i === res.length-1){
-                                    if (res[i]["user"] === 0){
+                                    if (res[i]["user"] === user){
                                         message += "<div class='time' style='text-align: right'>" + time + "</div>"
                                     }else{
                                         message += "<div class='time' style='text-align: left'>" + time + "</div>"
@@ -148,7 +145,6 @@
                 return count / split.length;
             }
 
-
             function encrypt(message, key) {
 		        let encrypt = CryptoJS.AES.encrypt(message, key).toString();
                 return encrypt;
@@ -156,7 +152,7 @@
 
             function sendMessage(){
                 if (document.getElementsByClassName("textsusField")[0].value !== ""){
-                    let data = { "user": 0, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("textsusField")[0].value, '<?php echo cryptoKey()?>')};
+                    let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("textsusField")[0].value, '<?php echo cryptoKey()?>')};
                     let xhr = new XMLHttpRequest();
                     xhr.open('POST', '../Conversation/send_Message.php', true);
                     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");

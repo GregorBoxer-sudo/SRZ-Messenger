@@ -3,6 +3,7 @@
     require('../PHP/idGen.php');
     setRandNum($_SESSION['rn'], $_SESSION['chatID']);
     $guid = $_SESSION['chatID'];
+    $_SESSION['user'] = 1
 ?>
 <html lang="en">
     <head>
@@ -15,7 +16,7 @@
             function clipboard(button){
                 copyToClipboard(button, document.getElementById('inputPassword'))
                 let interval = setInterval(function (){
-                    window.location.href = 'chat.php'
+                     window.location.href = 'chat.php'
                 }, 3000);
             }
         </script>
@@ -46,7 +47,7 @@
                     <p class="rightSubText">your password: </p>
                     <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input">
                     <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
-                    <button onclick="window.location.href = 'chat.php'" class="slideButton">Check and Join</button>
+                    <!--<button onclick="window.location.href = 'chat.php'" class="slideButton">Check and Join</button>-->
                     <p class="errorMessagePassword">
                         <?php
                         if (isset($_GET['error'])) {
