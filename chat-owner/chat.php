@@ -39,8 +39,9 @@
 
             let lastTime = 0
             function decrypt(message, key) {
-                message = message+'=';
-                return CryptoJS.AES.decrypt(message, key).toString(CryptoJS.enc.Utf8);
+                decryptedJSON = CryptoJS.AES.decrypt(message, key).toString(CryptoJS.enc.Utf8);
+                console.log(key);
+                return decryptedJSON;
             }
 
             function getMessages(){
@@ -151,7 +152,7 @@
 
             function encrypt(message, key) {
 		        var encrypt = CryptoJS.AES.encrypt(message, key).toString();
-                return encrypt.substring(0, encrypt.length-1);
+                return encrypt;
 	        }
 
             function sendMessage(){
