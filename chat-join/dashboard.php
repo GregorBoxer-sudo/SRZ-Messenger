@@ -10,6 +10,7 @@
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM</title>
         <script src="../JS/darmode.js"></script>
+        <script src="../JS/copyToClipboard.js"></script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
@@ -36,7 +37,7 @@
                     <h1 class="rightSubTitle">password</h1>
                     <p class="rightSubText">your password: </p>
                     <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input">
-                    <button onclick="copyToClipboard()" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
+                    <button onclick="copyToClipboard(this, document.getElementById('inputPassword'))" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                     <button onclick="window.location.href = 'chat.php'" class="slideButton">Check and Join</button>
                     <p class="errorMessagePassword">
                         <?php
@@ -51,17 +52,4 @@
             </div>
         </div>
     </body>
-    <script>
-        function copyToClipboard() {
-            let copyText = document.getElementById("inputPassword");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            //todo when finished
-            document.getElementById("copyToClipboard").style.borderColor = "#6bcf6d";
-            document.getElementById("copyToClipboard").style.borderWidth = "3px";
-            document.getElementById("copyToClipboard").style.borderStyle = "solid";
-
-        }
-    </script>
 </html>
