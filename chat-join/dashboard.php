@@ -11,6 +11,14 @@
         <title>PIM</title>
         <script src="../JS/darmode.js"></script>
         <script src="../JS/copyToClipboard.js"></script>
+        <script>
+            function clipboard(button){
+                copyToClipboard(button, document.getElementById('inputPassword'))
+                let interval = setInterval(function (){
+                    window.location.href = 'chat.php'
+                }, 3000);
+            }
+        </script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
@@ -37,13 +45,14 @@
                     <h1 class="rightSubTitle">password</h1>
                     <p class="rightSubText">your password: </p>
                     <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input">
-                    <button onclick="copyToClipboard(this, document.getElementById('inputPassword'))" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
+                    <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                     <button onclick="window.location.href = 'chat.php'" class="slideButton">Check and Join</button>
                     <p class="errorMessagePassword">
                         <?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error']=="NoConn") {
-                                echo 'Your Partner has to enter the Password first!';
+                                echo 'Your Partner has enter the Password!';
+                                echo '<script> let interval = setInterval(function (){window.location.href = "chat.php"}, 3000); </script>';
                             }
                         }
                         ?>

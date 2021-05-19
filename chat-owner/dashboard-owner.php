@@ -20,8 +20,8 @@
         <script src="../JS/copyToClipboard.js"></script>
         <script>
             function proof(input){
-                if (input.value === 4){
-                    
+                if (input.value.length === 4){
+                    document.getElementById("submitForm").submit()
                 }
             }
         </script>
@@ -57,8 +57,8 @@
                     <p class="rightSubText">
                         Enter the token from your Partner
                     </p>
-                    <form action="chat.php" method="POST">
-                        <input type="text" name="pwd" autocomplete="off" class="input" oninput="proof()"/> <!--todo make it green, when its correct-->
+                    <form action="chat.php" method="POST" id="submitForm">
+                        <input type="text" name="pwd" autocomplete="off" class="input" oninput="proof(this)"/> <!--todo make it green, when its correct-->
                         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
                         <input type="submit" class="slideButton">
                     </form>

@@ -12,6 +12,13 @@
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM-Join</title>
         <script src="../JS/darmode.js"></script>
+        <script>
+            function proof(input){
+                if (input.value.length === 19){
+                    document.getElementById("submitForm").submit()
+                }
+            }
+        </script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
@@ -31,8 +38,8 @@
                 <div class="rightSubContentContainer">
                     <h1 class="rightSubTitle">join chat</h1>
                     <p class="rightSubText">enter your Chat-ID: </p>
-                    <form action="load.php" method="POST">
-                        <input type="text" name="chatID" class="input">
+                    <form action="load.php" method="POST" id="submitForm">
+                        <input type="text" name="chatID" class="input" oninput="proof(this)" autocomplete="off">
                         <input type="submit" class="slideButton">
                     </form>
                     <p class="errorMessagePassword"><?php

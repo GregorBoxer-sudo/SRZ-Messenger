@@ -107,6 +107,7 @@
 
     background-color: var(--backgroundMessages);
     backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
 
     border-radius: 1em;
 }
