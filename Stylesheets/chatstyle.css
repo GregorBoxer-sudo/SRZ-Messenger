@@ -61,6 +61,7 @@
     text-align: left;
     padding-left: 0.25em;
     color: var(--text);
+    resize: none;
 
     background: var(--writelineBGColor);
     border-style: none;

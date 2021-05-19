@@ -18,6 +18,13 @@
         <title>PIM-Create</title>
         <script src="../JS/darmode.js"></script>
         <script src="../JS/copyToClipboard.js"></script>
+        <script>
+            function proof(input){
+                if (input.value === 4){
+                    
+                }
+            }
+        </script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
@@ -51,7 +58,7 @@
                         Enter the token from your Partner
                     </p>
                     <form action="chat.php" method="POST">
-                        <input type="text" name="pwd" autocomplete="off" class="input"/> <!--todo make it green, when its correct-->
+                        <input type="text" name="pwd" autocomplete="off" class="input" oninput="proof()"/> <!--todo make it green, when its correct-->
                         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
                         <input type="submit" class="slideButton">
                     </form>

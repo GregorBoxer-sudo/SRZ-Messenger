@@ -88,21 +88,7 @@
                                 let message = ""
 
 
-                                //hab ich nicht vom internetman geklaut👀...
-                                function fancyCount2(str){
-                                    const joiner = "\u{200D}";
-                                    const split = str.split(joiner);
-                                    let count = 0;
 
-                                    for(const s of split){
-                                        //removing the variation selectors
-                                        const num = Array.from(s.split(/[\ufe00-\ufe0f]/).join("")).length;
-                                        count += num;
-                                    }
-
-                                    //assuming the joiners are used appropriately
-                                    return count / split.length;
-                                }
 
 
                                 const regex = /(?=\p{Emoji})(?!\p{Number})/u;//find emojis and tripples them in size
@@ -138,11 +124,9 @@
                                 lastTime = parseInt(res[i]["time"])+(5*60)
                             }
                             document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
-
                             document.getElementsByClassName("seeMessages")[0].scrollTo(0,document.body.scrollHeight);
                         }
                         messages = res
-
                     }
                 };
 
@@ -150,8 +134,23 @@
                 return false;
             }
 
+            //hab ich nicht vom internetman geklaut👀...
+            function fancyCount2(str){
+                const joiner = "\u{200D}";
+                const split = str.split(joiner);
+                let count = 0;
+
+                for(const s of split){
+                    const num = Array.from(s.split(/[\ufe00-\ufe0f]/).join("")).length;
+                    count += num;
+                }
+
+                return count / split.length;
+            }
+
+
             function encrypt(message, key) {
-		        var encrypt = CryptoJS.AES.encrypt(message, key).toString();
+		        let encrypt = CryptoJS.AES.encrypt(message, key).toString();
                 return encrypt;
 	        }
 
