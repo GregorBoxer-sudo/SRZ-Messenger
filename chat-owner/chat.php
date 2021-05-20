@@ -103,16 +103,14 @@
             <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="MessageInputField"
                    autofocus="autofocus" autocomplete="off">
         </div>
-
     </div>
 
-
-    <footer class="footer">
+    <div class="footer">
         <form action="../PHP/deleteRow.php" method="post">
             <input type="submit" name="someAction" value="Delete Chat" class="smallButtons" id="deleteChatButton"/>
             <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
         </form>
-    </footer>
+    </div>
     </body>
 
 </html>
