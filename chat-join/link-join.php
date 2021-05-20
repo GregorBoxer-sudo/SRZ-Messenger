@@ -40,7 +40,6 @@
                     <p class="rightSubText">enter your Chat-ID: </p>
                     <form action="load.php" method="POST" id="submitForm">
                         <input type="text" name="chatID" class="input" oninput="proof(this)" autocomplete="off">
-                        <input type="submit" class="slideButton">
                     </form>
                     <p class="errorMessagePassword"><?php
                         if (isset($_GET['error'])) {

@@ -5,7 +5,7 @@
     $guid = $_POST['chatID'];
     $pwd = $_POST['pwd'];
     if (checkForPassword($pwd, $guid)!=1) {
-        echo "<script>window.location.href = '../chat-owner/dashboard-owner.php?error=NoConn&chatID=".$guid."';</script>";
+        echo "<script>window.location.href = '../chat-owner/dashboard-owner.php?error=NoConn&chatID=".$guid."'</script>";
     } else {
         setConnStatTrue($guid);
     }
@@ -29,17 +29,20 @@
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
         <script src="../JS/darmode.js"></script>
+        <script src="../JS/encryption.js"></script>
+        <script src="../JS/messageFormatting.js"></script>
         <script>
-            //todo bug fixen, dass wenn man noch nichts schreibt kein fehler bekommt
+            $(document).ready(function(){
+                getMessages();
+                let interval = setInterval(getMessages, 100);
+                //todo es anders lösen, dass ich nciht die gnaze zeit nach den nachrichten frage sonder man halt nur einzelne hat und dann noch überhaupt nachfrgaen ob da in dem directory was drin ist damit es keine errrs wirft
+                //todo in der php file werden sekunden benutzt,da kann man evtl mikrosekunden benutzen
+                //TODO FIND ERROR IN FILESTUFF ALSO FEHLER FINDEN BEI DEM ZIPPEN, DENN DA WIRFT ER NEN FEHLER DESWEGEN FUNKTIONIERT ES GLAUBE NICHT
+            })
+        </script>
+        <script>
             let messages = {};
             user = 0
-
-            let lastTime = 0
-            function decrypt(message, key) {
-                decryptedJSON = CryptoJS.AES.decrypt(message, key).toString(CryptoJS.enc.Utf8);
-                console.log(key);
-                return decryptedJSON;
-            }
 
             function getMessages(){
                 let data = { "user": user, "chatID": '<?php echo $guid?>' };
@@ -49,81 +52,7 @@
                 xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        let res = JSON.parse(JSON.parse(xhr.response));
-
-                        if (res.length !== messages.length){
-                            let htmlMessage = ""
-                            let lastUser = -1
-
-                            for (i = 0; i < res.length; i++) {
-                                let date = new Date(parseInt(res[i]["time"])*1000);
-                                let hour = date.getHours();
-                                let minutes = date.getMinutes()
-                                if (hour < 10)
-                                    hour = "0" + hour
-                                if (minutes < 10)
-                                    minutes = "0" + minutes
-
-                                let time = hour+":"+minutes;
-
-
-                                if (res[i]["user"] !== lastUser){
-                                    if (i !== 0 && i !== res.length){
-                                        if (res[i]["user"] === user)
-                                            htmlMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
-                                        else
-                                            htmlMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
-                                        htmlMessage += "</div>"
-                                    }
-                                    htmlMessage += "<div>"
-                                    lastUser = res[i]["user"]
-                                    console.log(i)
-                                }
-
-
-//TODO FIND ERROR IN FILESTUFF ALSO FEHLER FINDEN BEI DEM ZIPPEN, DENN DA WIRFT ER NEN FEHLER DESWEGEN FUNKTIONIERT ES GLAUBE NICHT
-                                let message = ""
-
-
-
-
-
-                                const regex = /(?=\p{Emoji})(?!\p{Number})/u;//find emojis and tripples them in size
-
-                                console.log(fancyCount2(res[i]["message"]))
-                                console.log(res[i]["message"])
-                                if (regex.test(res[i]["message"]) && fancyCount2(res[i]["message"]) === 1){
-                                    if (res[i]["user"] === user)
-                                        message = "<div class='yourMessage' style='font-size: 3em'>" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>";
-                                    else
-                                        message = "<div class='opponentMessage' style='font-size: 3em>'" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>"
-                                }else{//normal text
-                                    if (res[i]["user"] === user)
-                                        message = "<div class='yourMessage'>" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>";
-                                    else
-                                        message = "<div class='opponentMessage'>" + decrypt(res[i]["message"], '<?php echo cryptoKey()?>') + "<br></div>"
-                                }
-
-
-
-                                if (i === res.length-1){
-                                    if (res[i]["user"] === user){
-                                        message += "<div class='time' style='text-align: right'>" + time + "</div>"
-                                    }else{
-                                        message += "<div class='time' style='text-align: left'>" + time + "</div>"
-                                    }
-
-                                }
-
-
-                                htmlMessage += message;
-
-                                lastTime = parseInt(res[i]["time"])+(5*60)
-                            }
-                            document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
-                            document.getElementsByClassName("seeMessages")[0].scrollTo(0,document.body.scrollHeight);
-                        }
-                        messages = res
+                        messages = formatMessage(xhr.response, '<?php echo cryptoKey()?>')
                     }
                 };
 
@@ -131,52 +60,23 @@
                 return false;
             }
 
-            //hab ich nicht vom internetman geklaut👀...
-            function fancyCount2(str){
-                const joiner = "\u{200D}";
-                const split = str.split(joiner);
-                let count = 0;
-
-                for(const s of split){
-                    const num = Array.from(s.split(/[\ufe00-\ufe0f]/).join("")).length;
-                    count += num;
-                }
-
-                return count / split.length;
-            }
-
-            function encrypt(message, key) {
-		        let encrypt = CryptoJS.AES.encrypt(message, key).toString();
-                return encrypt;
-	        }
-
             function sendMessage(){
-                if (document.getElementsByClassName("textsusField")[0].value !== ""){
-                    let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("textsusField")[0].value, '<?php echo cryptoKey()?>')};
+                if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+                    let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, '<?php echo cryptoKey()?>')};
                     let xhr = new XMLHttpRequest();
                     xhr.open('POST', '../Conversation/send_Message.php', true);
                     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
                     xhr.onreadystatechange = function () {
-
                     };
 
                     xhr.send(JSON.stringify(data));
-                    document.getElementsByClassName("textsusField")[0].value = "";
+                    document.getElementsByClassName("MessageInputField")[0].value = "";
                     getMessages();
                     return false;
                 }else{
                     //todo alert
                 }
             }
-
-
-            $(document).ready(function(){
-                getMessages();
-                let interval = setInterval(getMessages, 100);
-                //todo es anders lösen, dass ich nciht die gnaze zeit nach den nachrichten frage sonder man halt nur einzelne hat und dann noch überhaupt nachfrgaen ob da in dem directory was drin ist damit es keine errrs wirft
-
-            })
-///todo microseconds in der time php file
 
         document.addEventListener('keydown', (e) => {
             if (e.code === "Enter")
@@ -200,9 +100,8 @@
 
         <div class="writingContainer">
             <!--            TODO input file/pic ...-->
-            <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="textsusField" autofocus="autofocus"
-                   autocomplete="off">
-            <button id="sendingButton" onclick="sendMessage()">&#11014;</button>
+            <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="MessageInputField"
+                   autofocus="autofocus" autocomplete="off">
         </div>
 
     </div>

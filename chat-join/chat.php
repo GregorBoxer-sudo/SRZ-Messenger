@@ -61,8 +61,8 @@ function cryptoKey() {
 
 
             $("#sendingButton").click(function (){
-                if (document.getElementsByClassName("textsusField")[0].value !== ""){
-                    let data = { "user": 1, "chatID": '<?php echo $guid?>', "message": document.getElementsByClassName("textsusField")[0].value};
+                if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+                    let data = { "user": 1, "chatID": '<?php echo $guid?>', "message": document.getElementsByClassName("MessageInputField")[0].value};
 
                     let xhr = new XMLHttpRequest();
                     xhr.open('POST', '../Conversation/send_Message.php', true);
@@ -72,7 +72,7 @@ function cryptoKey() {
                     };
 
                     xhr.send(JSON.stringify(data));
-                    document.getElementsByClassName("textsusField")[0].value = "";
+                    document.getElementsByClassName("MessageInputField")[0].value = "";
                     return false;
                 }else{
                     alert("schreibe was!")
@@ -101,7 +101,7 @@ function cryptoKey() {
 
     <div class="writingContainer">
         <!--            TODO input file/pic ...-->
-        <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="textsusField" autofocus="autofocus"
+        <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="MessageInputField" autofocus="autofocus"
                autocomplete="off">
         <button id="sendingButton" onclick="sendMessage()">&#11014;</button>
     </div>

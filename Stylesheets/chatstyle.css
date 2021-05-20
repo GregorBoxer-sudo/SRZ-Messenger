@@ -51,9 +51,9 @@
     display: flex;
 }
 
-.textsusField{
+.MessageInputField{
     height: 5%;
-    width: 95%;
+    width: 100%;
 
     font-family: Arial;
     font-size: 1.5em;
@@ -68,7 +68,7 @@
     border-radius: 0.5em;
 
 }
-.textsusField:focus{
+.MessageInputField:focus{
     outline: none;
 }
 

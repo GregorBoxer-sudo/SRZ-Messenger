@@ -39,7 +39,7 @@
                 <div class="rightSubContentContainer">
                     <h1 class="rightSubTitle">Chat-ID</h1>
                     <p class="rightSubText">Your chat-ID is: </p>
-                    <input value="<?php echo $_SESSION['chatID'];?>" type="text" class="input" id="inputID">
+                    <input value="<?php echo $_SESSION['chatID'];?>" type="text" class="input" id="inputID" readonly="readonly">
                 </div>
 
                 <div class="rightSubContentContainer">
@@ -47,12 +47,11 @@
                     <p class="rightSubText">your password: </p>
                     <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input">
                     <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
-                    <!--<button onclick="window.location.href = 'chat.php'" class="slideButton">Check and Join</button>-->
                     <p class="errorMessagePassword">
                         <?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error']=="NoConn") {
-                                echo 'Your Partner has enter the Password!';
+                                echo 'Waiting for your Partner ...!';
                                 echo '<script> let interval = setInterval(function (){window.location.href = "chat.php"}, 3000); </script>';
                             }
                         }
