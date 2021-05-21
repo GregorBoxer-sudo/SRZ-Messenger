@@ -26,6 +26,6 @@ require('session.php');
     if (isset($_POST['reload'])) {
         echo "<script>window.location.href = '../chat-owner/dashboard-owner.php';</script>";
     } else {
-        echo "<script>window.location.href = '../choose.php';</script>";
+        echo "<script>window.location.href = '../index.php';</script>";
     }
 ?>

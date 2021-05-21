@@ -87,7 +87,7 @@
     </head>
     <body class="preload dark" id="bodyChat"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
         <div class="navigationBar">
-            <a class="navItem" id="home" href="../choose.php">Pim</a>
+            <a class="navItem" id="home" href="../index.php">Pim</a>
             <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
         </div>
 
