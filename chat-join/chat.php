@@ -27,58 +27,58 @@ function cryptoKey() {
     <script src="../JS/darmode.js"></script>
     <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <script src="../JS/encryption.js"></script>
+    <script src="../JS/messageFormatting.js"></script>
+    <script src="../JS/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
     <script>
         $(document).ready(function(){
-            let interval = setInterval(function(){
-                let data = { "user": 1, "chatID": '<?php echo $guid?>' };
+            getMessages();
+            let interval = setInterval(getMessages, 100);
+        })
+    </script>
+    <script>
+        user = 1
+        let messages = {};
 
+        function sendMessage(){
+            if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+                let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, '<?php echo cryptoKey()?>')};
                 let xhr = new XMLHttpRequest();
-                xhr.open('POST', '../Conversation/get_Message.php', true);
+                xhr.open('POST', '../Conversation/send_Message.php', true);
                 xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
                 xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        let res = JSON.parse(JSON.parse(xhr.response));
-                        document.getElementsByClassName("seeMessages")[0].innerHTML = "";
-                        for (i = 0; i < res.length; i++) {
-                            console.log(res[i]);
-                            let date = new Date(parseInt(res[i]["time"])*1000);
-                            let time = date.getHours()+":"+date.getMinutes();
-                            if (res[i]["user"] == 1){
-                                document.getElementsByClassName("seeMessages")[0].innerHTML += "Du: " + res[i]["message"] + "<br>"
-                                document.getElementsByClassName("seeMessages")[0].innerHTML += time + "<br>"
-                            }else{
-                                document.getElementsByClassName("seeMessages")[0].innerHTML += "Waschbär: " + res[i]["message"] + "<br>"
-                                document.getElementsByClassName("seeMessages")[0].innerHTML += time + "<br>"
-                            }
-                        }
-                    }
                 };
 
                 xhr.send(JSON.stringify(data));
+                document.getElementsByClassName("MessageInputField")[0].value = "";
+                getMessages();
                 return false;
-            }, 100);
-
-
-            $("#sendingButton").click(function (){
-                if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
-                    let data = { "user": 1, "chatID": '<?php echo $guid?>', "message": document.getElementsByClassName("MessageInputField")[0].value};
-
-                    let xhr = new XMLHttpRequest();
-                    xhr.open('POST', '../Conversation/send_Message.php', true);
-                    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-                    xhr.onreadystatechange = function () {
-
-                    };
-
-                    xhr.send(JSON.stringify(data));
-                    document.getElementsByClassName("MessageInputField")[0].value = "";
-                    return false;
-                }else{
-                    alert("schreibe was!")
+            }else{
+                //todo alert
+            }
+        }
+        function getMessages(){
+            let data = { "user": user, "chatID": '<?php echo $guid?>' };
+            
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '../Conversation/get_Message.php', true);
+            xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    messages = formatMessage(xhr.response, '<?php echo cryptoKey()?>')
                 }
+            };
 
-            })
+            xhr.send(JSON.stringify(data));
+            return false;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === "Enter")
+                sendMessage();
         })
 
     </script>
@@ -103,17 +103,8 @@ function cryptoKey() {
         <!--            TODO input file/pic ...-->
         <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="MessageInputField" autofocus="autofocus"
                autocomplete="off">
-        <button id="sendingButton" onclick="sendMessage()">&#11014;</button>
     </div>
 
 </div>
-
-
-<footer class="footer">
-    <form action="../PHP/deleteRow.php" method="post">
-        <input type="submit" name="someAction" value="Delete Chat" class="smallButtons" id="deleteChatButton"/>
-        <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
-    </form>
-</footer>
 </body>
 </html>

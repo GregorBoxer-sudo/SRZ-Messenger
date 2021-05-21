@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 <?php
     require('../PHP/session.php');
     require('../PHP/idGen.php');
@@ -31,6 +30,7 @@
         <script src="../JS/darmode.js"></script>
         <script src="../JS/encryption.js"></script>
         <script src="../JS/messageFormatting.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
         <script>
             $(document).ready(function(){
                 getMessages();
