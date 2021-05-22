@@ -51,7 +51,7 @@
                         <?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error']=="NoConn") {
-                                echo 'Waiting for your Partner ...!';
+                                echo 'Waiting for your Partner ...';
                                 echo '<script> let interval = setInterval(function (){window.location.href = "chat.php"}, 3000); </script>';
                             }
                         }

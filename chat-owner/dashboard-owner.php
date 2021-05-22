@@ -58,7 +58,7 @@
                         Enter the token from your Partner
                     </p>
                     <form action="chat.php" method="POST" id="submitForm">
-                        <input type="text" name="pwd" autocomplete="off" class="input" oninput="proof(this)"/> <!--todo make it green, when its correct-->
+                        <input type="text" name="pwd" autocomplete="off" class="input" id="pwd" oninput="proof(this)"/>
                         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
                     </form>
                     <p class="errorMessagePassword" style="background-image='images/Pim background.png';   background-repeat='no-repeat'; background-size='contain'; background-position='center' ">
