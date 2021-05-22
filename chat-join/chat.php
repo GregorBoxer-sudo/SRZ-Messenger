@@ -108,6 +108,12 @@ function cryptoKey() {
                autocomplete="off">
     </div>
 
+    <div class="footer">
+        <form action="../PHP/deleteRow.php" method="post">
+            <input type="submit" name="someAction" value="Delete Chat" class="smallButtons" id="deleteChatButton"/>
+            <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
+        </form>
+    </div>
 </div>
 </body>
 </html>
