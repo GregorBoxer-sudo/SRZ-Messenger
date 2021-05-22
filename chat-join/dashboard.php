@@ -46,7 +46,7 @@
                     <h1 class="rightSubTitle">password</h1>
                     <p class="rightSubText">your password: </p>
                     <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input">
-                    <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
+                    <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard" readonly="readonly">&#x1f4cb;</button>
                     <p class="errorMessagePassword">
                         <?php
                         if (isset($_GET['error'])) {
