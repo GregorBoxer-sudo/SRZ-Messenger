@@ -96,11 +96,14 @@
 
     <div class="interactionContainer">
         <div class="seeMessages">
+            <div  class="noMessageText">&#x1f440; no messages yet</div>
+            <div  class="subNoMessageText">write a message and send it by hitting enter <br>
+                or wait until you receive a message from your partner</div>
         </div>
 
         <div class="writingContainer">
             <!--            TODO input file/pic ...-->
-            <input type="text" name="TextField" placeholder="Deine Nachricht ..." class="MessageInputField"
+            <input type="text" name="TextField" placeholder="your message ..." class="MessageInputField"
                    autofocus="autofocus" autocomplete="off">
         </div>
     </div>

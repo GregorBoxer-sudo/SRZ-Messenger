@@ -46,6 +46,19 @@
     display: none;
 }
 
+.noMessageText{
+    text-align: center;
+    color: var(--title);
+    font-size: 4em;
+    line-height: 1.2em;
+}
+.subNoMessageText{
+    text-align: center;
+    color: var(--text);
+    font-size: 2em;
+    line-height: 1.2em;
+}
+
 .writingContainer{
     margin-left: 1em;
     margin-right: 1em;
