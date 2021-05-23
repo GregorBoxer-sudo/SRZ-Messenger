@@ -98,13 +98,6 @@
 }
 
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 10%;
-    padding-left: 1em;
-}
 .interactionContainer{
     padding-top: 1em;
     padding-bottom: 0.5em;
@@ -124,4 +117,24 @@
     -webkit-backdrop-filter: blur(50px);
 
     border-radius: 1em;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 10%;
+    padding-left: 1em;
+}
+
+#leftFooter{
+    left: 0;
+}
+#rightFooter{
+    right: 0;
+    margin-bottom: 1em;
+    text-align: right;
+}
+
+#changeEncryptionButton{
+    color: #1f6fac;
 }

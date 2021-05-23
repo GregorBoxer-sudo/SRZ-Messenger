@@ -101,12 +101,14 @@ if (checkConnStat($guid)!=1) {
                autocomplete="off">
     </div>
 
-    <div class="footer">
-        <button onclick="changeKey()" class="smallButtons">Change Encryption-Key</button>
+    <div class="footer" id="leftFooter">
         <form action="../PHP/deleteRow.php" method="post">
             <input type="submit" name="someAction" value="Delete Chat" class="smallButtons" id="deleteChatButton"/>
             <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
         </form>
+    </div>
+    <div class="footer" id="rightFooter">
+        <button onclick="changeKey()" class="smallButtons" id="changeEncryptionButton">Encryption</button>
     </div>
 </div>
 </body>
