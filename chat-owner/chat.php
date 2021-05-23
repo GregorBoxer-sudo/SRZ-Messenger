@@ -47,7 +47,7 @@
                 xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        messages = formatMessage(xhr.response, sessionStorage.getItem('key'))
+                        messages = formatMessage(xhr.response, sessionStorage.getItem('key'));
                     }
                 };
 
