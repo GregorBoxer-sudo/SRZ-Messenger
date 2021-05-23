@@ -1,4 +1,5 @@
 //hab ich nicht vom internetman geklaut👀...
+let hasEmoji = false
 function countEmojis(str){
     const joiner = "\u{200D}";
     const split = str.split(joiner);
@@ -25,10 +26,13 @@ function getTime(rawTime){
 }
 
 function setEmoji(text){
+    let length = text.length
     text = text.replace("<3", "&#x2764;&#xfe0f;") //❤️
     text = text.replace("</3", "&#x1f494;")//💔
     text = text.replace("<+3", "&#10084;&#8205;&#129657;")//❤️‍🩹 (mending heart)
 
+    if  (length < 4 && length !== text.length)
+        hasEmoji = true
     return text
 }
 
@@ -37,7 +41,7 @@ function biggerEmojiTest(res, decryptedMessage, resUser, time){
 
     let formattedText = ""
     decryptedMessage = setEmoji(decryptedMessage)
-    if (regex.test(decryptedMessage) && countEmojis(decryptedMessage) === 1){
+    if (regex.test(decryptedMessage) && countEmojis(decryptedMessage) === 1 || hasEmoji){
         if (resUser === user)
             formattedText = "<div class='yourMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>";
         else
