@@ -20,8 +20,17 @@
         <script src="../JS/copyToClipboard.js"></script>
         <script>
             function proof(input){
-                if (input.value.length === 4){
-                    document.getElementById("submitForm").submit()
+                if (input.value.length === 19){
+                    var contentArray = input.value.split('-');
+                    if (contentArray.length = 4) {
+                        var token = contentArray[0];
+                        var key = contentArray[1]+contentArray[2]+contentArray[3];
+                        document.getElementById('outToken').value = token;
+                        sessionStorage.setItem('key', key);
+                        document.getElementById("submitForm").submit();
+                    } else {
+                        console.warn("TOKEN NOT VALID");
+                    }
                 }
             }
         </script>
@@ -50,6 +59,10 @@
                     </p>
                     <input value="<?php echo $_SESSION['chatID'];?>" type="text" class="input" id="inputID" readonly="readonly">
                     <button onclick="copyToClipboard(this, document.getElementById('inputID'))" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
+                    <p class="rightSubText">
+                        The ChatID consists of various server and remote data and a randomly determined namespace,
+                        encrypted with an irreversible algorithm.
+                    </p>
                 </div>
 
                 <div class="rightSubContentContainer">
@@ -58,8 +71,19 @@
                         Enter the token from your Partner
                     </p>
                     <form action="chat.php" method="POST" id="submitForm">
-                        <input type="text" name="pwd" autocomplete="off" class="input" id="pwd" oninput="proof(this)"/>
+                        <input type="text" name="pwd-Raw" autocomplete="off" class="input" oninput="proof(this)"/> <!--todo make it green, when its correct-->
+                        <input type="hidden" name="pwd" id="outToken" autocomplete="off" class="input"/>
                         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
+                        <p class="rightSubText">
+                            The token consists of two parts.
+                            The first part is a password generated on the server
+                            used to verify the chat connection and is encrypted with an irreversible algorithm.
+                            The second part is generated on your device and is not shared with Pim.
+                            This is used to encrypt the messages.
+                            If a chat partner enters the code incorrectly,
+                            he will not be able to read the messages.
+                            You can still change the code in open chat.
+                        </p>
                     </form>
                     <p class="errorMessagePassword" style="background-image='images/Pim background.png';   background-repeat='no-repeat'; background-size='contain'; background-position='center' ">
                         <?php
