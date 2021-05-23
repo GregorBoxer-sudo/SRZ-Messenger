@@ -24,10 +24,19 @@ function getTime(rawTime){
     return hour+":"+minutes;
 }
 
+function setEmoji(text){
+    text = text.replace("<3", "&#x2764;&#xfe0f;") //❤️
+    text = text.replace("</3", "&#x1f494;")//💔
+    text = text.replace("<+3", "&#10084;&#8205;&#129657;")//❤️‍🩹 (mending heart)
+
+    return text
+}
+
 function biggerEmojiTest(res, decryptedMessage, resUser, time){
     const regex = /(?=\p{Emoji})(?!\p{Number})/u;//find emojis and tripples them in size
 
     let formattedText = ""
+    decryptedMessage = setEmoji(decryptedMessage)
     if (regex.test(decryptedMessage) && countEmojis(decryptedMessage) === 1){
         if (resUser === user)
             formattedText = "<div class='yourMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>";
