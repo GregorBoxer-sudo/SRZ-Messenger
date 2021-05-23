@@ -27,16 +27,17 @@ function getTime(rawTime){
 
 function setEmoji(text){
     let length = text.length
-    text = text.replace("<3", "&#x2764;&#xfe0f;") //❤️
-    text = text.replace("</3", "&#x1f494;")//💔
-    text = text.replace("<+3", "&#10084;&#8205;&#129657;")//❤️‍🩹 (mending heart)
+    //todo es evtl mit dem array machen und dann mit ner funktion fragen
+    text = text.replace("<3", "&#x2764;&#xfe0f; ") //❤️
+    text = text.replace("</3", "&#x1f494; ")//💔
+    text = text.replace("<+3", "&#10084;&#8205;&#129657; ")//❤️‍🩹 (mending heart)
 
     if  (length < 4 && length !== text.length)
         hasEmoji = true
     return text
 }
 
-function biggerEmojiTest(res, decryptedMessage, resUser, time){
+function biggerEmojiTest(decryptedMessage, resUser, time){
     const regex = /(?=\p{Emoji})(?!\p{Number})/u;//find emojis and tripples them in size
 
     let formattedText = ""
@@ -45,7 +46,7 @@ function biggerEmojiTest(res, decryptedMessage, resUser, time){
         if (resUser === user)
             formattedText = "<div class='yourMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>";
         else
-            formattedText = "<div class='opponentMessage' style='font-size: 3em>'" + decryptedMessage + "<br></div>"
+            formattedText = "<div class='opponentMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>"
     }else{//normal text
         if (resUser === user)
             formattedText = "<div class='yourMessage'>" + decryptedMessage + "<br></div>";
@@ -53,14 +54,7 @@ function biggerEmojiTest(res, decryptedMessage, resUser, time){
             formattedText = "<div class='opponentMessage'>" + decryptedMessage + "<br></div>"
     }
 
-    if (i === res.length-1){
-        if (resUser === user){
-            formattedText += "<div class='time' style='text-align: right'>" + time + "</div>"
-        }else{
-            formattedText += "<div class='time' style='text-align: left'>" + time + "</div>"
-        }
-
-    }
+    hasEmoji = false
     return formattedText;
 }
 
@@ -80,7 +74,7 @@ function formatMessage(response, cryptoKey){
             let time = getTime(res[i]["time"])
 
             if (resUser !== lastUser){
-                if (i !== 0 && i !== res.length){
+                if (i !== 0 && i !== decryptedMessage.length){
                     if (resUser === user)
                         htmlMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
                     else
@@ -92,7 +86,14 @@ function formatMessage(response, cryptoKey){
                 console.log(i)
             }
 
-            let individualHTMLMessage = biggerEmojiTest(res, decryptedMessage, resUser, time)
+            let individualHTMLMessage = biggerEmojiTest(decryptedMessage, resUser, time)
+
+            if (i === res.length - 1){
+                if (resUser === user)
+                    individualHTMLMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
+                else
+                    individualHTMLMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
+            }
 
             htmlMessage += individualHTMLMessage;
 
