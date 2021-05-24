@@ -65,7 +65,7 @@
                 <div class="rightSubContentContainer">
                     <h1 class="rightSubTitle">token</h1>
                     <p class="rightSubText">your token: </p>
-                    <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input">
+                    <input type="text" value="<?php echo $_SESSION['rn'];?>" id="inputPassword" class="input" readonly="readonly">
                     <script>showKey();</script>
                     <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                     <p class="rightSubText">
