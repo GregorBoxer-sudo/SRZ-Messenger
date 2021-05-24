@@ -11,8 +11,7 @@ function decrypt(message, key) {
 function changeKey() {
     newKey = getKey();
     sessionStorage.setItem('key', newKey);
-    document.getElementById('messageInput').value = "encryption key changed successfully"
-    sendMessages();
+    location.reload();
 }
 
 function validKey(key) {
