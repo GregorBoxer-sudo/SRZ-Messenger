@@ -34,20 +34,26 @@ function setEmoji(text) {
         ["<+3", "&#10084;&#8205;&#129657; "], //❤️‍🩹 (mending heart)
     ]
 
-    for(let i = 0; i < emojiList.length; i++){
-        if (length === emojiList[i][0].length)
-            hasEmoji = true
+    for (let i = 0; i < emojiList.length; i++) {
+        let tempLength = emojiList[i][0].length
         text = text.replace(emojiList[i][0], emojiList[i][1])
+
+        if (length === tempLength && length !== text.length)
+            hasEmoji = true
     }
 
     return text
 }
 
-function setFormattingHTML(text){
+function setFormattingHTML(text) {
     let formattingList = [
         ["/n", "<br>"], //linebreak
+        ["/big{", "<p style='font-size: 3em' class='blankP'>"], //big text
+        ["/small{", "<p style='font-size: 0.5em' class='blankP'>"], //small text
 
+        ["/spoiler{", "<p class='blankP spoiler'>"], //spoiler
 
+        ["/d{", "<p style='color: var(--text)' class='blankP'>"], //default
         ["/b{", "<p style='color: blue' class='blankP'>"], //blue
         ["/r{", "<p style='color: red' class='blankP'>"], //red
         ["/g{", "<p style='color: green' class='blankP'>"], //green
@@ -55,10 +61,11 @@ function setFormattingHTML(text){
         ["/o{", "<p style='color: orange' class='blankP'>"], //yellow
         ["/p{", "<p style='color: purple' class='blankP'>"], //purple
         ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
+        ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
         ["}", "</p>"]//p end
     ]
 
-    for(let i = 0; i < formattingList.length; i++){
+    for (let i = 0; i < formattingList.length; i++) {
         text = text.replace(formattingList[i][0], formattingList[i][1])
     }
 
@@ -87,6 +94,23 @@ function biggerEmojiTest(decryptedMessage, resUser, time) {
     return formattedText;
 }
 
+function alertInjection() {
+    alert('Pim found a possible Injection, that could harm you.\nIt could be a button, event or script.\nWe blocked it to protect you, your computer and the chat!');
+}
+
+function injectionProtection(text) {
+    let formattingList = [
+        ['onclick='],
+        ['onload='],
+        ['<button>'],
+        ['<script>']
+    ];
+    for (let i = 0; i < formattingList.length; i++) {
+        text = text.replace(formattingList[i][0], '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--');
+    }
+    return text;
+}
+
 function formatMessage(response, cryptoKey) {
     let res = JSON.parse(JSON.parse(response));
 
@@ -100,7 +124,9 @@ function formatMessage(response, cryptoKey) {
             let decryptedMessage = decrypt(rawMessage, cryptoKey)
             let time = getTime(res[i]["time"])
 
-            if (sessionStorage.length === 0) {
+            decryptedMessage = injectionProtection(decryptedMessage);
+
+            if (decryptedMessage == '') {
                 decryptedMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
             }
 

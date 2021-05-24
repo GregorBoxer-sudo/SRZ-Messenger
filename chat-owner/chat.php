@@ -77,7 +77,7 @@
 
         </script>
     </head>
-    <body class="preload dark" id="bodyChat"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
+    <body class="dark" id="bodyChat"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Pim</a>
             <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
@@ -95,7 +95,7 @@
 
         <div class="writingContainer">
             <!--            TODO input file/pic ...-->
-            <input type="text" name="TextField" placeholder="your message ..." class="MessageInputField"
+            <input type="text" name="TextField" id="messageInput" placeholder="your message ..." class="MessageInputField"
                    autofocus="autofocus" autocomplete="off">
         </div>
     </div>

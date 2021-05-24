@@ -25,6 +25,8 @@
     --boderColorMessageBackground: #444444;
     --writelineBGColor: #444444;
 
+    --spoiler: #222222;
+
     --inputBackground: #444444;
 
     --error: #FF5454;
@@ -49,6 +51,8 @@
     --backgroundMessages: rgba(255, 255, 255, .1);
     --boderColorMessageBackground: #BBBBBB;
     --writelineBGColor: #BBBBBB;
+
+    --spoiler: #BBBBBB;
 
     --inputBackground: #e3e3e3;
 

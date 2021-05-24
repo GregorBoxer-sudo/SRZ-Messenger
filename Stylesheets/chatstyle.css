@@ -140,6 +140,13 @@
 .rainbow{
     animation: rainbowAnimation 2s infinite;
 }
+.spoiler{
+    color: var(--spoiler);
+    background: var(--spoiler);
+}
+.spoiler:hover{
+    color: var(--text);
+}
 
 #changeEncryptionButton{
     color: #1f6fac;
