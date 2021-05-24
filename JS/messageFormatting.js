@@ -46,12 +46,15 @@ function setEmoji(text) {
 function setFormattingHTML(text){
     let formattingList = [
         ["/n", "<br>"], //linebreak
+
+
         ["/b{", "<p style='color: blue' class='blankP'>"], //blue
         ["/r{", "<p style='color: red' class='blankP'>"], //red
         ["/g{", "<p style='color: green' class='blankP'>"], //green
         ["/y{", "<p style='color: yellow' class='blankP'>"], //yellow
         ["/o{", "<p style='color: orange' class='blankP'>"], //yellow
         ["/p{", "<p style='color: purple' class='blankP'>"], //purple
+        ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
         ["}", "</p>"]//p end
     ]
 
