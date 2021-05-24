@@ -141,8 +141,8 @@
     animation: rainbowAnimation 2s infinite;
 }
 .spoiler{
-    color: #222222;
-    background: #222222;
+    color: var(--spoiler);
+    background: var(--spoiler);
 }
 .spoiler:hover{
     color: var(--text);
