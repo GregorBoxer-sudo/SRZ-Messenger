@@ -51,7 +51,7 @@ function setFormattingHTML(text){
         ["/g{", "<p style='color: green' class='blankP'>"], //green
         ["/y{", "<p style='color: yellow' class='blankP'>"], //yellow
         ["/o{", "<p style='color: orange' class='blankP'>"], //yellow
-        ["/p{", "<p style='color: purple' class='blankP'>"] //purple
+        ["/p{", "<p style='color: purple' class='blankP'>"], //purple
         ["}", "</p>"]//p end
     ]
 
