@@ -69,7 +69,7 @@
                     <script>showKey();</script>
                     <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                     <p class="rightSubText">
-                    In some Browsers and on iOS the chat could be broken. To get it working click on change Encryptionkey (bottom right).
+                        In some browsers and iOS the transfer of the key does not work correctly. To use the chat, click on change Encryptionkey (bottom rigth).
                     </p>
                     <p class="errorMessagePassword">
                         <?php

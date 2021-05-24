@@ -70,12 +70,13 @@
                     <p class="rightSubText">
                         Enter the token from your Partner
                     </p>
+                    <input type="text" name="pwd-Raw" autocomplete="off" class="input" oninput="proof(this)"/> <!--todo make it green, when its correct-->
                     <form action="chat.php" method="POST" id="submitForm">
                         <input type="text" name="pwd-Raw" autocomplete="off" class="input" oninput="proof(this)" id="inputPassword"/> <!--todo make it green, when its correct-->
                         <input type="hidden" name="pwd" id="outToken" autocomplete="off" class="input"/>
                         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
                         <p class="rightSubText">
-                            In some Browsers and on iOS the chat could be broken. To get it working click on change Encryptionkey (bottom right).
+                        In some browsers and iOS the transfer of the key does not work correctly. To use the chat, click on change Encryptionkey (bottom rigth).
                         </p>
                     </form>
                     <p class="errorMessagePassword" style="background-image='images/Pim background.png';   background-repeat='no-repeat'; background-size='contain'; background-position='center' ">
