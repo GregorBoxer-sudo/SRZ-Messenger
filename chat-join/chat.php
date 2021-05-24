@@ -93,7 +93,7 @@ if (checkConnStat($guid)!=1) {
 
     <div class="writingContainer">
         <!--            TODO input file/pic ...-->
-        <input type="text" name="TextField" placeholder="your message ..." class="MessageInputField" autofocus="autofocus"
+        <input type="text" name="TextField" id="messageInput" placeholder="your message ..." class="MessageInputField" autofocus="autofocus"
                autocomplete="off">
     </div>
 

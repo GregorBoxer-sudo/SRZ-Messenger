@@ -119,11 +119,11 @@ function formatMessage(response, cryptoKey) {
             let decryptedMessage = decrypt(rawMessage, cryptoKey)
             let time = getTime(res[i]["time"])
 
-            if (sessionStorage.length == '') {
+            decryptedMessage = injectionProtection(decryptedMessage);
+
+            if (decryptedMessage == '') {
                 decryptedMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
             }
-
-            decryptedMessage = injectionProtection(decryptedMessage);
 
             if (resUser !== lastUser) {
                 if (i !== 0 && i !== decryptedMessage.length) {

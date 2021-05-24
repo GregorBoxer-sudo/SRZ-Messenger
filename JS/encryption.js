@@ -11,7 +11,8 @@ function decrypt(message, key) {
 function changeKey() {
     newKey = getKey();
     sessionStorage.setItem('key', newKey);
-    getMessages();
+    document.getElementById('messageInput').value = "encryption key changed successfully"
+    sendMessages();
 }
 
 function validKey(key) {
@@ -41,7 +42,6 @@ function getKey() {
             if ('true' != valid) {
                 alert(valid);
             } else {
-                alert('To reload the chat with the new key, write a message or reload the page.');
                 return newKey;
             }
         }
