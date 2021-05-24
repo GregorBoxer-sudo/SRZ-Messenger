@@ -69,14 +69,7 @@
                     <script>showKey();</script>
                     <button onclick="clipboard(this)" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                     <p class="rightSubText">
-                        The token consists of two parts.
-                        The first part is a password generated on the server
-                        used to verify the chat connection and is encrypted with an irreversible algorithm.
-                        The second part is generated on your device and is not shared with Pim.
-                        This is used to encrypt the messages.
-                        If a chat partner enters the code incorrectly,
-                        he will not be able to read the messages.
-                        You can still change the code in open chat.
+                    In some Browsers and on iOS the chat could be broken. To get it working click on change Encryptionkey (bottom right).
                     </p>
                     <p class="errorMessagePassword">
                         <?php

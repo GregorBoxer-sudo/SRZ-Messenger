@@ -17,7 +17,7 @@
         <div class="contentContainer">
             <div class="leftContentContainer">
                 <h1 class="leftTitle">Pim</h1>
-                <p class="leftText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no cookies or trackers.</p>
+                <p class="leftText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no trackers.</p>
                 <a class="leftLink" href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki"><u>learn more ></u></a>
             </div>
 

@@ -27,14 +27,9 @@ if (checkConnStat($guid)!=1) {
         })
     </script>
     <script>
+
         user = 1
         let messages = {};
-
-        function changeKey() {
-            newKey = prompt("Enter the new Key for message-encryption:")
-            sessionStorage.setItem('key', newKey);
-            getMessages();
-        }
 
         function sendMessage(){
             if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
@@ -108,7 +103,7 @@ if (checkConnStat($guid)!=1) {
         </form>
     </div>
     <div class="footer" id="rightFooter">
-        <button onclick="changeKey()" class="smallButtons" id="changeEncryptionButton">Encryption</button>
+    <button onclick="changeKey()" class="smallButtons" id="changeEncryptionButton">change Encryptionkey</button>
     </div>
 </div>
 </body>

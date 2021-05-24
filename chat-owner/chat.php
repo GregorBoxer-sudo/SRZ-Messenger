@@ -30,14 +30,9 @@
             })
         </script>
         <script>
+
             let messages = {};
             user = 0
-
-            function changeKey() {
-                newKey = prompt("Enter the new Key for message-encryption:")
-                sessionStorage.setItem('key', newKey);
-                getMessages();
-            }
 
             function getMessages(){
                 let data = { "user": user, "chatID": '<?php echo $guid?>' };
@@ -110,7 +105,7 @@
         </form>
     </div>
     <div class="footer" id="rightFooter">
-        <button onclick="changeKey()" class="smallButtons" id="changeEncryptionButton">Encryption</button>
+        <button onclick="changeKey()" class="smallButtons" id="changeEncryptionButton">change Encryptionkey</button>
     </div>
     </body>
 
