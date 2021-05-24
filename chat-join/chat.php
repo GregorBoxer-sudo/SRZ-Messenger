@@ -1,10 +1,16 @@
 <?php
-require('../PHP/session.php');
-require('../PHP/idGen.php');
-$guid = $_SESSION['chatID'];
-if (checkConnStat($guid)!=1) {
-    echo "<script>window.location.href = 'dashboard.php?error=NoConn';</script>";
-}
+    require('../PHP/session.php');
+    require('../PHP/idGen.php');
+    $guid = $_SESSION['chatID'];
+    $dir = dirname(dirname(__FILE__));
+    $path = $dir . "/FILESYSTEM-Messages/" . sha1($guid) . "/";
+    // Ordner erstellen wenn noch nicht vorhanden
+    if (!is_dir($path)) {
+        mkdir($path, 0777, true) || chmod($path, 0777);
+    }
+    if (checkConnStat($guid)!=1) {
+        echo "<script>window.location.href = 'dashboard.php?error=NoConn';</script>";
+    }
 ?>
 <html lang="en">
 <head>
@@ -34,6 +40,7 @@ if (checkConnStat($guid)!=1) {
 
         function sendMessage(){
             if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+                console.log("send")
                 let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))};
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', '../Conversation/send_Message.php', true);
@@ -42,6 +49,11 @@ if (checkConnStat($guid)!=1) {
                 };
 
                 xhr.send(JSON.stringify(data));
+                console.log(data)
+                console.log(JSON.stringify(data));
+                console.log(JSON.parse(JSON.stringify(data)));
+                let data2 = [{ "user": user, "time": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))}];
+                formatMessage(JSON.stringify(data2), sessionStorage.getItem('key'), false);
                 document.getElementsByClassName("MessageInputField")[0].value = "";
                 getMessages();
                 return false;
@@ -50,6 +62,7 @@ if (checkConnStat($guid)!=1) {
             }
         }
         function getMessages(){
+            console.log("get")
             let data = { "user": user, "chatID": '<?php echo $guid?>' };
 
             let xhr = new XMLHttpRequest();
@@ -57,10 +70,9 @@ if (checkConnStat($guid)!=1) {
             xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    messages = formatMessage(xhr.response, sessionStorage.getItem('key'));
+                    messages = formatMessage(xhr.response, sessionStorage.getItem('key'),true);
                 }
             };
-
             xhr.send(JSON.stringify(data));
             return false;
         }

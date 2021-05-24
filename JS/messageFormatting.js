@@ -111,22 +111,43 @@ function injectionProtection(text) {
     return text;
 }
 
-function formatMessage(response, cryptoKey) {
+/**
+ * @param {*} response
+ * @param {*} cryptoKey
+ * @param {boolean} getMessageMode
+ */
+function formatMessage(response, cryptoKey, getMessageMode) {
+    // let res = JSON.parse(response);
+    if (getMessageMode) {
+        console.log("start")
+        console.log(response)
+        console.log(JSON.parse(response))
+        console.log(JSON.parse(JSON.parse(response)))
+        console.log("end")
+    }
     let res = JSON.parse(JSON.parse(response));
-
+    // }
+    if (!getMessageMode){
+        console.log(res.length +","+messages.length)
+    }
     if (res.length !== messages.length) {
         let htmlMessage = ""
         let lastUser = -1
-
-        for (i = 0; i < res.length; i++) {
+        for (let i = 0; i < res.length; i++) {
             let resUser = res[i]["user"]
             let rawMessage = res[i]["message"]
             let decryptedMessage = decrypt(rawMessage, cryptoKey)
             let time = getTime(res[i]["time"])
-
+            console.log(resUser+" vs "+user);
+            if (resUser === user) {
+                if (getMessageMode) {
+                    console.log("continue");
+                    continue;
+                }
+            }
             decryptedMessage = injectionProtection(decryptedMessage);
 
-            if (decryptedMessage == '') {
+            if (decryptedMessage === '') {
                 decryptedMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
             }
 

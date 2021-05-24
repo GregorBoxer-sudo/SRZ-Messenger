@@ -3,6 +3,12 @@
     require('../PHP/idGen.php');
     $guid = $_POST['chatID'];
     $pwd = $_POST['pwd'];
+    $dir = dirname(dirname(__FILE__));
+    $path = $dir . "/FILESYSTEM-Messages/" . sha1($guid) . "/";
+    // Ordner erstellen wenn noch nicht vorhanden
+    if (!is_dir($path)) {
+        mkdir($path, 0777, true) || chmod($path, 0777);
+}
     if (checkForPassword($pwd, $guid)!=1) {
         echo "<script>window.location.href = '../chat-owner/dashboard-owner.php?error=NoConn&chatID=".$guid."'</script>";
     } else {
@@ -37,6 +43,7 @@
             user = 0
 
             function getMessages(){
+                console.log("get")
                 let data = { "user": user, "chatID": '<?php echo $guid?>' };
 
                 let xhr = new XMLHttpRequest();
@@ -44,7 +51,7 @@
                 xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        messages = formatMessage(xhr.response, sessionStorage.getItem('key'));
+                        messages = formatMessage(xhr.response, sessionStorage.getItem('key'), true);
                     }
                 };
 
@@ -54,6 +61,7 @@
 
             function sendMessage(){
                 if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+                    console.log("send")
                     let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))};
                     let xhr = new XMLHttpRequest();
                     xhr.open('POST', '../Conversation/send_Message.php', true);
@@ -63,6 +71,9 @@
 
                     xhr.send(JSON.stringify(data));
                     document.getElementsByClassName("MessageInputField")[0].value = "";
+                    let seconds = new Date().getTime() / 1000;
+                    let data2 = [{ "user": user, "time" : seconds, "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))}];
+                    formatMessage(JSON.stringify(data2), sessionStorage.getItem('key'), false);
                     getMessages();
                     return false;
                 }else{

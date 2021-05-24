@@ -1,23 +1,21 @@
 function encrypt(message, key) {
-    let encrypt = CryptoJS.AES.encrypt(message, key).toString();
-    return encrypt;
+    return CryptoJS.AES.encrypt(message, key).toString();
 }
 
 function decrypt(message, key) {
-    decryptedJSON = CryptoJS.AES.decrypt(message, key).toString(CryptoJS.enc.Utf8);
-    return decryptedJSON;
+    return CryptoJS.AES.decrypt(message, key).toString(CryptoJS.enc.Utf8);
 }
 
 function changeKey() {
-    newKey = getKey();
+    let newKey = getKey();
     sessionStorage.setItem('key', newKey);
     location.reload();
 }
 
 function validKey(key) {
-    valid = 'unknown Error';
+    let valid = "unknown Error";
     if (key.length >= 8) {
-        var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$");
+        const pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$");
         if (pattern.test(key)) {
             valid = 'true';
         } else {
@@ -30,7 +28,8 @@ function validKey(key) {
 }
 
 function getKey() {
-    var newKey = '';
+    let newKey = '';
+    let valid;
     if (sessionStorage.getItem('key') !== null) {
         if (!confirm('You already set a key. Are you sure you want to change it?')) {
             return sessionStorage.getItem('key');
@@ -38,7 +37,7 @@ function getKey() {
         while (true) {
             newKey = prompt("Enter the new Key for message-encryption:");
             valid = validKey(newKey);
-            if ('true' != valid) {
+            if ('true' !== valid) {
                 alert(valid);
             } else {
                 return newKey;
