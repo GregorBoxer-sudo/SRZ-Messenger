@@ -95,13 +95,13 @@ function alertInjection() {
 
 function injectionProtection(text) {
     let formattingList = [
-        ['onclick=', '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--'],
-        ['onload=', '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--'],
-        ['<button>', '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--'],
-        ['<script>', '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--']
+        ['onclick='],
+        ['onload='],
+        ['<button>'],
+        ['<script>']
     ];
     for (let i = 0; i < formattingList.length; i++) {
-        text = text.replace(formattingList[i][0], formattingList[i][1]);
+        text = text.replace(formattingList[i][0], '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--');
     }
     return text;
 }
