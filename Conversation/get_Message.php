@@ -18,6 +18,7 @@ if (isset($chatID) && isset($user)) {
     $path = $dir . "/FILESYSTEM-Messages/" . sha1($chatID) . "/";
 
     $files = scandir($path, SCANDIR_SORT_ASCENDING); // neustes file zuerst? TODO check nach mehr?
+    $zip = new ZipArchive();
 
     $ZIP_ERROR = [
         ZipArchive::ER_EXISTS => 'File already exists.',
@@ -36,7 +37,7 @@ if (isset($chatID) && isset($user)) {
 
         if ($file != '.' && $file != '..') {
             //                echo $path . $file . '<br>';
-            $zip = new ZipArchive();
+
             $result = $zip->open($path . $file);
 
             if ($result !== true) {
@@ -52,16 +53,11 @@ if (isset($chatID) && isset($user)) {
                     $time = substr($file, 0, 10);
 
                     $json .= "{\"user\": $file[10], \"time\": \" $time\", \"message\": \"$msg\"}, ";
-                    // Löschen der Nachricht, wenn sie vom anderen Partner gelesen wird
-                    if ($user != $file[10]){
-                        $zip -> close();
-                        unlink($path.$file);
-                    }
                 } else $response->error = 'UserID aus Eingabe nicht identifiezierbar!' . PHP_EOL;
             } else $response->error = 'User: ? send: " . $msg . "';//todo mal schauen wie man das hier macht, da dort nicht bekannt ist welcher user
         }
     }
-
+    $zip->close();
 } else $response->error = "KEINE CHAT-ID/UserID gefunden";
 
 #$response->messages = "[".$json."]";
