@@ -130,7 +130,8 @@ function formatMessage(response, cryptoKey) {
 
             let lastTime = parseInt(res[i]["time"]) + (5 * 60)
         }
-        document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
+        // document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
+         document.getElementsByClassName("seeMessages")[0].innerHTML += htmlMessage
         document.getElementsByClassName("seeMessages")[0].scrollTo(0, document.body.scrollHeight);
     }
     return res
