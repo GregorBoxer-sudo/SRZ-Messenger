@@ -10,8 +10,8 @@ if (checkConnStat($guid)!=1) {
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>PIM-Chat</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../JS/darmode.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->log
+    <script src="../JS/jquery.min.js"></script>    <script src="../JS/darmode.js"></script>
     <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,7 +19,8 @@ if (checkConnStat($guid)!=1) {
     <script src="../JS/encryption.js"></script>
     <script src="../JS/messageFormatting.js"></script>
     <script src="../JS/"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="../JS/crypto.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
     <script>
         $(document).ready(function(){
             getMessages();
