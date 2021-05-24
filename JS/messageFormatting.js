@@ -118,7 +118,7 @@ function injectionProtection(text) {
  */
 function formatMessage(response, cryptoKey, getMessageMode) {
     // let res = JSON.parse(response);
-    if (getMessageMode) {
+    if (!getMessageMode) {
         console.log("start")
         console.log(response)
         console.log(JSON.parse(response))

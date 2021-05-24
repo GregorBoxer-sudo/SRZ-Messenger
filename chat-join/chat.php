@@ -49,10 +49,8 @@
                 };
 
                 xhr.send(JSON.stringify(data));
-                console.log(data)
-                console.log(JSON.stringify(data));
-                console.log(JSON.parse(JSON.stringify(data)));
-                let data2 = [{ "user": user, "time": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))}];
+                let seconds = new Date().getTime() / 1000;
+                let data2 = [{ "user": user, "time" : seconds, "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))}];
                 formatMessage(JSON.stringify(data2), sessionStorage.getItem('key'), false);
                 document.getElementsByClassName("MessageInputField")[0].value = "";
                 getMessages();
