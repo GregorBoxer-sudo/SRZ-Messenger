@@ -20,7 +20,7 @@
             }
         </script>
     </head>
-    <body class="preload dark" onload="removePreload()">
+    <body class="preload dark" onload="document.getElementById('inputID').select(); removePreload()">
         <!--navigation bar-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Home</a>
@@ -39,7 +39,7 @@
                     <h1 class="rightSubTitle">join chat</h1>
                     <p class="rightSubText">enter your Chat-ID: </p>
                     <form action="load.php" method="POST" id="submitForm">
-                        <input type="text" name="chatID" class="input" oninput="proof(this)" autocomplete="off">
+                        <input type="text" name="chatID" class="input" oninput="proof(this)" autocomplete="off" id="inputID">
                     </form>
                     <p class="errorMessagePassword"><?php
                         if (isset($_GET['error'])) {

@@ -58,7 +58,7 @@
                         Your chat-ID is:
                     </p>
                     <input value="<?php echo $_SESSION['chatID'];?>" type="text" class="input" id="inputID" readonly="readonly">
-                    <button onclick="copyToClipboard(this, document.getElementById('inputID'))" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
+                    <button onclick="copyToClipboard(this, document.getElementById('inputID')); document.getElementById('inputPassword').select();" class="slideButton" id="copyToClipboard">&#x1f4cb;</button>
                     <p class="rightSubText">
                         The ChatID consists of various server and remote data and a randomly determined namespace,
                         encrypted with an irreversible algorithm.
@@ -71,7 +71,7 @@
                         Enter the token from your Partner
                     </p>
                     <form action="chat.php" method="POST" id="submitForm">
-                        <input type="text" name="pwd-Raw" autocomplete="off" class="input" oninput="proof(this)"/> <!--todo make it green, when its correct-->
+                        <input type="text" name="pwd-Raw" autocomplete="off" class="input" oninput="proof(this)" id="inputPassword"/> <!--todo make it green, when its correct-->
                         <input type="hidden" name="pwd" id="outToken" autocomplete="off" class="input"/>
                         <input type="hidden" name="chatID" value="<?php echo $guid;?>"/>
                         <p class="rightSubText">

@@ -1,4 +1,3 @@
-//hab ich nicht vom internetman geklaut👀...
 let hasEmoji = false
 
 function countEmojis(str) {
@@ -28,7 +27,18 @@ function getTime(rawTime) {
 
 function setEmoji(text) {
     let length = text.length
-        //todo es evtl mit dem array machen und dann mit ner funktion fragen
+
+    let emojiList = [
+        ["<3", "&#x2764;&#xfe0f; "], //❤️
+        ["</3", "&#x1f494; "], //💔
+        ["<+3", "&#10084;&#8205;&#129657; "], //❤️‍🩹 (mending heart)
+    ]
+
+    for(let i = 0; i < emojiList.length; i++){
+        if length === emojiList[][]
+        text = text.replace(emojiList[i][0], emojiList[i][1])
+    }
+
     text = text.replace("<3", "&#x2764;&#xfe0f; ") //❤️
     text = text.replace("</3", "&#x1f494; ") //💔
     text = text.replace("<+3", "&#10084;&#8205;&#129657; ") //❤️‍🩹 (mending heart)
@@ -38,10 +48,17 @@ function setEmoji(text) {
     return text
 }
 
+function setFormattingHTML(text){
+    text = text.replace("/n", "<br>")
+
+    return text
+}
+
 function biggerEmojiTest(decryptedMessage, resUser, time) {
     const regex = /(?=\p{Emoji})(?!\p{Number})/u; //find emojis and tripples them in size
 
     let formattedText = "";
+    decryptedMessage = setFormattingHTML(decryptedMessage);
     decryptedMessage = setEmoji(decryptedMessage);
     if (regex.test(decryptedMessage) && countEmojis(decryptedMessage) === 1 || hasEmoji) {
         if (resUser === user)
@@ -59,10 +76,8 @@ function biggerEmojiTest(decryptedMessage, resUser, time) {
     return formattedText;
 }
 
-
 function formatMessage(response, cryptoKey) {
     let res = JSON.parse(JSON.parse(response));
-
 
     if (res.length !== messages.length) {
         let htmlMessage = ""
@@ -74,7 +89,7 @@ function formatMessage(response, cryptoKey) {
             let decryptedMessage = decrypt(rawMessage, cryptoKey)
             let time = getTime(res[i]["time"])
 
-            if (decryptedMessage == '') {
+            if (sessionStorage.length === 0) {
                 decryptedMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
             }
 
@@ -102,7 +117,7 @@ function formatMessage(response, cryptoKey) {
 
             htmlMessage += individualHTMLMessage;
 
-            lastTime = parseInt(res[i]["time"]) + (5 * 60)
+            let lastTime = parseInt(res[i]["time"]) + (5 * 60)
         }
         document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
         document.getElementsByClassName("seeMessages")[0].scrollTo(0, document.body.scrollHeight);
