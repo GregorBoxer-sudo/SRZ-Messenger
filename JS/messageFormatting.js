@@ -35,9 +35,11 @@ function setEmoji(text) {
     ]
 
     for(let i = 0; i < emojiList.length; i++){
-        if (length === emojiList[i][0].length)
-            hasEmoji = true
+        let tempLength = emojiList[i][0].length
         text = text.replace(emojiList[i][0], emojiList[i][1])
+
+        if (length === tempLength && length !== text.length)
+            hasEmoji = true
     }
 
     return text
@@ -46,7 +48,7 @@ function setEmoji(text) {
 function setFormattingHTML(text){
     let formattingList = [
         ["/n", "<br>"], //linebreak
-
+        ["/big{", "<p style='font-size: 3em' class='blankP'>"],
 
         ["/b{", "<p style='color: blue' class='blankP'>"], //blue
         ["/r{", "<p style='color: red' class='blankP'>"], //red
