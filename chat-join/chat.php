@@ -10,7 +10,7 @@ if (checkConnStat($guid)!=1) {
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>PIM-Chat</title>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->log
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
     <script src="../JS/jquery.min.js"></script>    <script src="../JS/darmode.js"></script>
     <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />

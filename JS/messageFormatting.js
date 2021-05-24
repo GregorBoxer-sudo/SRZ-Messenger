@@ -35,16 +35,11 @@ function setEmoji(text) {
     ]
 
     for(let i = 0; i < emojiList.length; i++){
-        if length === emojiList[][]
+        if (length === emojiList[i][0].length)
+            hasEmoji = true
         text = text.replace(emojiList[i][0], emojiList[i][1])
     }
 
-    text = text.replace("<3", "&#x2764;&#xfe0f; ") //❤️
-    text = text.replace("</3", "&#x1f494; ") //💔
-    text = text.replace("<+3", "&#10084;&#8205;&#129657; ") //❤️‍🩹 (mending heart)
-
-    if (length < 4 && length !== text.length)
-        hasEmoji = true
     return text
 }
 
