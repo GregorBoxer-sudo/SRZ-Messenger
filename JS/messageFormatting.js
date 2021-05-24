@@ -44,7 +44,20 @@ function setEmoji(text) {
 }
 
 function setFormattingHTML(text){
-    text = text.replace("/n", "<br>")
+    let formattingList = [
+        ["/n", "<br>"], //linebreak
+        ["/b{", "<p style='color: blue' class='blankP'>"], //blue
+        ["/r{", "<p style='color: red' class='blankP'>"], //red
+        ["/g{", "<p style='color: green' class='blankP'>"], //green
+        ["/y{", "<p style='color: yellow' class='blankP'>"], //yellow
+        ["/o{", "<p style='color: orange' class='blankP'>"], //yellow
+        ["/p{", "<p style='color: purple' class='blankP'>"] //purple
+        ["}", "</p>"]//p end
+    ]
+
+    for(let i = 0; i < formattingList.length; i++){
+        text = text.replace(formattingList[i][0], formattingList[i][1])
+    }
 
     return text
 }
