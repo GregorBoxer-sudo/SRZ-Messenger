@@ -61,6 +61,7 @@ function setFormattingHTML(text) {
         ["/o{", "<p style='color: orange' class='blankP'>"], //yellow
         ["/p{", "<p style='color: purple' class='blankP'>"], //purple
         ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
+        ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
         ["}", "</p>"]//p end
     ]
 
