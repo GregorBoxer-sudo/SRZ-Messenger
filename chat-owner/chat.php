@@ -29,18 +29,12 @@
         <script src="../JS/crypto.js"></script>
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
         <script src="../JS/keyListener.js"></script>
+        <script src="../JS/hideKey.js"></script>
         <script>
-            function hideID() {
-                if (document.getElementById('printKey').innerHTML == 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">click to show / hide</a>') {
-                    document.getElementById('printKey').innerHTML = 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">'+sessionStorage.getItem('key')+'</a>';
-                } else {
-                    document.getElementById('printKey').innerHTML = 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">click to show / hide</a>';
-                }
-            }
             $(document).ready(function(){
                 getMessages();
                 let interval = setInterval(getMessages, 100);
-                document.getElementById('printKey').innerHTML = 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">click to show / hide</a>';
+                document.getElementById('printKey').innerText = sessionStorage.getItem('key')
                 //todo es anders lösen, dass ich nciht die gnaze zeit nach den nachrichten frage sonder man halt nur einzelne hat und dann noch überhaupt nachfrgaen ob da in dem directory was drin ist damit es keine errrs wirft
                 //todo in der php file werden sekunden benutzt,da kann man evtl mikrosekunden benutzen
                 //TODO FIND ERROR IN FILESTUFF ALSO FEHLER FINDEN BEI DEM ZIPPEN, DENN DA WIRFT ER NEN FEHLER DESWEGEN FUNKTIONIERT ES GLAUBE NICHT
@@ -111,7 +105,7 @@
         </div>
 
         <p class="chatIDP">ChatID: <?php echo $_POST['chatID'];?></p>
-        <p class="chatIDP" id="printKey"></p>
+    <p class="chatIDP">Encryption-Key: <a class="keyHidden" id="printKey" onclick="hideKey()"></a></p>
         <br>
 
     <div class="interactionContainer">

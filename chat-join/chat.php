@@ -28,18 +28,12 @@
     <script src="../JS/crypto.js"></script>
     <script src="../JS/keyListener.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
+    <script src="../JS/hideKey.js"></script>
     <script>
-        function hideID() {
-            if (document.getElementById('printKey').innerHTML == 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">click to show / hide</a>') {
-                document.getElementById('printKey').innerHTML = 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">'+sessionStorage.getItem('key')+'</a>';
-            } else {
-                document.getElementById('printKey').innerHTML = 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">click to show / hide</a>';
-            }
-        }
         $(document).ready(function(){
             getMessages();
             let interval = setInterval(getMessages, 100);
-            document.getElementById('printKey').innerHTML = 'Encryption-Key: <a onclick="hideID()" style="text-decoration: underline">click to show / hide</a>';
+            document.getElementById('printKey').innerText = sessionStorage.getItem('key');
         })
     </script>
     <script>
@@ -110,7 +104,7 @@
 </div>
 
 <p class="chatIDP">ChatID: <?php echo $_SESSION['chatID'];?></p>
-<p class="chatIDP" id="printKey"></p>
+<p class="chatIDP">Encryption-Key: <a class="keyHidden" id="printKey" onclick="hideKey()"></a></p>
 <br>
 
 <div class="interactionContainer">

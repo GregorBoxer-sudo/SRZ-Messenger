@@ -24,7 +24,24 @@
 .chatIDP{
     color: var(--inconspicuous);
     text-align: center;
+    margin-bottom: 0;
+    margin-top: 0.5em;
 }
+.keyHidden{
+    margin: 0;
+    background: var(--spoiler);
+    color: var(--spoiler);
+    text-align: center;
+    width: 5%;
+}
+.keyVisible{
+    margin: 0;
+    background: var(--spoiler);
+    color: var(--inconspicuous);
+    text-align: center;
+    width: 5%;
+}
+
 .seeMessages{
     margin: 1em;
     margin-bottom: 0;
@@ -100,7 +117,7 @@
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
-    margin-top: 2em;
+    margin-top: 1.5em;
 
     border-width: 1px;
     border-color: var(--boderColorMessageBackground);

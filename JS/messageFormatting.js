@@ -231,9 +231,9 @@ function commands(text) {
             text = '<a target="_blank" href="https://' + text.substring(12, text.length) + '.wikipedia.org/wiki/Special:Random" style="text-decoration: underline">Random Wiki ' + text.substring(12, text.length) + '</a>';
         }
     } else if (text.startsWith('!randomSC')) {
-        var chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        var randomGen = "";
-        for (var i = 0; i < 2; i++) {
+        let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        let randomGen = "";
+        for (let i = 0; i < 2; i++) {
             randomGen += chars[Math.floor(Math.random() * 26)];
         }
         randomGen += (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
