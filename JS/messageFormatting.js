@@ -14,7 +14,7 @@ function countEmojis(str) {
 }
 
 function getTime(rawTime) {
-    let date = new Date(parseInt(rawTime) * 1000);
+    let date = new Date(parseInt(rawTime));
     let hour = date.getHours();
     let minutes = date.getMinutes()
     if (hour < 10)
@@ -196,6 +196,7 @@ function biggerEmojiTest(decryptedMessage, resUser, time) {
     let formattedText = "";
     decryptedMessage = setFormattingHTML(decryptedMessage);
     decryptedMessage = setEmoji(decryptedMessage);
+    decryptedMessage = commands(decryptedMessage);
     if (regex.test(decryptedMessage) && countEmojis(decryptedMessage) === 1 || hasEmoji) {
         if (resUser === user)
             formattedText = "<div class='yourMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>";
@@ -277,8 +278,6 @@ function formatMessage() {
         if (subMessage === '') {
             subMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
         }
-
-        subMessage = commands(subMessage);
 
         if (resUser !== lastUser) {
             if (i !== 0 && i !== subMessage.length) {
