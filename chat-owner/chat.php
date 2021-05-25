@@ -39,7 +39,7 @@
             function sendMessage(){
                 let message = document.getElementsByClassName("MessageInputField")[0].value
                 if (message !== ""){
-                    let seconds = parseInt(new Date().getTime() / 1000);
+                    let seconds = parseInt(new Date().getTime());
                     message = checkLinebreak(message);
                     messages[messages.length] = {"user": user, "time": seconds, "message": message}
                     formatMessage();

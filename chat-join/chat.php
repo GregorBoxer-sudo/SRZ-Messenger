@@ -38,7 +38,7 @@
         function sendMessage(){
             let message = document.getElementsByClassName("MessageInputField")[0].value;
             if (message !== ""){
-                let seconds = parseInt(new Date().getTime() / 1000);
+                let seconds = parseInt(new Date().getTime());
                 message = checkLinebreak(message)
                 messages[messages.length] = {"user": user, "time": seconds, "message": message}
                 formatMessage();
@@ -77,7 +77,7 @@
                             formatMessage();
                             return
                         }
-                        if(!(messages[messages.length-1]["time"] === response["time"] && messages[messages.length-1]["message"] === response["message"])){
+                        if(!(messages[messages.length-1]["time"] === response["time"] && messages[messages.length-1]["message"] === response["message"]) && response["user"] !== user){
                             messages[messages.length] = response
                             formatMessage();
                         }

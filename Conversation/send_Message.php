@@ -21,7 +21,7 @@ if (isset($message) && isset($chatID) && isset($user)) {
         $zip = new ZipArchive();
         $dir = dirname(dirname(__FILE__));
         $path = $dir . "/FILESYSTEM-Messages/" . sha1($chatID) . "/";
-        $filename = Strval(time()) . $user . '.pim';
+        $filename = Strval(((explode(" ", microtime()))[1])+(((explode(" ", microtime()))[0])*1000000)) . $user . '.pim';
         // Ordner erstellen wenn noch nicht vorhanden
         if (!is_dir($path)) {
             mkdir($path, 0777, true) || chmod($path, 0777);
