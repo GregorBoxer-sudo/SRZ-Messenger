@@ -12,6 +12,10 @@ tag.src = "https://www.youtube.com/iframe_api";
 let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+let lastUser = -1
+let lastMS
+let lastTime = 0
+
 function countEmojis(str) {
     const joiner = "\u{200D}";
     const split = str.split(joiner);
@@ -37,6 +41,31 @@ function getTime(rawTime) {
     return hour + ":" + minutes;
 }
 
+function commands(text) {
+    if (text.startsWith('!delete')) {
+        location.reload();
+    } else if (text.startsWith('!reload')) {
+        location.reload();
+    } else if (text.startsWith('!help')) {
+        text = '<a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki/Commands---Style---Emoji" style="text-decoration: underline">Click here for help!</a>';
+    } else if (text.startsWith('!randomWiki')) {
+        if (text === '!randomWiki') {
+            text = '<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random" style="text-decoration: underline">Random Wiki en</a>';
+        } else {
+            text = '<a target="_blank" href="https://' + text.substring(12, text.length) + '.wikipedia.org/wiki/Special:Random" style="text-decoration: underline">Random Wiki ' + text.substring(12, text.length) + '</a>';
+        }
+    } else if (text.startsWith('!randomSC')) {
+        let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        let randomGen = "";
+        for (let i = 0; i < 2; i++) {
+            randomGen += chars[Math.floor(Math.random() * 26)];
+        }
+        randomGen += (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+        console.log(randomGen);
+        text = '<a target="_blank" href="https://prnt.sc/' + randomGen + '" style="text-decoration: underline">Random Screenshot</a>';
+    }
+    return text;
+}
 function setEmoji(text) {
     let emojiList = [
         ["<3", "&#x2764;&#xfe0f; "], //❤️
@@ -169,7 +198,39 @@ function setEmoji(text) {
 
     return text
 }
+function setFormattingHTML(text) {
+    let formattingList = [
+        ["/n", "<br>"], //linebreak
+        ["/big{", "<p style='font-size: 3em' class='blankP'>"], //big text
+        ["/small{", "<p style='font-size: 0.5em' class='blankP'>"], //small text
+        ["/tiny{", "<p style='font-size: 0.5em' class='blankP'>"], //tiny text
+        ["/u{", "<p style='text-decoration: underline' class='blankP'>"], //underline
+        ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline
+        //todo italic
 
+        ["/spoiler{", "<p class='blankP spoiler spoilerHidden' onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
+
+        ["/d{", "<p style='color: var(--text)' class='blankP'>"], //default
+        ["/b{", "<p style='color: blue' class='blankP'>"], //blue
+        ["/r{", "<p style='color: red' class='blankP'>"], //red
+        ["/g{", "<p style='color: green' class='blankP'>"], //green
+        ["/y{", "<p style='color: yellow' class='blankP'>"], //yellow
+        ["/o{", "<p style='color: orange' class='blankP'>"], //orange
+        ["/p{", "<p style='color: purple' class='blankP'>"], //purple
+        ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
+        ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
+        ["}", "</p>"] //p end
+    ]
+
+    for (let i = 0; i < formattingList.length; i++) {
+        for (let a = 0; a < text.length; a++)
+            text = text.replace(formattingList[i][0], formattingList[i][1])
+    }
+
+    text = detectEmbed(text)
+
+    return text
+}
 function detectEmbed(text) {
     let linkList = [
         ["www.youtube.com/watch?v=", "<div id='player'></div>"],
@@ -210,100 +271,15 @@ function onPlayerStateChange(event) {
 function stopVideo() {
     player.stopVideo();
 }
-
 function setYoutubeVideo(){
     if (includesYTLink && document.getElementById("ytScript") !== null){
         onYouTubeIframeAPIReady()
     }
 }
 
-function setFormattingHTML(text) {
-    let formattingList = [
-        ["/n", "<br>"], //linebreak
-        ["/big{", "<p style='font-size: 3em' class='blankP'>"], //big text
-        ["/small{", "<p style='font-size: 0.5em' class='blankP'>"], //small text
-        ["/tiny{", "<p style='font-size: 0.5em' class='blankP'>"], //tiny text
-        ["/u{", "<p style='text-decoration: underline' class='blankP'>"], //underline
-        ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline
-        //todo italic
-
-        ["/spoiler{", "<p class='blankP spoiler spoilerHidden' onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
-
-        ["/d{", "<p style='color: var(--text)' class='blankP'>"], //default
-        ["/b{", "<p style='color: blue' class='blankP'>"], //blue
-        ["/r{", "<p style='color: red' class='blankP'>"], //red
-        ["/g{", "<p style='color: green' class='blankP'>"], //green
-        ["/y{", "<p style='color: yellow' class='blankP'>"], //yellow
-        ["/o{", "<p style='color: orange' class='blankP'>"], //orange
-        ["/p{", "<p style='color: purple' class='blankP'>"], //purple
-        ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
-        ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
-        ["}", "</p>"] //p end
-    ]
-
-    for (let i = 0; i < formattingList.length; i++) {
-        for (let a = 0; a < text.length; a++)
-            text = text.replace(formattingList[i][0], formattingList[i][1])
-    }
-
-    text = detectEmbed(text)
-
-    return text
-}
-
-function biggerEmojiTest(decryptedMessage, resUser, time) {
-    const regex = /(?=\p{Emoji})(?!\p{Number})/u; //find emojis and tripples them in size
-
-    let formattedText = "";
-    decryptedMessage = setFormattingHTML(decryptedMessage);
-    decryptedMessage = setEmoji(decryptedMessage);
-    decryptedMessage = commands(decryptedMessage);
-    if (regex.test(decryptedMessage) && countEmojis(decryptedMessage) === 1 || hasEmoji) {
-        if (resUser === user)
-            formattedText = "<div class='yourMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>";
-        else
-            formattedText = "<div class='opponentMessage' style='font-size: 3em'>" + decryptedMessage + "<br></div>"
-    } else { //normal text
-        if (resUser === user)
-            formattedText = "<div class='yourMessage'>" + decryptedMessage + "<br></div>";
-        else
-            formattedText = "<div class='opponentMessage'>" + decryptedMessage + "<br></div>"
-    }
-
-    hasEmoji = false
-    return formattedText;
-}
-
 function alertInjection() {
     alert('Pim found a possible Injection, that could harm you.\nIt could be a button, event or script.\nWe blocked it to protect you, your computer and the chat!');
 }
-
-function commands(text) {
-    if (text.startsWith('!delete')) {
-        location.reload();
-    } else if (text.startsWith('!reload')) {
-        location.reload();
-    } else if (text.startsWith('!help')) {
-        text = '<a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki/Commands---Style---Emoji" style="text-decoration: underline">Click here for help!</a>';
-    } else if (text.startsWith('!randomWiki')) {
-        if (text === '!randomWiki') {
-            text = '<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random" style="text-decoration: underline">Random Wiki en</a>';
-        } else {
-            text = '<a target="_blank" href="https://' + text.substring(12, text.length) + '.wikipedia.org/wiki/Special:Random" style="text-decoration: underline">Random Wiki ' + text.substring(12, text.length) + '</a>';
-        }
-    } else if (text.startsWith('!randomSC')) {
-        let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        let randomGen = "";
-        for (let i = 0; i < 2; i++) {
-            randomGen += chars[Math.floor(Math.random() * 26)];
-        }
-        randomGen += (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
-        console.log(randomGen);
-        text = '<a target="_blank" href="https://prnt.sc/' + randomGen + '" style="text-decoration: underline">Random Screenshot</a>';
-    }
-    return text;
-}
-
 function injectionProtection(text) {
     let formattingList = [
         ['onclick='],
@@ -318,55 +294,67 @@ function injectionProtection(text) {
     return text;
 }
 
+function biggerEmojiTest(text, resUser, time) {
+    let regex = /(?=\p{Emoji})(?!\p{Number})/u; //find emojis and tripples them in size
+
+    let formattedText = "";
+    if (regex.test(text) && countEmojis(text) === 1 || hasEmoji) {
+        if (resUser === user)
+            formattedText = "<div class='yourMessage' style='font-size: 3em'>" + text + "<br></div>";
+        else
+            formattedText = "<div class='opponentMessage' style='font-size: 3em'>" + text + "<br></div>"
+    } else { //normal text
+        if (resUser === user)
+            formattedText = "<div class='yourMessage'>" + text + "<br></div>";
+        else
+            formattedText = "<div class='opponentMessage'>" + text + "<br></div>"
+    }
+
+    hasEmoji = false
+    return formattedText;
+}
+
 /**
  * @param {*} response
  * @param {*} cryptoKey
  * @param {boolean} getMessageMode
  */
 function formatMessage() {
-    let htmlMessage = ""
-    let lastUser = -1
-    for (let i = 0; i < messages.length; i++) {
-        let resUser = messages[i]["user"]
-        let subMessage = messages[i]["message"]
-        let time = getTime(messages[i]["time"])
-        //console.log(resUser+" vs "+user);
-        if (resUser === user) {
+    let i = messages.length-1
+    let mesUser = messages[i]["user"]
+    let text = messages[i]["message"]
+    let time = getTime(messages[i]["time"])
+    if (text === '') text = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
 
-        }
-        subMessage = injectionProtection(subMessage);
+    console.log(messages)//todo time doesnt work
 
-        if (subMessage === '') {
-            subMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
-        }
+    text = injectionProtection(text);
+    text = setFormattingHTML(text);
+    text = setEmoji(text);
+    text = commands(text);
+    text = biggerEmojiTest(text, mesUser, time)
 
-        if (resUser !== lastUser) {
-            if (i !== 0 && i !== subMessage.length) {
-                if (resUser === user)
-                    htmlMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
-                else
-                    htmlMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
-                htmlMessage += "</div>"
-            }
-            htmlMessage += "<div>"
-            lastUser = resUser
 
-        }
-
-        let individualHTMLMessage = biggerEmojiTest(subMessage, resUser, time)
-
-        if (i === messages.length - 1) {
-            if (resUser === user)
-                individualHTMLMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
-            else
-                individualHTMLMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
-        }
-
-        htmlMessage += individualHTMLMessage;
-
-        let lastTime = parseInt(messages[i]["time"]) + (5 * 60)
+    if (lastTime > 0 && lastUser === mesUser){//300000
+        let timeDiv = document.getElementById("" + lastTime - 1);
+        timeDiv.parentNode.removeChild(timeDiv);
     }
-    document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
+
+
+    if (mesUser !== user)
+        text += "<div class='time' id='" + lastTime + "' style='text-align: left'>" + time + "</div>"
+    else
+        text += "<div class='time' id='" + lastTime + "' style='text-align: right'>" + time + "</div>"
+    lastTime += 1
+    lastUser = mesUser
+    lastMS = messages[i]["time"]
+
+
+    if (lastTime === 1)
+        document.getElementsByClassName("seeMessages")[0].innerHTML = ""
+    let message = document.createElement("div");
+    message.innerHTML = text
+    document.getElementsByClassName("seeMessages")[0].appendChild(message);
     document.getElementsByClassName("seeMessages")[0].scrollTo(0, document.body.scrollHeight);
 
     setYoutubeVideo()
