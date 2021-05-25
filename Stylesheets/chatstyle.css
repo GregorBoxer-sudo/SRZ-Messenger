@@ -172,6 +172,10 @@
     color: #1f6fac;
 }
 
+#player{
+    border-radius: 1em;
+}
+
 @keyframes rainbowAnimation {
     0% {color: red;}
     20% {color: orange;}

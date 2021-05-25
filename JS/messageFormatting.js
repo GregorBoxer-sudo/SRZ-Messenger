@@ -1,4 +1,16 @@
 let hasEmoji = false
+let includesYTLink = false
+let videoID
+let done = false;
+
+let player;
+
+let tag = document.createElement('script');
+tag.id = "ytScript"
+tag.src = "https://www.youtube.com/iframe_api";
+
+let firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function countEmojis(str) {
     const joiner = "\u{200D}";
@@ -158,6 +170,53 @@ function setEmoji(text) {
     return text
 }
 
+function detectEmbed(text) {
+    let linkList = [
+        ["www.youtube.com/watch?v=", "<div id='player'></div>"],
+        ["youtu.be/", "<div id='player'></div>"]
+    ]
+
+    for (let i = 0; i < linkList.length; i++){
+        if (text.includes(linkList[i][0])){
+            includesYTLink = true;
+            text += "<br><div id='player'></div>"
+            videoID = text.substring(text.indexOf(linkList[i][0])+linkList[i][0].length, text.indexOf(linkList[i][0])+linkList[i][0].length+11)
+        }
+    }
+
+    return text
+}
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '288',
+        width: '512',
+        videoId: videoID,
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+    }
+}
+function stopVideo() {
+    player.stopVideo();
+}
+
+function setYoutubeVideo(){
+    if (includesYTLink && document.getElementById("ytScript") !== null){
+        onYouTubeIframeAPIReady()
+    }
+}
+
 function setFormattingHTML(text) {
     let formattingList = [
         ["/n", "<br>"], //linebreak
@@ -186,6 +245,8 @@ function setFormattingHTML(text) {
         for (let a = 0; a < text.length; a++)
             text = text.replace(formattingList[i][0], formattingList[i][1])
     }
+
+    text = detectEmbed(text)
 
     return text
 }
@@ -269,7 +330,7 @@ function formatMessage() {
         let resUser = messages[i]["user"]
         let subMessage = messages[i]["message"]
         let time = getTime(messages[i]["time"])
-            //console.log(resUser+" vs "+user);
+        //console.log(resUser+" vs "+user);
         if (resUser === user) {
 
         }
@@ -308,4 +369,5 @@ function formatMessage() {
     document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
     document.getElementsByClassName("seeMessages")[0].scrollTo(0, document.body.scrollHeight);
 
+    setYoutubeVideo()
 }
