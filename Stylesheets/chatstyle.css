@@ -161,7 +161,10 @@
     color: var(--spoiler);
     background: var(--spoiler);
 }
-.spoiler:hover{
+.spoilerHidden{
+    color: var(--spoiler);
+}
+.spoilerVisible{
     color: var(--text);
 }
 

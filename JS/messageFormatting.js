@@ -168,14 +168,14 @@ function setFormattingHTML(text) {
         ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline
         //todo italic
 
-        ["/spoiler{", "<p class='blankP spoiler'>"], //spoiler
+        ["/spoiler{", "<p class='blankP spoiler spoilerHidden' onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
 
         ["/d{", "<p style='color: var(--text)' class='blankP'>"], //default
         ["/b{", "<p style='color: blue' class='blankP'>"], //blue
         ["/r{", "<p style='color: red' class='blankP'>"], //red
         ["/g{", "<p style='color: green' class='blankP'>"], //green
         ["/y{", "<p style='color: yellow' class='blankP'>"], //yellow
-        ["/o{", "<p style='color: orange' class='blankP'>"], //yellow
+        ["/o{", "<p style='color: orange' class='blankP'>"], //orange
         ["/p{", "<p style='color: purple' class='blankP'>"], //purple
         ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
         ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
