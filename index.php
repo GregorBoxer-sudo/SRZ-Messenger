@@ -4,6 +4,9 @@
         <title>PIM-Choose</title>
         <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <script src="JS/darkmode.js"></script>
+        <script>
+            sessionStorage.clear();
+        </script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
