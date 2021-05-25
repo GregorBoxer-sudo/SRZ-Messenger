@@ -29,26 +29,21 @@
     <script src="../JS/keyListener.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
     <script src="../JS/hideKey.js"></script>
-    <script>
-        $(document).ready(function(){
-            getMessages();
-            let interval = setInterval(getMessages, 100);
-            document.getElementById('printKey').innerText = sessionStorage.getItem('key');
-        })
-    </script>
+    <script src="../JS/onChatReady.js"></script>
+    <script src="../JS/checkLinebreak.js"></script>
     <script>
         user = 1
         let messages = [];
 
         function sendMessage(){
-            if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+            let message = document.getElementsByClassName("MessageInputField")[0].value;
+            if (message !== ""){
                 let seconds = parseInt(new Date().getTime() / 1000);
-                let localData = { "user": user, "time" : seconds, "message": document.getElementsByClassName("MessageInputField")[0].value};
-
-                messages[messages.length] = localData
+                message = checkLinebreak(message)
+                messages[messages.length] = {"user": user, "time": seconds, "message": message}
                 formatMessage();
 
-                let sendData = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))};
+                let sendData = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(message, sessionStorage.getItem('key'))};
 
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', '../Conversation/send_Message.php', true);

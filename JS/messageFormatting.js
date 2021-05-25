@@ -151,7 +151,8 @@ function setEmoji(text) {
     for (let i = 0; i < emojiList.length; i++) {
         if (text === emojiList[i][0])
             hasEmoji = true
-        text = text.replace(emojiList[i][0], emojiList[i][1])
+        for (let a = 0; a < text.length; a++)
+            text = text.replace(emojiList[i][0], emojiList[i][1])
     }
 
     return text
@@ -182,7 +183,8 @@ function setFormattingHTML(text) {
     ]
 
     for (let i = 0; i < formattingList.length; i++) {
-        text = text.replace(formattingList[i][0], formattingList[i][1])
+        for (let a = 0; a < text.length; a++)
+            text = text.replace(formattingList[i][0], formattingList[i][1])
     }
 
     return text

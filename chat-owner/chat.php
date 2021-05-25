@@ -30,29 +30,21 @@
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
         <script src="../JS/keyListener.js"></script>
         <script src="../JS/hideKey.js"></script>
-        <script>
-            $(document).ready(function(){
-                getMessages();
-                let interval = setInterval(getMessages, 100);
-                document.getElementById('printKey').innerText = sessionStorage.getItem('key')
-                //todo es anders lösen, dass ich nciht die gnaze zeit nach den nachrichten frage sonder man halt nur einzelne hat und dann noch überhaupt nachfrgaen ob da in dem directory was drin ist damit es keine errrs wirft
-                //todo in der php file werden sekunden benutzt,da kann man evtl mikrosekunden benutzen
-                //TODO FIND ERROR IN FILESTUFF ALSO FEHLER FINDEN BEI DEM ZIPPEN, DENN DA WIRFT ER NEN FEHLER DESWEGEN FUNKTIONIERT ES GLAUBE NICHT
-            })
-        </script>
+        <script src="../JS/onChatReady.js"></script>
+        <script src="../JS/checkLinebreak.js"></script>
         <script>
             user = 0
             let messages = [];
 
             function sendMessage(){
-                if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
+                let message = document.getElementsByClassName("MessageInputField")[0].value
+                if (message !== ""){
                     let seconds = parseInt(new Date().getTime() / 1000);
-                    let localData = { "user": user, "time" : seconds, "message": document.getElementsByClassName("MessageInputField")[0].value};
-
-                    messages[messages.length] = localData
+                    message = checkLinebreak(message);
+                    messages[messages.length] = {"user": user, "time": seconds, "message": message}
                     formatMessage();
 
-                    let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))};
+                    let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(message, sessionStorage.getItem('key'))};
 
                     let xhr = new XMLHttpRequest();
                     xhr.open('POST', '../Conversation/send_Message.php', true);
