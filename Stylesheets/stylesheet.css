@@ -428,10 +428,11 @@ div{
     height: 5%;
     width: 100%;
 
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 300;
     text-align: left;
-    padding-left: 0.25em;
+    padding: 0.25em;
+    padding-left: 0.5em;
     color: var(--text);
     resize: none;
 
@@ -458,7 +459,7 @@ div{
 
 .interactionContainer{
     padding-top: 1em;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.25em;
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;

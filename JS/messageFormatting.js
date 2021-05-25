@@ -206,7 +206,7 @@ function setFormattingHTML(text) {
         ["/tiny{", "<p style='font-size: 0.5em' class='blankP'>"], //tiny text
         ["/u{", "<p style='text-decoration: underline' class='blankP'>"], //underline
         ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline
-        //todo italic
+        ["/italic{", "<p style='font-style: italic;' class='blankP'>"], //italic
 
         ["/spoiler{", "<p class='blankP spoiler spoilerHidden' onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
 
@@ -226,9 +226,6 @@ function setFormattingHTML(text) {
         for (let a = 0; a < text.length; a++)
             text = text.replace(formattingList[i][0], formattingList[i][1])
     }
-
-    text = detectEmbed(text)
-
     return text
 }
 function detectEmbed(text) {
@@ -281,7 +278,7 @@ function alertInjection() {
     alert('Pim found a possible Injection, that could harm you.\nIt could be a button, event or script.\nWe blocked it to protect you, your computer and the chat!');
 }
 function injectionProtection(text) {
-    let formattingList = [
+    let formattingList = [//todo idk ob das so sicher ist, da du in den script tag nen src reinhauen kannst
         ['onclick='],
         ['onload='],
         ['<button>'],
@@ -297,7 +294,7 @@ function injectionProtection(text) {
 function biggerEmojiTest(text, resUser, time) {
     let regex = /(?=\p{Emoji})(?!\p{Number})/u; //find emojis and tripples them in size
 
-    let formattedText = "";
+    let formattedText;
     if (regex.test(text) && countEmojis(text) === 1 || hasEmoji) {
         if (resUser === user)
             formattedText = "<div class='yourMessage' style='font-size: 3em'>" + text + "<br></div>";
@@ -332,7 +329,8 @@ function formatMessage() {
     text = setFormattingHTML(text);
     text = setEmoji(text);
     text = commands(text);
-    text = biggerEmojiTest(text, mesUser, time)
+    text = detectEmbed(text);
+    text = biggerEmojiTest(text, mesUser, time);
 
 
     if (lastTime > 0 && lastUser === mesUser){//300000
