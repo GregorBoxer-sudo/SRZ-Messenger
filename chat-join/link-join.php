@@ -11,7 +11,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM-Join</title>
-        <script src="../JS/darmode.js"></script>
+        <script src="../JS/darkmode.js"></script>
         <script>
             function proof(input){
                 if (input.value.length === 19){

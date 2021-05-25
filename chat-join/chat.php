@@ -17,7 +17,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>PIM-Chat</title>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
-    <script src="../JS/jquery.min.js"></script>    <script src="../JS/darmode.js"></script>
+    <script src="../JS/jquery.min.js"></script>    <script src="../JS/darkmode.js"></script>
     <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,6 +26,7 @@
     <script src="../JS/messageFormatting.js"></script>
     <script src="../JS/"></script>
     <script src="../JS/crypto.js"></script>
+    <script src="../JS/keyListener.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
     <script>
         $(document).ready(function(){
@@ -34,29 +35,29 @@
         })
     </script>
     <script>
-
         user = 1
-        let messages = {};
+        let messages = [];
 
         function sendMessage(){
             if (document.getElementsByClassName("MessageInputField")[0].value !== ""){
-                console.log("send")
-                let data = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))};
+                let seconds = parseInt(new Date().getTime() / 1000);
+                let localData = { "user": user, "time" : seconds, "message": document.getElementsByClassName("MessageInputField")[0].value};
+
+                messages[messages.length] = localData
+                formatMessage();
+
+                let sendData = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))};
+
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', '../Conversation/send_Message.php', true);
                 xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
                 xhr.onreadystatechange = function () {
                 };
 
-                xhr.send(JSON.stringify(data));
-                let seconds = new Date().getTime() / 1000;
-                let data2 = [{ "user": user, "time" : seconds, "message": encrypt(document.getElementsByClassName("MessageInputField")[0].value, sessionStorage.getItem('key'))}];
-                formatMessage(JSON.stringify(data2), sessionStorage.getItem('key'), false);
+                xhr.send(JSON.stringify(sendData));
+
                 document.getElementsByClassName("MessageInputField")[0].value = "";
-                getMessages();
                 return false;
-            }else{
-                //todo alert
             }
         }
         function getMessages(){
@@ -68,18 +69,27 @@
             xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    messages = formatMessage(xhr.response, sessionStorage.getItem('key'),true);
+                    let response = JSON.parse(JSON.parse((xhr.response)))[0]
+
+                    if(response !== undefined){
+                        response["time"] = parseInt(response["time"])
+                        response["message"] = decrypt(response["message"], sessionStorage.getItem('key'))
+
+                        if(messages[messages.length-1] === undefined){
+                            messages[messages.length] = response
+                            formatMessage();
+                            return
+                        }
+                        if(!(messages[messages.length-1]["time"] === response["time"] && messages[messages.length-1]["message"] === response["message"])){
+                            messages[messages.length] = response
+                            formatMessage();
+                        }
+                    }
                 }
             };
             xhr.send(JSON.stringify(data));
             return false;
         }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.code === "Enter")
-                sendMessage();
-        })
-
     </script>
 
 

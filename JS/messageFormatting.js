@@ -235,70 +235,50 @@ function injectionProtection(text) {
  * @param {*} cryptoKey
  * @param {boolean} getMessageMode
  */
-function formatMessage(response, cryptoKey, getMessageMode) {
-    // let res = JSON.parse(response);
-    if (!getMessageMode) {
-        console.log("start")
-        console.log(response)
-        console.log(JSON.parse(response))
-        console.log(JSON.parse(JSON.parse(response)))
-        console.log("end")
-    }
-    let res = JSON.parse(JSON.parse(response));
-    // }
-    if (!getMessageMode){
-        console.log(res.length +","+messages.length)
-    }
-    if (res.length !== messages.length) {
-        let htmlMessage = ""
-        let lastUser = -1
-        for (let i = 0; i < res.length; i++) {
-            let resUser = res[i]["user"]
-            let rawMessage = res[i]["message"]
-            let decryptedMessage = decrypt(rawMessage, cryptoKey)
-            let time = getTime(res[i]["time"])
-            console.log(resUser+" vs "+user);
-            if (resUser === user) {
-                if (getMessageMode) {
-                    console.log("continue");
-                    continue;
-                }
-            }
-            decryptedMessage = injectionProtection(decryptedMessage);
+function formatMessage() {
+    let htmlMessage = ""
+    let lastUser = -1
+    for (let i = 0; i < messages.length; i++) {
+        let resUser = messages[i]["user"]
+        let subMessage = messages[i]["message"]
+        let time = getTime(messages[i]["time"])
+        //console.log(resUser+" vs "+user);
+        if (resUser === user) {
 
-            if (decryptedMessage === '') {
-                decryptedMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
-            }
-
-            if (resUser !== lastUser) {
-                if (i !== 0 && i !== decryptedMessage.length) {
-                    if (resUser === user)
-                        htmlMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
-                    else
-                        htmlMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
-                    htmlMessage += "</div>"
-                }
-                htmlMessage += "<div>"
-                lastUser = resUser
-                console.log(i)
-            }
-
-            let individualHTMLMessage = biggerEmojiTest(decryptedMessage, resUser, time)
-
-            if (i === res.length - 1) {
-                if (resUser === user)
-                    individualHTMLMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
-                else
-                    individualHTMLMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
-            }
-
-            htmlMessage += individualHTMLMessage;
-
-            let lastTime = parseInt(res[i]["time"]) + (5 * 60)
         }
-        // document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
-         document.getElementsByClassName("seeMessages")[0].innerHTML += htmlMessage
-        document.getElementsByClassName("seeMessages")[0].scrollTo(0, document.body.scrollHeight);
+        subMessage = injectionProtection(subMessage);
+
+        if (subMessage === '') {
+            subMessage = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
+        }
+
+        if (resUser !== lastUser) {
+            if (i !== 0 && i !== subMessage.length) {
+                if (resUser === user)
+                    htmlMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
+                else
+                    htmlMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
+                htmlMessage += "</div>"
+            }
+            htmlMessage += "<div>"
+            lastUser = resUser
+
+        }
+
+        let individualHTMLMessage = biggerEmojiTest(subMessage, resUser, time)
+
+        if (i === messages.length - 1) {
+            if (resUser === user)
+                individualHTMLMessage += "<div class='time' style='text-align: right'>" + time + "</div>"
+            else
+                individualHTMLMessage += "<div class='time' style='text-align: left'>" + time + "</div>"
+        }
+
+        htmlMessage += individualHTMLMessage;
+
+        let lastTime = parseInt(messages[i]["time"]) + (5 * 60)
     }
-    return res
+    document.getElementsByClassName("seeMessages")[0].innerHTML = htmlMessage
+    document.getElementsByClassName("seeMessages")[0].scrollTo(0, document.body.scrollHeight);
+
 }

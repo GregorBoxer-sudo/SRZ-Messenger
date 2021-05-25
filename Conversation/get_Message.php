@@ -67,7 +67,7 @@
             $zip->close();
         }
         foreach ($filesToDelete as $file){
-    //        echo 'Deleted: '.$file;
+            //echo 'Deleted: '.$file;
             unlink($file);
         }
     } else $response->error = "KEINE CHAT-ID/UserID gefunden";

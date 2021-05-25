@@ -6,7 +6,7 @@
         <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css"/>
         <!-- Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Quicksand:300,500" rel="stylesheet">
-        <script src="JS/darmode.js"></script>
+        <script src="JS/darkmode.js"></script>
         <!--Montserrat:300-->
     </head>
     <body>
@@ -26,7 +26,7 @@
             If your still want to test it, then click "TRY IT" </p>
         <div class = progressbarContainer><div class = progressbar></div></div>
     
-        <button onclick="window.location.href = 'choose.php'" class="slideButton" id="tryIt">TRY IT</button>
+        <button onclick="window.location.href = 'index.php'" class="slideButton" id="tryIt">TRY IT</button>
     
         <div class = linkContainer>
             <a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger" class = linkImages id = github><img src="images/githubBlack.png" width = "166" height = "166" id="githubImage" alt="GitHub"></a>

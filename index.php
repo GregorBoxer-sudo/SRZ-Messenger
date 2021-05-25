@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <title>PIM-Choose</title>
         <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
-        <script src="JS/darmode.js"></script>
+        <script src="JS/darkmode.js"></script>
     </head>
     <body class="preload dark" onload="removePreload()">
         <!--navigation bar-->
