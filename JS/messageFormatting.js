@@ -26,8 +26,6 @@ function getTime(rawTime) {
 }
 
 function setEmoji(text) {
-    let length = text.length
-
     let emojiList = [
         ["<3", "&#x2764;&#xfe0f; "], //❤️
         ["</3", "&#x1f494; "], //💔
@@ -149,12 +147,11 @@ function setEmoji(text) {
         [":merlin", "&#128571; "] //😻
     ]
 
-    for (let i = 0; i < emojiList.length; i++) {
-        let tempLength = emojiList[i][0].length
-        text = text.replace(emojiList[i][0], emojiList[i][1])
 
-        if (length === tempLength && length !== text.length)
+    for (let i = 0; i < emojiList.length; i++) {
+        if (text === emojiList[i][0])
             hasEmoji = true
+        text = text.replace(emojiList[i][0], emojiList[i][1])
     }
 
     return text
