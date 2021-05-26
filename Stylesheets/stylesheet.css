@@ -633,10 +633,6 @@ and (orientation: portrait){
         height: 2em;
         margin-top: 0.5em;
     }
-    .input{
-        font-size: 16px;
-    }
-
 
     .interactionContainer{
         width: 90%;
