@@ -15,13 +15,19 @@ $message = $decoded['message'];
 
 $response = new stdClass();
 
+function microtime_float()
+{
+    list($usec, $sec) = explode(" ", microtime());
+    return strval(round(((float)$usec + (float)$sec)*1000));
+}
+
 //require('session.php');
 if (isset($message) && isset($chatID) && isset($user)) {
     if ($user == "1" || $user == "0") {
         $zip = new ZipArchive();
         $dir = dirname(dirname(__FILE__));
         $path = $dir . "/FILESYSTEM-Messages/" . sha1($chatID) . "/";
-        $filename = Strval(((explode(" ", microtime()))[1])+(((explode(" ", microtime()))[0])*1000000)) . $user . '.pim';
+        $filename = microtime_float() . $user . '.pim';
         // Ordner erstellen wenn noch nicht vorhanden
         if (!is_dir($path)) {
             mkdir($path, 0777, true) || chmod($path, 0777);

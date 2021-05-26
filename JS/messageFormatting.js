@@ -49,7 +49,7 @@ function commands(text) {
     } else if (text.startsWith('!clear')) {
         location.reload();
     } else if (text.startsWith('!help')) {
-        text = '<a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki/Commands---Style---Emoji" style="text-decoration: underline">Click here for help!</a>';
+        text = '<a target="_blank" href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki/Commands---Style---Emoji" style="text-decoration: underline">Click here for help!</a>';
     } else if (text.startsWith('!randomWiki')) {
         if (text === '!randomWiki') {
             text = '<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random" style="text-decoration: underline">Random Wiki en</a>';
@@ -235,18 +235,26 @@ function setFormattingHTML(text) {
 
 function detectEmbed(text) {
     let ytIsLink = false
-    let urlRegex = /(https?:\/\/[^\s]+)/g;
     let ytLinkList = [ //todo only one item
         ["www.youtube.com/watch?v=", "<div id='player'></div>"],
         ["youtu.be/", "<div id='player'></div>"]
     ]
 
+    let isYT = false;
+
     for (let i = 0; i < ytLinkList.length; i++) {
         if (text.includes(ytLinkList[i][0])) {
+            isYT = true;
             includesYTLink = true;
-            ytIsLink = true
+            ytIsLink = true;
+            text = '<a target="_blank" href="' + text + '">' + text + '</a>'
             text += "<br><div id='player'></div>"
             videoID = text.substring(text.indexOf(ytLinkList[i][0]) + ytLinkList[i][0].length, text.indexOf(ytLinkList[i][0]) + ytLinkList[i][0].length + 11)
+        }
+    }
+    if (text.includes('https://') || text.includes('http://')) {
+        if (!isYT) {
+            text = '<a target="_blank" href="' + text + '">' + text + '</a>'
         }
     }
 
@@ -370,6 +378,8 @@ function formatMessage() {
         text = detectEmbed(text);
         text = biggerEmojiTest(text, mesUser, time);
     }
+
+    console.log(time)
 
     if (lastTime > 0 && lastUser === mesUser) { //300000
         let timeDiv = document.getElementById("" + lastTime - 1);

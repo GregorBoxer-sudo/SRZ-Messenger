@@ -43,6 +43,7 @@
                 let message = document.getElementsByClassName("MessageInputField")[0].value
                 if (message !== ""){
                     let seconds = parseInt(new Date().getTime());
+                    console.log(seconds)
                     message = checkLinebreak(message);
                     messages[messages.length] = {"user": user, "time": seconds, "message": message}
                     formatMessage();
@@ -64,7 +65,6 @@
 
             function getMessages(){
                 let data = { "user": user, "chatID": '<?php echo $guid?>' };
-
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', '../Conversation/get_Message.php', true);
                 xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");

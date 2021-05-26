@@ -49,12 +49,12 @@
 
                     $zip->setPassword($chatID);
                     $msg = $zip->getFromName("msg.txt");
-                    if (isset($file[10]) && ($file[10] == "1" || $file[10] == "0")) {
+                    if (isset($file[13]) && ($file[13] == "1" || $file[13] == "0")) {
                         if ($user == "1" || $user == "0") {
-                            $time = substr($file, 0, 10);
-                            $json .= "{\"user\": $file[10], \"time\": \" $time\", \"message\": \"$msg\"}, ";
+                            $time = substr($file, 0, 13);
+                            $json .= "{\"user\": $file[13], \"time\": \" $time\", \"message\": \"$msg\"}, ";
 
-                            if ($user != $file[10]) {
+                            if ($user != $file[13]) {
                                 array_push($filesToDelete, $path . $file);
                             }
 
