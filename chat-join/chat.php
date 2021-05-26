@@ -1,4 +1,5 @@
 <?php
+    require("../PHP/darkMode.php");
     require('../PHP/session.php');
     require('../PHP/idGen.php');
     $guid = $_SESSION['chatID'];
@@ -24,7 +25,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <script src="../JS/encryption.js"></script>
     <script src="../JS/messageFormatting.js"></script>
-    <script src="../JS/"></script>
+    <script src="../JS/cookieFunctions.js"></script>
+    <script src="../JS/darkmode.js"></script>
     <script src="../JS/crypto.js"></script>
     <script src="../JS/keyListener.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>-->
@@ -92,7 +94,7 @@
 
 </head>
 
-<body class="dark" id="bodyChat"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
+<body class="<?php echo darkMode()?>" id="bodyChat" onload="isDarkMode()"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
 <div class="navigationBar">
     <a class="navItem" id="home" href="../index.php">Pim</a>
     <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>

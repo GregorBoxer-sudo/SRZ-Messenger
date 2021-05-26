@@ -1,4 +1,5 @@
 <?php
+    require("../PHP/darkMode.php");
     require('../PHP/session.php');
     require('../PHP/idGen.php');
     $guid = $_POST['chatID'];
@@ -23,6 +24,7 @@
         <script src="../JS/jquery.min.js"></script>
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <link href="../Stylesheets/chatstyle.css" rel="stylesheet" type="text/css" />
+        <script src="../JS/cookieFunctions.js"></script>
         <script src="../JS/darkmode.js"></script>
         <script src="../JS/encryption.js"></script>
         <script src="../JS/messageFormatting.js"></script>
@@ -59,7 +61,6 @@
                 }
             }
             function getMessages(){
-                console.log("get")
                 let data = { "user": user, "chatID": '<?php echo $guid?>' };
 
                 let xhr = new XMLHttpRequest();
@@ -90,7 +91,7 @@
             }
         </script>
     </head>
-    <body class="dark" id="bodyChat"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
+    <body class="<?php echo darkMode()?>" id="bodyChat" onload="isDarkMode()"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Pim</a>
             <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
@@ -124,5 +125,4 @@
         <button onclick="changeKey()" class="smallButtons" id="changeEncryptionButton">change Encryptionkey</button>
     </div>
     </body>
-
 </html>

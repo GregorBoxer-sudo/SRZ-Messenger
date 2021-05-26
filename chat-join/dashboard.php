@@ -1,4 +1,5 @@
 <?php
+    require("../PHP/darkMode.php");
     require('../PHP/session.php');
     require('../PHP/idGen.php');
     setRandNum($_SESSION['rn'], $_SESSION['chatID']);
@@ -10,6 +11,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM</title>
+        <script src="../JS/cookieFunctions.js"></script>
         <script src="../JS/darkmode.js"></script>
         <script src="../JS/copyToClipboard.js"></script>
         <script>
@@ -42,7 +44,7 @@
             }
         </script>
     </head>
-    <body class="preload dark" onload="removePreload()">
+    <body class="<?php echo darkMode()?>" onload="removePreload(); isDarkMode()">
         <!--navigation bar-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Home</a>

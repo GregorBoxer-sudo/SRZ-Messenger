@@ -1,4 +1,5 @@
 <?php
+    require("../PHP/darkMode.php");
     require('../PHP/session_kill.php');
     require('../PHP/session.php');
     if (isset($_GET['error'])) {
@@ -11,6 +12,7 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
         <title>PIM-Join</title>
+        <script src="../JS/cookieFunctions.js"></script>
         <script src="../JS/darkmode.js"></script>
         <script>
             function proof(input){
@@ -20,7 +22,7 @@
             }
         </script>
     </head>
-    <body class="preload dark" onload="document.getElementById('inputID').select(); removePreload()">
+    <body class="<?php echo darkMode()?>" onload="document.getElementById('inputID').select(); removePreload(); isDarkMode()">
         <!--navigation bar-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Home</a>

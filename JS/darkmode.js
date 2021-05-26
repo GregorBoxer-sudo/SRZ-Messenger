@@ -7,26 +7,32 @@ function removePreload() {
 
 //this function is for the different themes
 function newTheme() {
-    console.log(document.body.className)
     if (document.body.className === "dark") {
         document.body.className = "light";
+        setCookie('darkMode', 0, 0);
         document.getElementById("switch").innerHTML = "&#x1F311;";
     } else {
         document.body.className = "dark";
+        setCookie('darkMode', 1, 0);
         document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
     }
 }
 
 //select system theme: light/dark
 function isDarkMode() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // dark mode
-        document.body.className = "dark";
-        document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
+    if (checkCookie('darkMode')) {
+        console.log('mode already selected');
     } else {
-        // light mode
-        document.body.className = "light";
-        document.getElementById("switch").innerHTML = "&#x1F311;";
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // dark mode
+            document.body.className = "dark";
+            document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
+            setCookie('darkMode', 1, 0);
+        } else {
+            // light mode
+            document.body.className = "light";
+            document.getElementById("switch").innerHTML = "&#x1F311;";
+            setCookie('darkMode', 0, 0);
+        }
     }
 }
-window.onload(isDarkMode());
