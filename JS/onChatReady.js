@@ -1,5 +1,5 @@
-$(document).ready(function(){
+$(document).ready(function() {
     getMessages();
-    let interval = setInterval(getMessages, 100);
+    let interval = setInterval(getMessages, 250);
     document.getElementById('printKey').innerText = sessionStorage.getItem('key')
 })

@@ -42,7 +42,7 @@
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Home</a>
 
-            <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
+            <a class="navItem" id="switch" onclick="newTheme()" href="#">&#127763</a>
             <a class="navItem" id="FAQ" href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki">FAQ</a>
         </div>
 

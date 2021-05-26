@@ -61,6 +61,7 @@
                     return false;
                 }
             }
+
             function getMessages(){
                 let data = { "user": user, "chatID": '<?php echo $guid?>' };
 
@@ -95,7 +96,7 @@
     <body class="<?php echo darkMode()?>" id="bodyChat" onload="isDarkMode()"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Pim</a>
-            <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
+            <a class="navItem" id="switch" onclick="newTheme()" href="#">&#127763</a>
         </div>
 
         <p class="chatIDP">ChatID: <?php echo $_POST['chatID'];?></p>

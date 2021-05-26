@@ -46,6 +46,8 @@ function commands(text) {
         location.reload();
     } else if (text.startsWith('!reload')) {
         location.reload();
+    } else if (text.startsWith('!clear')) {
+        location.reload();
     } else if (text.startsWith('!help')) {
         text = '<a href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki/Commands---Style---Emoji" style="text-decoration: underline">Click here for help!</a>';
     } else if (text.startsWith('!randomWiki')) {
@@ -66,6 +68,7 @@ function commands(text) {
     }
     return text;
 }
+
 function setEmoji(text) {
     let emojiList = [
         ["<3", "&#x2764;&#xfe0f; "], //❤️
@@ -198,6 +201,7 @@ function setEmoji(text) {
 
     return text
 }
+
 function setFormattingHTML(text) {
     let formattingList = [
         ["/n", "<br>"], //linebreak
@@ -228,32 +232,27 @@ function setFormattingHTML(text) {
     }
     return text
 }
+
 function detectEmbed(text) {
     let ytIsLink = false
     let urlRegex = /(https?:\/\/[^\s]+)/g;
-    let ytLinkList = [//todo only one item
+    let ytLinkList = [ //todo only one item
         ["www.youtube.com/watch?v=", "<div id='player'></div>"],
         ["youtu.be/", "<div id='player'></div>"]
     ]
 
-    for (let i = 0; i < ytLinkList.length; i++){
-        if (text.includes(ytLinkList[i][0])){
+    for (let i = 0; i < ytLinkList.length; i++) {
+        if (text.includes(ytLinkList[i][0])) {
             includesYTLink = true;
             ytIsLink = true
             text += "<br><div id='player'></div>"
-            videoID = text.substring(text.indexOf(ytLinkList[i][0])+ytLinkList[i][0].length, text.indexOf(ytLinkList[i][0])+ytLinkList[i][0].length+11)
+            videoID = text.substring(text.indexOf(ytLinkList[i][0]) + ytLinkList[i][0].length, text.indexOf(ytLinkList[i][0]) + ytLinkList[i][0].length + 11)
         }
     }
 
-    if (!ytIsLink){
-        text += text.replace(urlRegex, function(url) {
-            return "<br><iframe src='" + url + "' class='embed'></iframe>";
-        })
-    }
-
-
     return text
 }
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '288',
@@ -265,20 +264,24 @@ function onYouTubeIframeAPIReady() {
         }
     });
 }
+
 function onPlayerReady(event) {
     event.target.playVideo();
 }
+
 function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.PLAYING && !done) {
         setTimeout(stopVideo, 6000);
         done = true;
     }
 }
+
 function stopVideo() {
     player.stopVideo();
 }
-function setYoutubeVideo(){
-    if (includesYTLink && document.getElementById("ytScript") !== null){
+
+function setYoutubeVideo() {
+    if (includesYTLink && document.getElementById("ytScript") !== null) {
         onYouTubeIframeAPIReady()
     }
 }
@@ -286,18 +289,38 @@ function setYoutubeVideo(){
 function alertInjection() {
     alert('Pim found a possible Injection, that could harm you.\nIt could be a button, event or script.\nWe blocked it to protect you, your computer and the chat!');
 }
+
 function injectionProtection(text) {
-    let formattingList = [//todo idk ob das so sicher ist, da du in den script tag nen src reinhauen kannst
+    let formattingList = [
         ['onclick='],
         ['onload='],
-        ['<button>'],
-        ['<script>'],
-        ['<a>']
+        ['<button'],
+        ['<script'],
+        ['<a']
     ];
     for (let i = 0; i < formattingList.length; i++) {
-        text = text.replace(formattingList[i][0], '--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--');
+        if (text.includes(formattingList[i])) {
+            text = ('--found injection <a style="text-decoration: underline" onclick="alertInjection()">help</a>--');
+            break;
+        }
     }
     return text;
+}
+
+function checkInkection(text) {
+    let formattingList = [
+        ['onclick='],
+        ['onload='],
+        ['<button'],
+        ['<script'],
+        ['<a']
+    ];
+    for (let i = 0; i < formattingList.length; i++) {
+        if (text.includes(formattingList[i])) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function biggerEmojiTest(text, resUser, time) {
@@ -326,23 +349,29 @@ function biggerEmojiTest(text, resUser, time) {
  * @param {boolean} getMessageMode
  */
 function formatMessage() {
-    let i = messages.length-1
+    let i = messages.length - 1
     let mesUser = messages[i]["user"]
     let text = messages[i]["message"]
     let time = getTime(messages[i]["time"])
-    if (text === '') text = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
 
-    console.log(messages)//todo time doesnt work
+    if (text === '') {
+        console.log('key')
+        text = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
+        text = setFormattingHTML(text);
+    } else if (checkInkection(text)) {
+        text = injectionProtection(text);
+        text = setFormattingHTML(text);
+        text = biggerEmojiTest(text, mesUser, time);
+    } else {
+        console.log(messages) //todo time doesnt work
+        text = setFormattingHTML(text);
+        text = setEmoji(text);
+        text = commands(text);
+        text = detectEmbed(text);
+        text = biggerEmojiTest(text, mesUser, time);
+    }
 
-    text = injectionProtection(text);
-    text = setFormattingHTML(text);
-    text = setEmoji(text);
-    text = commands(text);
-    text = detectEmbed(text);
-    text = biggerEmojiTest(text, mesUser, time);
-
-
-    if (lastTime > 0 && lastUser === mesUser){//300000
+    if (lastTime > 0 && lastUser === mesUser) { //300000
         let timeDiv = document.getElementById("" + lastTime - 1);
         timeDiv.parentNode.removeChild(timeDiv);
     }
