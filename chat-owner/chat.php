@@ -19,6 +19,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="user-scalable=0"/>
         <title>PIM-Chat</title>
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
         <script src="../JS/jquery.min.js"></script>
