@@ -519,6 +519,13 @@ div{
 #player{
     border-radius: 1em;
 }
+.embed{
+    width: 512px;
+    height: 288px;
+    border-radius: 1em;
+    border: none;
+    background: var(--spoiler);
+}
 
 @keyframes rainbowAnimation {
     0% {color: red;}

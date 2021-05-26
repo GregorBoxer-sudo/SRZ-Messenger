@@ -229,22 +229,31 @@ function setFormattingHTML(text) {
     return text
 }
 function detectEmbed(text) {
-    let linkList = [
+    let ytIsLink = false
+    let urlRegex = /(https?:\/\/[^\s]+)/g;
+    let ytLinkList = [//todo only one item
         ["www.youtube.com/watch?v=", "<div id='player'></div>"],
         ["youtu.be/", "<div id='player'></div>"]
     ]
 
-    for (let i = 0; i < linkList.length; i++){
-        if (text.includes(linkList[i][0])){
+    for (let i = 0; i < ytLinkList.length; i++){
+        if (text.includes(ytLinkList[i][0])){
             includesYTLink = true;
+            ytIsLink = true
             text += "<br><div id='player'></div>"
-            videoID = text.substring(text.indexOf(linkList[i][0])+linkList[i][0].length, text.indexOf(linkList[i][0])+linkList[i][0].length+11)
+            videoID = text.substring(text.indexOf(ytLinkList[i][0])+ytLinkList[i][0].length, text.indexOf(ytLinkList[i][0])+ytLinkList[i][0].length+11)
         }
     }
 
+    if (!ytIsLink){
+        text += text.replace(urlRegex, function(url) {
+            return "<br><iframe src='" + url + "' class='embed'></iframe>";
+        })
+    }
+
+
     return text
 }
-
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '288',
