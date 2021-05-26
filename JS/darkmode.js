@@ -10,11 +10,11 @@ function newTheme() {
     if (document.body.className === "dark") {
         document.body.className = "light";
         setCookie('darkMode', 0, 0);
-        document.getElementById("switch").innerHTML = "&#x1F311;";
+        document.getElementById("switch").innerHTML = "&#127763";
     } else {
         document.body.className = "dark";
         setCookie('darkMode', 1, 0);
-        document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
+        document.getElementById("switch").innerHTML = "&#127763";
     }
 }
 
@@ -26,12 +26,12 @@ function isDarkMode() {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             // dark mode
             document.body.className = "dark";
-            document.getElementById("switch").innerHTML = "&#x2600;&#xFE0F;";
+            document.getElementById("switch").innerHTML = "&#127763";
             setCookie('darkMode', 1, 0);
         } else {
             // light mode
             document.body.className = "light";
-            document.getElementById("switch").innerHTML = "&#x1F311;";
+            document.getElementById("switch").innerHTML = "&#127763";
             setCookie('darkMode', 0, 0);
         }
     }
