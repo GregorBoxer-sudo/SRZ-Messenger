@@ -98,7 +98,7 @@
 <body class="<?php echo darkMode()?>" id="bodyChat" onload="isDarkMode()"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
 <div class="navigationBar">
     <a class="navItem" id="home" href="../index.php">Pim</a>
-    <a class="navItem" id="switch" onclick="newTheme()" href="#">&#127763</a>
+    <a class="navItem" id="switch" onclick="newTheme()" href="#">&#x2600;&#xFE0F;</a>
 </div>
 
 <p class="chatIDP">ChatID: <?php echo $_SESSION['chatID'];?></p>
