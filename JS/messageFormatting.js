@@ -336,12 +336,12 @@ function setFormattingHTML(text) {
         ["/o{", "<p style='color: var(--orange)' class='blankP'>"], //orange
         ["/p{", "<p style='color: var(--purple)' class='blankP'>"], //purple
 
-        ["/n_b{", "<p style='color: var(--n_blue)' class='blankP'>"], //blue
-        ["/n_r{", "<p style='color: var(--n_red)' class='blankP'>"], //red
-        ["/n_g{", "<p style='color: var(--n_green)' class='blankP'>"], //green
-        ["/n_y{", "<p style='color: var(--n_yellow)' class='blankP'>"], //yellow
-        ["/n_o{", "<p style='color: var(--n_orange)' class='blankP'>"], //orange
-        ["/n_p{", "<p style='color: var(--n_purple)' class='blankP'>"], //purple
+        ["/n_b{", "<p style='color: var(--n_blue)' class='blankP'>"], //neon blue
+        ["/n_r{", "<p style='color: var(--n_red)' class='blankP'>"], //neon red
+        ["/n_g{", "<p style='color: var(--n_green)' class='blankP'>"], //neon green
+        ["/n_y{", "<p style='color: var(--n_yellow)' class='blankP'>"], //neon yellow
+        ["/n_o{", "<p style='color: var(--n_orange)' class='blankP'>"], //neon orange
+        ["/n_p{", "<p style='color: var(--n_purple)' class='blankP'>"], //neon purple
 
         ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
         ["/important{", "<p class='blankP important'>"], //important
