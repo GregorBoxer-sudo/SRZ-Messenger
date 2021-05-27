@@ -526,6 +526,15 @@ div{
     border: none;
     background: var(--spoiler);
 }
+.emojiList{
+    height: 50vh;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.emojiList::-webkit-scrollbar {
+    display: none;
+}
 
 @keyframes rainbowAnimation {
     0% {color: red;}

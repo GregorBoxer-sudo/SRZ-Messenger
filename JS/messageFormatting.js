@@ -220,6 +220,7 @@ function setEmoji(text) {
         [":vaccine", "&#128137; "], //💉
         [":corona", "&#129440; "], //🦠
         [":covid-19", "&#129440; "], //🦠
+        [":severe_acute_respiratory_syndrome_coronavirus_type_2", "&#129440; "], //🦠
         [":virus", "&#129440; "], //🦠
         [":microbe", "&#129440; "], //🦠
         [":bacteria", "&#129440; "], //🦠
@@ -244,14 +245,17 @@ function setEmoji(text) {
         [":molly", "&#128571; "], //😻
         [":merlin", "&#128571; "] //😻
     ]
+    let help = "<div class='emojiList'> /big{Emojilist}"
 
 
     for (let i = 0; i < emojiList.length; i++) {
+        help += "<br>" + emojiList[i][0] + "     " + emojiList[i][1]
         if (text === emojiList[i][0])
             hasEmoji = true
         for (let a = 0; a < text.length; a++)
             text = text.replace(emojiList[i][0], emojiList[i][1])
     }
+    text = text.replace(":help", help + "</div>")
 
     return text
 }
@@ -426,8 +430,9 @@ function formatMessage() {
         text = biggerEmojiTest(text, mesUser, time);
     } else {
         console.log(messages) //todo time doesnt work
-        text = setFormattingHTML(text);
         text = setEmoji(text);
+        text = setFormattingHTML(text);
+
         text = commands(text);
         text = detectEmbed(text);
         text = biggerEmojiTest(text, mesUser, time);
