@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <title>WiP</title>
         <link rel="icon" href="https://lh3.googleusercontent.com/proxy/LLwGSJOeIeB9Xy10EjCXU5hhO4kjSL17llih51Mr1ydWaVFanvBBf5Ny_6jj9R0093i61P7OGuhsM6Ag9mWiyvPn9GqBaoIUAQRGDQkV18G5zb5y1OUuJ8VzjNl3VboWHJgBceKOQ1GqwGM5rJR42rLT8UKtu57A6M2V9g-aDQ">
-        <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css"/>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
         <!-- Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Quicksand:300,500" rel="stylesheet">
         <script src="JS/darkmode.js"></script>

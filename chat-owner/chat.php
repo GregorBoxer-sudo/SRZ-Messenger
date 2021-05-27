@@ -23,7 +23,7 @@
         <title>PIM-Chat</title>
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
         <script src="../JS/jquery.min.js"></script>
-        <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="../stylesheet.css" rel="stylesheet" type="text/css" />
         <script src="../JS/cookieFunctions.js"></script>
         <script src="../JS/darkmode.js"></script>
         <script src="../JS/encryption.js"></script>

@@ -20,7 +20,7 @@
     <title>PIM-Chat</title>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
     <script src="../JS/jquery.min.js"></script>    <script src="../JS/darkmode.js"></script>
-    <link href="../Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheet.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <script src="../JS/encryption.js"></script>

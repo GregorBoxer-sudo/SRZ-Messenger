@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <title>PIM-Choose</title>
-        <link href="Stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="stylesheet.css" rel="stylesheet" type="text/css" />
         <script src="JS/cookieFunctions.js"></script>
         <script src="JS/darkmode.js"></script>
         <script>

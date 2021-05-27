@@ -320,7 +320,7 @@ function setFormattingHTML(text) {
         ["/n", "<br>"], //linebreak
         ["/large{", "<p style='font-size: 3em' class='blankP'>"], //large text
         ["/big{", "<p style='font-size: 1.5em' class='blankP'>"], //big text
-        ["/small{", "<p style='font-size: 0.7em' class='blankP'>"], //small text
+        ["/small{", "<p style='font-size: 0.75em' class='blankP'>"], //small text
         ["/tiny{", "<p style='font-size: 0.5em' class='blankP'>"], //tiny text
         ["/u{", "<p style='text-decoration: underline' class='blankP'>"], //underline
         ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline

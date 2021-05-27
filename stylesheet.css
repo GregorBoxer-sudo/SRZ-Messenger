@@ -128,7 +128,7 @@ div{
     width: 60vw;
     height: 90vh;
 
-    background-image: url('../images/Pim background.png');
+    background-image: url('images/Pim background.png');
     background-repeat:no-repeat;
     background-size:contain;
     background-position: center;
@@ -361,7 +361,7 @@ div{
 /*chat*/
 
 #bodyChat{
-    background-image: url('../images/krita bubble pim.png');
+    background-image: url('images/krita bubble pim.png');
     background-repeat:no-repeat;
     background-size:contain;
     background-position: center;
