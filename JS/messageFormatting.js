@@ -300,7 +300,7 @@ function setEmoji(text) {
         [":a_table_flip", "(╯°□°）╯︵ ┻━┻ "],
         [":a_unflip", "┬─┬ ノ( ゜-゜ノ) "]
     ]
-    let help = "<div class='help'> /big{emoji list}"
+    let help = "<div class='help'> /large{emoji list}"
 
 
     for (let i = 0; i < emojiList.length; i++) {
