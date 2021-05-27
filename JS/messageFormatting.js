@@ -245,7 +245,7 @@ function setEmoji(text) {
         [":molly", "&#128571; "], //😻
         [":merlin", "&#128571; "] //😻
     ]
-    let help = "<div class='emojiList'> /big{Emojilist}"
+    let help = "<div class='help'> /big{emoji list}"
 
 
     for (let i = 0; i < emojiList.length; i++) {
@@ -263,8 +263,9 @@ function setEmoji(text) {
 function setFormattingHTML(text) {
     let formattingList = [
         ["/n", "<br>"], //linebreak
-        ["/big{", "<p style='font-size: 3em' class='blankP'>"], //big text
-        ["/small{", "<p style='font-size: 0.5em' class='blankP'>"], //small text
+        ["/large{", "<p style='font-size: 3em' class='blankP'>"], //large text
+        ["/big{", "<p style='font-size: 1.5em' class='blankP'>"], //big text
+        ["/small{", "<p style='font-size: 0.7em' class='blankP'>"], //small text
         ["/tiny{", "<p style='font-size: 0.5em' class='blankP'>"], //tiny text
         ["/u{", "<p style='text-decoration: underline' class='blankP'>"], //underline
         ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline
@@ -280,14 +281,20 @@ function setFormattingHTML(text) {
         ["/o{", "<p style='color: orange' class='blankP'>"], //orange
         ["/p{", "<p style='color: purple' class='blankP'>"], //purple
         ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
+        ["/important{", "<p class='blankP important'>"], //important
         ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
         ["}", "</p>"] //p end
     ]
+    let help = "<p style='font-size: 3em' class='blankP'>formatting list</p>"
 
     for (let i = 0; i < formattingList.length; i++) {
+        if (i > 0 && i < formattingList.length-2)
+            help += "<br>" + formattingList[i][0] + "}     " + formattingList[i][1] + "text" + "</p>"
         for (let a = 0; a < text.length; a++)
             text = text.replace(formattingList[i][0], formattingList[i][1])
     }
+    text = text.replace("/help", help)
+
     return text
 }
 
