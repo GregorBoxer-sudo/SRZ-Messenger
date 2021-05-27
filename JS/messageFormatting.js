@@ -328,12 +328,21 @@ function setFormattingHTML(text) {
         ["/spoiler{", "<p class='blankP spoiler spoilerHidden' onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
 
         ["/d{", "<p style='color: var(--text)' class='blankP'>"], //default
+
         ["/b{", "<p style='color: var(--blue)' class='blankP'>"], //blue
         ["/r{", "<p style='color: var(--red)' class='blankP'>"], //red
         ["/g{", "<p style='color: var(--green)' class='blankP'>"], //green
         ["/y{", "<p style='color: var(--yellow)' class='blankP'>"], //yellow
         ["/o{", "<p style='color: var(--orange)' class='blankP'>"], //orange
         ["/p{", "<p style='color: var(--purple)' class='blankP'>"], //purple
+
+        ["/n_b{", "<p style='color: var(--n_blue)' class='blankP'>"], //blue
+        ["/n_r{", "<p style='color: var(--n_red)' class='blankP'>"], //red
+        ["/n_g{", "<p style='color: var(--n_green)' class='blankP'>"], //green
+        ["/n_y{", "<p style='color: var(--n_yellow)' class='blankP'>"], //yellow
+        ["/n_o{", "<p style='color: var(--n_orange)' class='blankP'>"], //orange
+        ["/n_p{", "<p style='color: var(--n_purple)' class='blankP'>"], //purple
+
         ["/rainbow{", "<p class='blankP rainbow'>"], //rainbow
         ["/important{", "<p class='blankP important'>"], //important
         ["/jeb_{", "<p class='blankP rainbow'>"], //rainbow (minecraft easterEgg)
