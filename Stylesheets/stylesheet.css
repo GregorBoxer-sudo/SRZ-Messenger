@@ -5,7 +5,14 @@
 
 /*colors in the different themes*/
 :root {
-    --bg: #333;
+    --blue: #1f6fac;
+    --red: #d6475f;
+    --green: #23963c;
+    --yellow: #cfcf3a;
+    --orange: #cf9811;
+    --purple: #9f11cf;
+
+    --bg: #333333;
 
     --nav: #989898;
     --navHover: #DDDDDD;
@@ -516,7 +523,7 @@ div{
 }
 
 #changeEncryptionButton{
-    color: #1f6fac;
+    color: var(--blue);
 }
 
 #player{
@@ -549,7 +556,7 @@ div{
 }
 @keyframes importantAnimation {
     0% {color: var(--message);}
-    50% {color: #e42f22;}
+    50% {color: var(--error);}
     100% {color: var(--message);}
 }
 
