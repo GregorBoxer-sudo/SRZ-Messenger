@@ -53,7 +53,6 @@
             </div>
 
             <div class="rightContentContainer">
-                <!-- todo vllt mal hier anders lösen-->
                 <div class="rightSubContentContainer">
                     <h1 class="rightSubTitle">Chat-ID</h1>
                     <p class="rightSubText">

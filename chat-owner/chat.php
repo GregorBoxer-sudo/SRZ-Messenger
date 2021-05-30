@@ -6,7 +6,7 @@
     $pwd = $_POST['pwd'];
     $dir = dirname(dirname(__FILE__));
     $path = $dir . "/FILESYSTEM-Messages/" . sha1($guid) . "/";
-    // Ordner erstellen wenn noch nicht vorhanden
+    // add an directory if not already existing
     if (!is_dir($path)) {
         mkdir($path, 0777, true) || chmod($path, 0777);
 }
