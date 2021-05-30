@@ -36,9 +36,9 @@
                 }
             }
             function showKey() {
-                var encryptionKey = encryptKey();
-                var showKey = encryptionKey.match(/.{1,4}/g).join('-');
-                var token = document.getElementById('inputPassword').value
+                let encryptionKey = encryptKey();
+                let showKey = encryptionKey.match(/.{1,4}/g).join('-');
+                let token = document.getElementById('inputPassword').value
                 document.getElementById("inputPassword").value = token+"-"+showKey;
             }
         </script>
