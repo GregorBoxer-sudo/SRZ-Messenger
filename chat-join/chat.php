@@ -5,7 +5,7 @@
     $guid = $_SESSION['chatID'];
     $dir = dirname(dirname(__FILE__));
     $path = $dir . "/FILESYSTEM-Messages/" . sha1($guid) . "/";
-    // Ordner erstellen wenn noch nicht vorhanden
+    // add an directory if not already existing
     if (!is_dir($path)) {
         mkdir($path, 0777, true) || chmod($path, 0777);
     }
@@ -45,7 +45,8 @@
                 messages[messages.length] = {"user": user, "time": seconds, "message": message}
                 formatMessage();
 
-                let sendData = { "user": user, "chatID": '<?php echo $guid?>', "message": encrypt(message, sessionStorage.getItem('key'))};
+                let sendData = { "user": user, "chatID": '<?php echo $guid?>',
+                    "message": encrypt(message, sessionStorage.getItem('key'))};
 
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', '../Conversation/send_Message.php', true);
@@ -80,7 +81,9 @@
                             formatMessage();
                             return
                         }
-                        if(!(messages[messages.length-1]["time"] === response["time"] && messages[messages.length-1]["message"] === response["message"]) && response["user"] !== user){
+                        if(!(messages[messages.length-1]["time"] === response["time"]
+                            && messages[messages.length-1]["message"] === response["message"])
+                            && response["user"] !== user){
                             messages[messages.length] = response
                             formatMessage();
                         }

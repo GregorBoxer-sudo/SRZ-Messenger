@@ -13,7 +13,7 @@
         </script>
     </head>
     <body class="<?php echo darkMode()?>" onload="removePreload(); isDarkMode()">
-        <!--navigation bar-->
+
         <div class="navigationBar">
             <a class="navItem" id="home" href="index.php">Home</a>
 
@@ -27,10 +27,7 @@
                 <p class="leftText">Pim is your secure messenger with single use chats,<br> which stores no data and no messages. <br> We use no trackers.</p>
                 <a class="leftLink" href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki"><u>learn more ></u></a>
             </div>
-
             <div class="rightContentContainer">
-                <!--todo rename all things
-                todo vllt mal hier anders lösen-->
                 <div class="rightSubContentContainer" id="openChatContainer">
                     <h1 class="rightSubTitle">create chat</h1>
                     <p class="rightSubText">

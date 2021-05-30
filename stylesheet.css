@@ -5,6 +5,7 @@
 
 /*colors in the different themes*/
 :root {
+    /*formatting colors*/
     --blue: #1f6fac;
     --red: #d6475f;
     --green: #23963c;
@@ -12,6 +13,7 @@
     --orange: #cf9811;
     --purple: #9f11cf;
 
+    /*neon formatting colors*/
     --n_blue: #20d2f4;
     --n_red: #ff073a;
     --n_green: #00f700;
