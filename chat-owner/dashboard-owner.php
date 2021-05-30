@@ -23,10 +23,10 @@
         <script>
             function proof(input){
                 if (input.value.length === 19){
-                    var contentArray = input.value.split('-');
-                    if (contentArray.length = 4) {
-                        var token = contentArray[0];
-                        var key = contentArray[1]+contentArray[2]+contentArray[3];
+                    let contentArray = input.value.split('-');
+                    if (contentArray.length === 4) {
+                        let token = contentArray[0];
+                        let key = contentArray[1]+contentArray[2]+contentArray[3];
                         document.getElementById('outToken').value = token;
                         sessionStorage.setItem('key', key);
                         document.getElementById("submitForm").submit();
