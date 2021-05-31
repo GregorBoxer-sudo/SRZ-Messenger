@@ -444,7 +444,7 @@ function injectionProtection(text) {
     return text;
 }
 
-function checkInkection(text) {
+function checkInjection(text) {
     let formattingList = [
         ['onclick='],
         ['onload='],
@@ -492,15 +492,13 @@ function formatMessage() {
     let time = getTime(messages[i]["time"])
 
     if (text === '') {
-        console.log('key')
         text = 'Warning: encryption key changed or does not work! <a href="javascript:onclick=changeKey()">Click here to change the key</a>';
         text = setFormattingHTML(text);
-    } else if (checkInkection(text)) {
+    } else if (checkInjection(text)) {
         text = injectionProtection(text);
         text = setFormattingHTML(text);
         text = biggerEmojiTest(text, mesUser, time);
     } else {
-        console.log(messages) //todo time doesnt work
         text = setEmoji(text);
         text = setFormattingHTML(text);
 
@@ -509,9 +507,7 @@ function formatMessage() {
         text = biggerEmojiTest(text, mesUser, time);
     }
 
-    console.log(time)
-
-    if (lastTime > 0 && lastUser === mesUser) { //300000
+    if (lastTime > 0 && lastUser === mesUser) {
         let timeDiv = document.getElementById("" + lastTime - 1);
         timeDiv.parentNode.removeChild(timeDiv);
     }
