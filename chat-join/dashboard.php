@@ -22,9 +22,10 @@
                 }, 3000);
             }
             function encryptKey() {
+                console.log("sakldjadslkdj: "+sessionStorage.length);
                 if (sessionStorage.length < 1) {
-                    let encryptionKey = "";
-                    let chars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+                    var encryptionKey = "";
+                    var chars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
                     for (i = 0; i < 12; i++) {
                         randomElement = chars[Math.floor(Math.random()*chars.length)];
                         encryptionKey += randomElement;
@@ -36,9 +37,9 @@
                 }
             }
             function showKey() {
-                let encryptionKey = encryptKey();
-                let showKey = encryptionKey.match(/.{1,4}/g).join('-');
-                let token = document.getElementById('inputPassword').value
+                var encryptionKey = encryptKey();
+                var showKey = encryptionKey.match(/.{1,4}/g).join('-');
+                var token = document.getElementById('inputPassword').value
                 document.getElementById("inputPassword").value = token+"-"+showKey;
             }
         </script>
