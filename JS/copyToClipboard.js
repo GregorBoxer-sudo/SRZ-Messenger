@@ -3,6 +3,7 @@ function copyToClipboard(element, input) {
     input.setSelectionRange(0, 99999);
     document.execCommand("copy");
 
+    //changing style to succes
     element.style.borderColor = "#6bcf6d";
     element.style.borderWidth = "3px";
     element.style.borderStyle = "solid";
