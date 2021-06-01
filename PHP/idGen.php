@@ -75,7 +75,6 @@
         require('dbh.php');
         $hash = sha1($pwd);
         $guid = sha1($guid);
-        #echo "hash: $hash <br>guid: $guid <br>"; todo mal schauen was man hiermit so alles macht, ich habe es rausgenommen, da es gestört hat
         $stmt = $conn->prepare("SELECT randNum FROM chats where ChatID = ?");
         $stmt->bind_param("s", $guid);
         $stmt->execute();

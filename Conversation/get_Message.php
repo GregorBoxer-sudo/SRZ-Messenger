@@ -11,13 +11,13 @@
     $chatID = $decoded['chatID'];
     $user = $decoded['user'];
 
-    $response = new stdClass();//todo vllt mal eleganter lösen
+    $response = new stdClass();
     $json = "";
     if (isset($chatID) && isset($user)) {
         $dir = dirname(dirname(__FILE__));
         $path = $dir . "/FILESYSTEM-Messages/" . sha1($chatID) . "/";
 
-        $files = scandir($path, SCANDIR_SORT_ASCENDING); // neustes file zuerst? TODO check nach mehr?
+        $files = scandir($path, SCANDIR_SORT_ASCENDING);
         $filesToDelete = [];
 
 
@@ -59,7 +59,7 @@
                             }
 
                         } else $response->error = 'UserID aus Eingabe nicht identifiezierbar!' . PHP_EOL;
-                    } else $response->error = 'User: ? send: " . $msg . "';//todo mal schauen wie man das hier macht, da dort nicht bekannt ist welcher user
+                    } else $response->error = 'User: ? send: " . $msg . "';
                 }
             }
         }

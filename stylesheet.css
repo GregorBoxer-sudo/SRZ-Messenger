@@ -373,7 +373,6 @@ div{
     text-align: right;
 }
 .opponentMessage{
-    /*todo je nach dem wir lange die nachricht her ist die margin setzen*/
     text-align: left;
     margin: 0.2em 0;
 }

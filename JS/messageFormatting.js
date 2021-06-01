@@ -364,7 +364,7 @@ function setFormattingHTML(text) {
 
 function detectEmbed(text) {
     let ytIsLink = false
-    let ytLinkList = [ //todo only one item
+    let ytLinkList = [
         ["www.youtube.com/watch?v=", "<div id='player'></div>"],
         ["youtu.be/", "<div id='player'></div>"]
     ]

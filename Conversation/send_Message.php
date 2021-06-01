@@ -39,13 +39,12 @@ if (isset($message) && isset($chatID) && isset($user)) {
             //when text
             $zip->addFromString("msg.txt", $message, ZipArchive::FL_ENC_UTF_8); //only php 7 +
             $zip->setEncryptionName("msg.txt", ZipArchive::EM_AES_256); //only php 7.2 +
-            //TODO pics, files...
             $zip->close();
 
         } else {
             exit("cannot open <$filename>\n");
         }
-    } else echo "Übergebene UserID ({$user}) ist nicht identifizierbar";//todo hier die fehlermeldung entweder wegmachen oder neu machen, da es dann nenn fehler gibt
+    } else echo "Übergebene UserID ({$user}) ist nicht identifizierbar";
 } else {
     echo "Übergebene parameter sind unvollständig" . PHP_EOL;
 }

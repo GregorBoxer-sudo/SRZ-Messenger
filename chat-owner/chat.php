@@ -92,7 +92,7 @@
             }
         </script>
     </head>
-    <body class="<?php echo darkMode()?>" id="bodyChat" onload="isDarkMode()"> <!--onload="removePreload()" todo do remove preload or check if its necessary-->
+    <body class="<?php echo darkMode()?>" id="bodyChat" onload="isDarkMode()">
         <div class="navigationBar">
             <a class="navItem" id="home" href="../index.php">Pim</a>
             <a class="navItem" id="switch" onclick="newTheme()" href="#">&#127763</a>
@@ -110,7 +110,7 @@
         </div>
 
         <div class="writingContainer">
-            <!--            TODO input file/pic ...-->
+
             <input type="text" name="TextField" id="messageInput" placeholder="your message ..." class="MessageInputField"
                    autofocus="autofocus" autocomplete="off">
         </div>
