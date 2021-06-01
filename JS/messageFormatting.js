@@ -460,8 +460,8 @@ function checkInjection(text) {
     return false;
 }
 
-function biggerEmojiTest(text, resUser, time) {
-    let regex = /(?=\p{Emoji})(?!\p{Number})/u; //find emojis and tripples them in size
+function biggerEmojiTest(text, resUser) {
+    let regex = /(?=\p{Emoji})(?!\p{Number})/u; //find emojis and triples them in size
 
     let formattedText;
     if (regex.test(text) && countEmojis(text) === 1 || hasEmoji) {
@@ -497,7 +497,7 @@ function formatMessage() {
     } else if (checkInjection(text)) {
         text = injectionProtection(text);
         text = setFormattingHTML(text);
-        text = biggerEmojiTest(text, mesUser, time);
+        text = biggerEmojiTest(text, mesUser);
     } else {
         text = setEmoji(text);
         text = setFormattingHTML(text);
