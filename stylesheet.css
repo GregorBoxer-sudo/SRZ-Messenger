@@ -568,6 +568,7 @@ div{
     100% {color: var(--message);}
 }
 
+/*tablet mode*/
 @media screen
 and (max-device-width: 1050px)
 and (min-device-width: 600px) {
@@ -613,6 +614,7 @@ and (min-device-width: 600px) {
     }
 
 }
+/*smartphone mode*/
 @media screen
 and (max-device-width: 600px)
 and (orientation: portrait){
