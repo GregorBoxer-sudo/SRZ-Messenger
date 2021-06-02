@@ -326,7 +326,8 @@ function setFormattingHTML(text) {
         ["/bold{", "<p style='font-weight: bold;' class='blankP'>"], //underline
         ["/italic{", "<p style='font-style: italic;' class='blankP'>"], //italic
 
-        ["/spoiler{", "<p class='blankP spoiler spoilerHidden' onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
+        ["/spoiler{", "<p class='blankP spoiler spoilerHidden' " +
+        "onclick='this.className = \"blankP spoiler spoilerVisible\"'>"], //spoiler
 
         ["/d{", "<p style='color: var(--text)' class='blankP'>"], //default
 
@@ -353,7 +354,8 @@ function setFormattingHTML(text) {
 
     for (let i = 0; i < formattingList.length; i++) {
         if (i > 0 && i < formattingList.length-2)
-            help += "<br>" + formattingList[i][0] + "}     " + formattingList[i][1] + "text" + "</p>"
+            help += "<br>" + formattingList[i][0] + "}     "
+                 + formattingList[i][1] + "text" + "</p>"
         for (let a = 0; a < text.length; a++)
             text = text.replace(formattingList[i][0], formattingList[i][1])
     }
