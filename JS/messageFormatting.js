@@ -42,11 +42,7 @@ function getTime(rawTime) {
 }
 
 function commands(text) {
-    if (text.startsWith('!delete')) {
-        location.reload();
-    } else if (text.startsWith('!reload')) {
-        location.reload();
-    } else if (text.startsWith('!clear')) {
+    if (text.startsWith('!delete') || text.startsWith('!reload') || text.startsWith('!clear')) {
         location.reload();
     } else if (text.startsWith('!help')) {
         text = '<a target="_blank" href="https://github.com/GregorBoxer-sudo/SRZ-Messenger/wiki/Commands---Style---Emoji" style="text-decoration: underline">Click here for help!</a>';
